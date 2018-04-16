@@ -1,0 +1,1 @@
+https://github.com/jrowberg/i2cdevlib

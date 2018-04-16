@@ -1,0 +1,75 @@
+
+.body_div
+{
+	margin: 0 auto;
+	width: 700px;
+}
+
+fieldset
+{
+	margin-bottom: 12px;
+}
+
+@media screen {
+
+body
+{
+	background-color: #000;
+	color: #FFF;
+	padding: 30px;
+}
+
+a, a:visited, a:active
+{
+	color: #0FF;
+}
+
+a:hover
+{
+	color: #88F;
+}
+
+#banner_black
+{
+	margin: 0 auto;
+	width: 700px;
+	height: 120px;
+	background-image: url("../img/banner_black.png");
+}
+
+#banner_white
+{
+	display: none;
+}
+
+.extra
+{
+	display: none;
+}
+
+}
+
+@media print {
+
+body
+{
+	background-color: #FFF;
+	text-color: #000;
+}
+
+a, a:visited, a:active
+{
+	color: #00F;
+}
+
+#banner_black
+{
+	display: none;
+}
+
+.extra
+{
+	display: block;
+}
+
+}
