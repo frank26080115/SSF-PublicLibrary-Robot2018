@@ -1,4 +1,4 @@
-#include "IRremote.h"
+#include "IRremote_Include.h"
 #include "IRremoteInt.h"
 
 #ifdef SENDING_SUPPORTED

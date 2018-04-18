@@ -2,7 +2,7 @@
 
 // This file contains functions specific to the ESP32.
 
-#include "IRremote.h"
+#include "IRremote_Include.h"
 #include "IRremoteInt.h"
 
 // "Idiot check"
