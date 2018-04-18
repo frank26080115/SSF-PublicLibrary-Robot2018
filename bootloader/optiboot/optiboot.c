@@ -129,7 +129,7 @@
 /* one hardware uart (644P, 1284P, etc)                   */
 /*                                                        */
 /**********************************************************/
-
+
 /**********************************************************/
 /* Version Numbers!                                       */
 /*                                                        */
@@ -451,6 +451,10 @@ int main(void) {
   if (ch & (_BV(WDRF) | _BV(BORF) | _BV(PORF)))
       appStart(ch);
 
+  // set button pin as input with internal pull-up resistor
+  DDRB &= ~_BV(2);
+  PORTB |= _BV(2);
+
 #if LED_START_FLASHES > 0
   // Set up Timer 1 for timeout counter
   TCCR1B = _BV(CS12) | _BV(CS10); // div 1024
@@ -713,8 +717,11 @@ uint8_t getch(void) {
       "r25"
 );
 #else
-  while(!(UART_SRA & _BV(RXC0)))
-    ;
+  while(!(UART_SRA & _BV(RXC0))) {
+    if ((PINB & _BV(2)) == 0) {
+      watchdogReset(); // hold the bootloader if the button is pressed
+    }
+  }
   if (!(UART_SRA & _BV(FE0))) {
       /*
        * A Framing Error indicates (probably) that something is talking

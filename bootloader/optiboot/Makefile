@@ -102,7 +102,7 @@ ifeq ($(OS), macosx)
 TOOLROOT = ../../../../build/macosx/work/Arduino.app/Contents/Resources/Java/hardware/tools
 endif
 ifeq ($(OS), windows)
-TOOLROOT = ../../../../build/windows/work/hardware/tools
+TOOLROOT = C:/ProgramFiles/Arduino-1.8.2/hardware/tools
 endif
 
 GCCROOT = $(TOOLROOT)/avr/bin/
