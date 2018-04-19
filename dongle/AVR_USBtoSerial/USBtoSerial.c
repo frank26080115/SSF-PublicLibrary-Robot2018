@@ -81,6 +81,7 @@ USB_ClassInfo_CDC_Device_t VirtualSerial_CDC_Interface =
 static volatile uint16_t millis = 0;
 static volatile uint32_t secs = 0;
 
+void TryReadUsb(void);
 #define ExternResetAssert()     do { PORTB &= ~_BV(1); DDRB |=  _BV(1); } while (0)
 #define ExternResetDeassert()   do { PORTB |=  _BV(1); DDRB &= ~_BV(1); } while (0)
 
@@ -102,45 +103,7 @@ int main(void)
 
 	for (;;)
 	{
-		/* Only try to read in bytes from the CDC interface if the transmit buffer is not full */
-		if (!(RingBuffer_IsFull(&USBtoUSART_Buffer)))
-		{
-			int16_t ReceivedByte = CDC_Device_ReceiveByte(&VirtualSerial_CDC_Interface);
-
-			/* Store received byte into the USART transmit buffer */
-			if (!(ReceivedByte < 0))
-			{
-				uint32_t now;
-				GlobalInterruptDisable();
-				now = secs;
-				GlobalInterruptEnable();
-				if ((now - lastRxTime) > 5)
-				{
-					resetPrimed = 1;
-				}
-				lastRxTime = now;
-				if (resetPrimed != 0 && ReceivedByte == '0')
-				{
-					uint8_t i;
-					ExternResetAssert();
-					for (i = 0; i < 10; i++)
-					{
-						_delay_us(100);
-						CDC_Device_USBTask(&VirtualSerial_CDC_Interface);
-						USB_USBTask();
-					}
-					ExternResetDeassert();
-					for (i = 0; i < 10; i++)
-					{
-						_delay_us(100);
-						CDC_Device_USBTask(&VirtualSerial_CDC_Interface);
-						USB_USBTask();
-					}
-					resetPrimed = 0;
-				}
-				RingBuffer_Insert(&USBtoUSART_Buffer, ReceivedByte);
-			}
-		}
+		TryReadUsb();
 
 		uint16_t BufferCount = RingBuffer_GetCount(&USARTtoUSB_Buffer);
 		if (BufferCount)
@@ -173,10 +136,57 @@ int main(void)
 
 		/* Load the next byte from the USART transmit buffer into the USART if transmit buffer space is available */
 		if (Serial_IsSendReady() && !(RingBuffer_IsEmpty(&USBtoUSART_Buffer)))
-		  Serial_SendByte(RingBuffer_Remove(&USBtoUSART_Buffer));
+		{
+			uint32_t now;
+			uint8_t data;
+			data = RingBuffer_Remove(&USBtoUSART_Buffer);
+			GlobalInterruptDisable();
+			now = secs;
+			GlobalInterruptEnable();
+			if ((now - lastRxTime) > 5)
+			{
+				resetPrimed = 1;
+			}
+			lastRxTime = now;
+			if (resetPrimed != 0 && data == '0')
+			{
+				uint8_t i;
+				ExternResetAssert();
+				for (i = 0; i < 50; i++)
+				{
+					_delay_us(100);
+					TryReadUsb();
+				}
+				ExternResetDeassert();
+				for (i = 0; i < 200; i++)
+				{
+					_delay_us(200);
+					TryReadUsb();
+				}
+				resetPrimed = 0;
+			}
+			Serial_SendByte(data);
+		}
 
 		CDC_Device_USBTask(&VirtualSerial_CDC_Interface);
 		USB_USBTask();
+	}
+}
+
+void TryReadUsb(void)
+{
+	CDC_Device_USBTask(&VirtualSerial_CDC_Interface);
+	USB_USBTask();
+	/* Only try to read in bytes from the CDC interface if the transmit buffer is not full */
+	if (!(RingBuffer_IsFull(&USBtoUSART_Buffer)))
+	{
+		int16_t ReceivedByte = CDC_Device_ReceiveByte(&VirtualSerial_CDC_Interface);
+
+		/* Store received byte into the USART transmit buffer */
+		if (!(ReceivedByte < 0))
+		{
+			RingBuffer_Insert(&USBtoUSART_Buffer, ReceivedByte);
+		}
 	}
 }
 
