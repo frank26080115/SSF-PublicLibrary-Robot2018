@@ -4,9 +4,8 @@
 * Version: 2.0
 *
 * Description:
-*   The component is enumerated as a Virtual Com port. Receives data from the 
-*   hyper terminal, then sends back the received data.
-*   For PSoC3/PSoC5LP, the LCD shows the line settings.
+*   The component is enumerated as a Virtual Com port.
+*   Acts as a USB-to-UART converter for use with Arduino
 *
 * Related Document:
 *  Universal Serial Bus Specification Revision 2.0
@@ -67,8 +66,8 @@ int main()
 {
     uint16 count;
     uint8 buffer[USBUART_BUFFER_SIZE];
-    char resetPrimed = 1;
-    uint32 lastRxTime = 0;
+
+    uint8 prevLines = 0; // tracks previous DTS status
     
     CyGlobalIntEnable;
 
@@ -106,24 +105,14 @@ int main()
 
                 if (0u != count)
                 {
-                    if (resetPrimed == 0)
+                    // check for changes in DTS control line signal
+                    uint16 curLines = USBUART_GetLineControl();
+                    if ((prevLines & USBUART_LINE_CONTROL_DTR) == 0 && (curLines & USBUART_LINE_CONTROL_DTR) != 0)
                     {
-                        uint32 now = secs;
-                        if ((now - lastRxTime) > 5)
-                        {
-                            resetPrimed = 1;
-                        }
-                    }
-
-                    lastRxTime = secs;
-
-                    if (buffer[0] == '0' && resetPrimed != 0)
-                    {
-                        resetPrimed = 0;
                         ExternReset_SetDriveMode(ExternReset_DM_OD_LO);
                         ExternReset_Write(0);
                         // delay for reset pulse to register
-                        for (int i = 0; i < 10; i++)
+                        for (int i = 0; i < 1; i++)
                         {
                             CyDelayUs(100);
                         }
@@ -131,22 +120,24 @@ int main()
                         ExternReset_SetDriveMode(ExternReset_DM_OD_HI);
 
                         // delay for bootloader to get ready
-                        for (int i = 0; i < 10; i++)
+                        for (int i = 0; i < 200; i++)
                         {
-                            CyDelayUs(100);
+                            CyDelayUs(1000);
                         }
                     }
-                    
+                    prevLines = curLines; // for comparison on next loop
+
                     UART_PutArray(buffer, count);
                 }
             }
 
-            if (UART_ReadRxStatus() == UART_RX_STS_FIFO_NOTEMPTY)
+            if (UART_GetRxBufferSize() > 0) // something to read
             {
-                int idx = 0;
-                for (idx = 0; idx < USBUART_BUFFER_SIZE && UART_ReadRxStatus() == UART_RX_STS_FIFO_NOTEMPTY; idx++)
+                unsigned int idx = 0;
+                // read all possible
+                for (idx = 0; idx < USBUART_BUFFER_SIZE && UART_GetRxBufferSize() > 0; idx++)
                 {
-                    buffer[idx] = UART_GetChar();
+                    buffer[idx] = UART_ReadRxData();
                 }
 
                 /* Wait until component is ready to send data to host. */

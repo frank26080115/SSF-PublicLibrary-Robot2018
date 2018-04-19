@@ -199,6 +199,7 @@
       <Data key="c39ef993-d787-4c0c-8ad6-c0c81f866442/8b77a6c4-10a0-4390-971c-672353e2a49c" value="USBUART_Dm" />
       <Data key="c39ef993-d787-4c0c-8ad6-c0c81f866442/605a40d2-572d-4c7a-818e-3bfd37f14d87" value="USBUART_VBUS" />
       <Data key="c39ef993-d787-4c0c-8ad6-c0c81f866442/618a72fc-5ddd-4df5-958f-a3d55102db42" value="USBUART_Dp" />
+      <Data key="e851a3b9-efb8-48be-bbb8-b303b216c393" value="ExternReset" />
       <Data key="ed49cdf9-38df-4d0d-bf88-cc8fc60fbfde" value="SW1" />
       <Data key="ed092b9b-d398-4703-be89-cebf998501f6" value="Tx_1" />
     </Group>
@@ -850,6 +851,11 @@
     <Group key="d938166a-c041-4af5-afaf-ef82f4b4af02/bcf50901-38ae-461b-a57c-bc3cfeb9b89c">
       <Group key="0">
         <Data key="Port Format" value="6,7" />
+      </Group>
+    </Group>
+    <Group key="e851a3b9-efb8-48be-bbb8-b303b216c393">
+      <Group key="0">
+        <Data key="Port Format" value="12,5" />
       </Group>
     </Group>
     <Group key="ed49cdf9-38df-4d0d-bf88-cc8fc60fbfde">
