@@ -1,0 +1,17 @@
+*.o
+*.d
+*.eep
+*.sym
+*.bin
+*.lss
+*.lst
+*.map
+*.bak
+*.class
+*.frank
+*.wbz
+*.html
+*.log
+codegentemp
+Generated_Source
+KitProg
