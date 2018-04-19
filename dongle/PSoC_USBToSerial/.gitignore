@@ -10,6 +10,7 @@
 *.class
 *.frank
 *.wbz
+*.pdf
 *.html
 *.log
 codegentemp

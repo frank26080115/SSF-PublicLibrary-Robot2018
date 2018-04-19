@@ -925,10 +925,10 @@
     <Data key="CYDEV_DEBUGGING_REQXRES" value="True" />
     <Data key="CYDEV_DEBUGGING_XRES" value="True" />
     <Data key="CYDEV_ECC_ENABLE" value="False" />
-    <Data key="CYDEV_HEAP_SIZE" value="0x80" />
+    <Data key="CYDEV_HEAP_SIZE" value="0x1000" />
     <Data key="CYDEV_INSTRUCT_CACHE_ENABLED" value="False" />
     <Data key="CYDEV_PROTECTION_ENABLE" value="False" />
-    <Data key="CYDEV_STACK_SIZE" value="0x0800" />
+    <Data key="CYDEV_STACK_SIZE" value="0x4000" />
     <Data key="CYDEV_SWV_ENABLED" value="True" />
     <Data key="CYDEV_TEMPERATURE" value="-40C - 85/125C" />
     <Data key="CYDEV_TRACE_ENABLED" value="False" />
@@ -940,7 +940,7 @@
     <Data key="CYDEV_VDDIO0" value="5.0" />
     <Data key="CYDEV_VDDIO1" value="5.0" />
     <Data key="CYDEV_VDDIO2" value="5.0" />
-    <Data key="CYDEV_VDDIO3" value="5.0" />
+    <Data key="CYDEV_VDDIO3" value="3.3" />
     <Data key="CYDEV_WO_NVL_ENABLED" value="False" />
   </Group>
 </DesignWideResources>
