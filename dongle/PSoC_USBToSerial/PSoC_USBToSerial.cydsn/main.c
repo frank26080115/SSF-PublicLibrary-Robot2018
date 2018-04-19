@@ -167,6 +167,7 @@ void USBUART_SOF_ISR_ExitCallback(void)
     if (millis >= 1000)
     {
         secs++;
+        millis = 0;
     }
 }
 

@@ -78,12 +78,20 @@ USB_ClassInfo_CDC_Device_t VirtualSerial_CDC_Interface =
 			},
 	};
 
+static volatile uint16_t millis = 0;
+static volatile uint32_t secs = 0;
+
+#define ExternResetAssert()     do { PORTB &= ~_BV(1); DDRB |=  _BV(1); } while (0)
+#define ExternResetDeassert()   do { PORTB |=  _BV(1); DDRB &= ~_BV(1); } while (0)
 
 /** Main program entry point. This routine contains the overall program flow, including initial
  *  setup of all components and the main program loop.
  */
 int main(void)
 {
+	char resetPrimed = 1;
+	uint32_t lastRxTime = 0;
+
 	SetupHardware();
 
 	RingBuffer_InitBuffer(&USBtoUSART_Buffer, USBtoUSART_Buffer_Data, sizeof(USBtoUSART_Buffer_Data));
@@ -101,7 +109,37 @@ int main(void)
 
 			/* Store received byte into the USART transmit buffer */
 			if (!(ReceivedByte < 0))
-			  RingBuffer_Insert(&USBtoUSART_Buffer, ReceivedByte);
+			{
+				uint32_t now;
+				GlobalInterruptDisable();
+				now = secs;
+				GlobalInterruptEnable();
+				if ((now - lastRxTime) > 5)
+				{
+					resetPrimed = 1;
+				}
+				lastRxTime = now;
+				if (resetPrimed != 0 && ReceivedByte == '0')
+				{
+					uint8_t i;
+					ExternResetAssert();
+					for (i = 0; i < 10; i++)
+					{
+						_delay_us(100);
+						CDC_Device_USBTask(&VirtualSerial_CDC_Interface);
+						USB_USBTask();
+					}
+					ExternResetDeassert();
+					for (i = 0; i < 10; i++)
+					{
+						_delay_us(100);
+						CDC_Device_USBTask(&VirtualSerial_CDC_Interface);
+						USB_USBTask();
+					}
+					resetPrimed = 0;
+				}
+				RingBuffer_Insert(&USBtoUSART_Buffer, ReceivedByte);
+			}
 		}
 
 		uint16_t BufferCount = RingBuffer_GetCount(&USARTtoUSB_Buffer);
@@ -157,6 +195,7 @@ void SetupHardware(void)
 	/* Hardware Initialization */
 	LEDs_Init();
 	USB_Init();
+	ExternResetDeassert();
 }
 
 /** Event handler for the library USB Connection event. */
@@ -179,12 +218,28 @@ void EVENT_USB_Device_ConfigurationChanged(void)
 	ConfigSuccess &= CDC_Device_ConfigureEndpoints(&VirtualSerial_CDC_Interface);
 
 	LEDs_SetAllLEDs(ConfigSuccess ? LEDMASK_USB_READY : LEDMASK_USB_ERROR);
+
+	if (ConfigSuccess != 0) {
+		secs = 0;
+		millis = 0;
+		USB_Device_EnableSOFEvents();
+	}
 }
 
 /** Event handler for the library USB Control Request reception event. */
 void EVENT_USB_Device_ControlRequest(void)
 {
 	CDC_Device_ProcessControlRequest(&VirtualSerial_CDC_Interface);
+}
+
+void EVENT_USB_Device_StartOfFrame(void)
+{
+	millis++;
+	if (millis >= 1000)
+	{
+		millis = 0;
+		secs++;
+	}
 }
 
 /** ISR to manage the reception of data from the serial port, placing received bytes into a circular buffer
