@@ -6,12 +6,10 @@ Some form of USB-to-UART is needed in order to communicate with the Arduino Nano
 
 Well... the library's laptops already have Arduino 1.8.1 installed. Which means that the default virtual COM drivers for Arduino's ATmega8U2 must already be installed as well.
 
-The "dongle" directory contains projects that are USB-to-UART converters that use the same VID and PID as the Arduino's ATmega8U2.
+The "dongle" directory contains code for a PSoC that turns it into a USB-to-UART converter. It will use the same VID and PID as the Arduino's ATmega8U2.
 
-One version uses the Teensy, which is the ATmega32U4 running LUFA. I have a few spare Teensys that I got for free and I could easily dedicate to this task.
+The hardware will be the detachable KitProg from Cypress PSoC dev kits. I have plenty of these to give away because we typically break them off from the dev kits at work.
 
-The other version uses detachable KitProg from Cypress PSoC dev kits. I have plenty of these to give away because we typically break them off from the dev kits at work.
-
-The auto-reset functionality will not use the flow-control pins of standard UART. Instead, it will not use a capacitor. It will not have the problem of causing an unwanted reset when the COM port is opened, because it will buffer and check for STK500 communication before issuing a reset.
+There is no capacitor for the DTS signal that is meant for auto-reset, instead, a simple pulse with a delay simulates the capacitor.
 
 So in the end, for zero cost to me personally, I provide about a dozen USB-to-serial converters to the library that works without additional driver installation. :-)
