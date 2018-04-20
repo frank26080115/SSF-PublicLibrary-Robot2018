@@ -9,7 +9,8 @@ ContinuousServo servoRight;
 
 void cBookWorm::begin(void)
 {
-	Serial.begin(9600);
+	Serial.begin(115200);
+	UCSR0C |= _BV(USBS0); // use 2 stop bits instead of 1, for reliability purposes
 
 	pinMode(pinLedLeft, OUTPUT);
 	pinMode(pinLedRight, OUTPUT);
@@ -65,6 +66,8 @@ void cBookWorm::setLedRightOff(void)
 
 void cBookWorm::setEmittersOn(void)
 {
+	pinMode(pinEmitterLeft, OUTPUT);
+	pinMode(pinEmitterRight, OUTPUT);
 	digitalWrite(pinEmitterLeft, HIGH);
 	digitalWrite(pinEmitterRight, HIGH);
 }
@@ -73,6 +76,8 @@ void cBookWorm::setEmittersOff(void)
 {
 	digitalWrite(pinEmitterLeft, LOW);
 	digitalWrite(pinEmitterRight, LOW);
+	pinMode(pinEmitterLeft, INPUT);
+	pinMode(pinEmitterRight, INPUT);
 }
 
 bool cBookWorm::isButtonPressed(void)

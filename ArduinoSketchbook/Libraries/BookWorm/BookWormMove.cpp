@@ -15,7 +15,7 @@ extern ContinuousServo servoRight;
 #define TRIM_DURATION       2                               // compensation ticks to trim adjust for digitalWrite delays // 12 August 2009
 #endif
 
-#define SERVO_CENTER_TICKS    usToTicks(1500 - TRIM_DURATION)
+#define SERVO_CENTER_TICKS    (usToTicks(1500 - TRIM_DURATION))
 
 #define SERVO_ACCELERATION_LIMIT 4
 
@@ -23,7 +23,7 @@ void cBookWorm::move(int left, int right)
 {
 	int leftTicks = SERVO_CENTER_TICKS + left;
 	int rightTicks = SERVO_CENTER_TICKS - right;
-	printf(F("%u, %u,\r\n"), leftTicks, rightTicks);
+	//printf(F("%u, %u,\r\n"), leftTicks, rightTicks);
 	servoLeft.writeTicks(leftTicks);
 	servoRight.writeTicks(rightTicks);
 }
@@ -43,7 +43,7 @@ void cBookWorm::moveRightServo(int right)
 void cBookWorm::setAccelLimit(unsigned int accel)
 {
 	servoLeft.setAccel(accel);
-	servoLeft.setAccel(-accel);
+	servoRight.setAccel(-accel);
 }
 
 void cBookWorm::enableAccelLimit(void)
