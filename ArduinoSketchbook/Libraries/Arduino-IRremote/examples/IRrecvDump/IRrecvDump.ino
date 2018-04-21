@@ -8,14 +8,14 @@
  * LG added by Darryl Smith (based on the JVC protocol)
  */
 
-#include <IRremote.h>
+#include <IRremote_Include.h>
 
 /* 
 *  Default is Arduino pin D11. 
 *  You can change this to another available Arduino Pin.
 *  Your IR receiver should be connected to the pin defined here
 */
-int RECV_PIN = 11;
+int RECV_PIN = 8;
 
 IRrecv irrecv(RECV_PIN);
 

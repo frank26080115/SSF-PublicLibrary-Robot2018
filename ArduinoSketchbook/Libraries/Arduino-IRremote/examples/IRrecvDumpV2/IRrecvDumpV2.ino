@@ -1,12 +1,12 @@
 //------------------------------------------------------------------------------
 // Include the IRremote library header
 //
-#include <IRremote.h>
+#include <IRremote_Include.h>
 
 //------------------------------------------------------------------------------
 // Tell IRremote which Arduino pin is connected to the IR Receiver (TSOP4838)
 //
-int recvPin = 11;
+int recvPin = 8;
 IRrecv irrecv(recvPin);
 
 //+=============================================================================
