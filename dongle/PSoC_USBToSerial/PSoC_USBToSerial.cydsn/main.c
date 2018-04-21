@@ -125,6 +125,39 @@ int main()
                     clkDivider = 0x10000;
                 }
                 UART_CLOCK_SetDividerValue(clkDivider);
+                prevBaud = curBaud;
+            }
+
+            // check if parity bits settings have changed
+            static uint32_t prevParity = USBUART_PARITY_NONE;
+            uint32_t curParity = USBUART_GetParityType();
+            if (prevParity != curParity)
+            {
+                uint32_t newParity = UART__B_UART__NONE_REVB;
+                prevParity = curParity;
+                if (curParity == USBUART_PARITY_NONE)
+                {
+                    newParity = UART__B_UART__NONE_REVB;
+                }
+                else if (curParity == USBUART_PARITY_EVEN)
+                {
+                    newParity = UART__B_UART__EVEN_REVB;
+                }
+                else if (curParity == USBUART_PARITY_ODD)
+                {
+                    newParity = UART__B_UART__ODD_REVB;
+                }
+                else if (curParity == USBUART_PARITY_MARK)
+                {
+                    newParity = UART__B_UART__MARK_SPACE_REVB;
+                }
+                else if (curParity == USBUART_PARITY_SPACE)
+                {
+                    newParity = UART__B_UART__MARK_SPACE_REVB;
+                }
+
+                UART_WriteControlRegister((UART_ReadControlRegister() & (uint8)~UART_CTRL_PARITY_TYPE_MASK)
+                        | (uint8)(newParity << UART_CTRL_PARITY_TYPE0_SHIFT));
             }
 
             /* Check for input data from host. */
