@@ -26,13 +26,6 @@
 #include <project.h>
 #include "stdio.h"
 
-#if defined (__GNUC__)
-    /* Add an explicit reference to the floating point printf library */
-    /* to allow usage of the floating point conversion specifiers. */
-    /* This is not linked in by default with the newlib-nano library. */
-    asm (".global _printf_float");
-#endif
-
 #define USBFS_DEVICE    (0u)
 
 /* The buffer size is equal to the maximum packet size of the IN and OUT bulk
@@ -42,6 +35,28 @@
 
 volatile uint32 millis = 0;
 volatile uint32 secs = 0;
+
+#define CLKDIV_BAUD_115200    69
+#define CLKDIV_BAUD_230400    35
+#define CLKDIV_BAUD_250000    32
+#define CLKDIV_BAUD_500000    16
+#define CLKDIV_BAUD_1000000    8
+#define CLKDIV_BAUD_1500000    5
+#define CLKDIV_BAUD_57600    139
+#define CLKDIV_BAUD_38400    208
+#define CLKDIV_BAUD_28800    278
+#define CLKDIV_BAUD_19200    417
+#define CLKDIV_BAUD_14400    556
+#define CLKDIV_BAUD_9600     833
+#define CLKDIV_BAUD_4800    1667
+#define CLKDIV_BAUD_2400    3333
+#define CLKDIV_BAUD_1200    6667
+#define CLKDIV_BAUD_800    10000
+#define CLKDIV_BAUD_600    13333
+#define CLKDIV_BAUD_300    26667
+#define CLKDIV_BAUD_150    53333
+
+uint32_t Baud_to_Divider(uint32_t baud);
 
 /*******************************************************************************
 * Function Name: main
@@ -97,6 +112,21 @@ int main()
         /* Service USB CDC when device is configured. */
         if (0u != USBUART_GetConfiguration())
         {
+            static uint32_t prevBaud = 0;
+            uint32_t curBaud = USBUART_GetDTERate();
+            // check if baud rate has changed
+            if (prevBaud != curBaud)
+            {
+                uint32_t clkDivider = Baud_to_Divider(curBaud);
+                if (clkDivider <= 0) {
+                    clkDivider = 1;
+                }
+                else if (clkDivider > 0x10000) {
+                    clkDivider = 0x10000;
+                }
+                UART_CLOCK_SetDividerValue(clkDivider);
+            }
+
             /* Check for input data from host. */
             if (0u != USBUART_DataIsReady())
             {
@@ -120,7 +150,7 @@ int main()
                         ExternReset_SetDriveMode(ExternReset_DM_OD_HI);
 
                         // delay for bootloader to get ready
-                        for (int i = 0; i < 200; i++)
+                        for (int i = 0; i < 1; i++)
                         {
                             CyDelayUs(1000);
                         }
@@ -160,6 +190,22 @@ void USBUART_SOF_ISR_ExitCallback(void)
         secs++;
         millis = 0;
     }
+}
+
+uint32_t Baud_to_Divider(uint32_t baud)
+{
+    uint32_t masterClk = BCLK__BUS_CLK__HZ;
+    uint32_t baudDiv2;
+    uint32_t result;
+    if (baud <= 0)
+    {
+        baud = 1;
+    }
+    baud *= 8;
+    baudDiv2 = baud / 2;
+    result = masterClk + baudDiv2;
+    result /= baud;
+    return result;
 }
 
 /* [] END OF FILE */

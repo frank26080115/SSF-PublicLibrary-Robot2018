@@ -13,6 +13,7 @@
 *.pdf
 *.html
 *.log
+*.rpt
 codegentemp
 Generated_Source
 KitProg

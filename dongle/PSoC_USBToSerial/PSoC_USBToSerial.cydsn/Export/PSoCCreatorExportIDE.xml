@@ -133,8 +133,8 @@
           <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\UART_PM.c</File>
           <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\UART_INT.c</File>
           <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\UART_BOOT.c</File>
-          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\UART_IntClock.c</File>
-          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\UART_IntClock.h</File>
+          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\UART_CLOCK.c</File>
+          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\UART_CLOCK.h</File>
         </Files>
       </Folder>
       <Folder BuildType="STRICT" Path="C:\Projects\Robots\SSF-PublicLibrary-Robot2018\dongle\PSoC_USBToSerial\PSoC_USBToSerial.cydsn\Export\ARM_GCC_Generic">
