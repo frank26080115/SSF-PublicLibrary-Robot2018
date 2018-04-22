@@ -77,17 +77,17 @@ void loop() {
     rightSensMax -= SENS_MAX_DECAY;
   }
 
-  if (curCmd == TVREMOTE_KEY_SELECT && (rightSensMax > 16 || leftSensMax > 16))
+  if (curCmd == TVREMOTE_KEY_SELECT && (rightSensMax > 200 || leftSensMax > 200))
   {
     int32_t diff = abs(rightSensMax - leftSensMax);
 
     if (leftSensMax > rightSensMax)
     {
-      BookWorm.move(500 - (diff * 2), 500);
+      BookWorm.move(100 - (diff / 4), 100);
     }
     else
     {
-      BookWorm.move(500, 500 - (diff * 2));
+      BookWorm.move(100, 100 - (diff / 4));
     }
   }
   else if (curCmd == TVREMOTE_KEY_UP)
@@ -132,11 +132,11 @@ void loop() {
 
     if (lineFollow)
     {
-      if (leftSens >= pot && rightSens < pot)
+      if ((leftSens >= pot && rightSens < pot)) //  || (rightSens < (leftSens * 2) && rightSens > (pot / 1))
       {
         BookWorm.move(200, 0);
       }
-      else if (leftSens < pot && rightSens >= pot)
+      else if ((leftSens < pot && rightSens >= pot)) //  || (leftSens < (rightSens * 2) && leftSens > (pot / 1))
       {
         BookWorm.move(0, 200);
       }

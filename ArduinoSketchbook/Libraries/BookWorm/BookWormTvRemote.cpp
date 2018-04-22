@@ -133,5 +133,45 @@ static int decodeTvCommand(decode_results *results)
 				return TVREMOTE_KEY_UNKNOWN;
 		}
 	}
+	if (d == TVREMOTE_BRAND_SAMSUNG)
+	{
+		switch (x)
+		{
+			case 0x16E9:
+				return TVREMOTE_KEY_SELECT;
+			case 0xA659:
+				return TVREMOTE_KEY_LEFT;
+			case 0x46B9:
+				return TVREMOTE_KEY_RIGHT;
+			case 0x06F9:
+				return TVREMOTE_KEY_UP;
+			case 0x8679:
+				return TVREMOTE_KEY_DOWN;
+			case 0xA857:
+				return TVREMOTE_KEY_YELLOW;
+			case 0x6897:
+				return TVREMOTE_KEY_BLUE;
+			case 0x36C9:
+				return TVREMOTE_KEY_RED;
+			case 0x28D7:
+				return TVREMOTE_KEY_GREEN;
+			case 0xE21D:
+				return TVREMOTE_KEY_PLAY;
+			case 0x629D:
+				return TVREMOTE_KEY_STOP;
+			case 0x20DF: return TVREMOTE_KEY_1;
+			case 0xA05F: return TVREMOTE_KEY_2;
+			case 0x609F: return TVREMOTE_KEY_3;
+			case 0x10EF: return TVREMOTE_KEY_4;
+			case 0x906F: return TVREMOTE_KEY_5;
+			case 0x50AF: return TVREMOTE_KEY_6;
+			case 0x30CF: return TVREMOTE_KEY_7;
+			case 0xB04F: return TVREMOTE_KEY_8;
+			case 0x708F: return TVREMOTE_KEY_9;
+			case 0x8877: return TVREMOTE_KEY_0;
+			default:
+				return TVREMOTE_KEY_UNKNOWN;
+		}
+	} 
 	return TVREMOTE_KEY_UNKNOWN;
 }
