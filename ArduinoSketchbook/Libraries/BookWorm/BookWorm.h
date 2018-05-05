@@ -10,6 +10,7 @@
 #define pinButton 10
 #define pinLedLeft 6
 #define pinLedRight 5
+#define pinLedBack 13
 #define pinEmitterLeft 3
 #define pinEmitterRight 4
 #define pinSensorLeftFloor A3
@@ -33,6 +34,8 @@ public:
 	void setLedRight(int bright);
 	void setLedRightOn(void);
 	void setLedRightOff(void);
+	void setLedBackOn(void);
+	void setLedBackOff(void);
 	void setEmittersOn(void);
 	void setEmittersOff(void);
 	bool isButtonPressed(void);
@@ -42,17 +45,21 @@ public:
 	unsigned int readSensorRightSide(void);
 	unsigned int readSensorRightFloor(void);
 
-	void move(int left, int right);
-	void moveLeftServo(int left);
-	void moveRightServo(int right);
+	void move(signed int left, signed int right);
+	void moveLeftServo(signed int left);
+	void moveRightServo(signed int right);
+	void moveMixed(signed int throttle, signed int steer);
+	void calcMix(signed int throttle, signed int steer, signed int * left, signed int * right);
 	void setAccelLimit(unsigned int accel);
 	void enableAccelLimit(void);
 	void disableAccelLimit(void);
+	void setServoDeadzoneLeft(unsigned int x);
+	void setServoDeadzoneRight(unsigned int x);
+	void setServoBiasLeft(signed int x);
+	void setServoBiasRight(signed int x);
 
 	int readTvRemote(void);
 	void sendTvRemote(uint8_t brand, unsigned long data, unsigned int nbits);
-
-	bool initMpu6050(void);
 
 	int printf(const char *format, ...);
 	int printf(const __FlashStringHelper *format, ...);

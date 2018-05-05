@@ -62,6 +62,7 @@ static volatile int8_t Channel[_Nbr_16timers ];             // counter for the s
 
 uint8_t ServoCount = 0;                                     // the total number of attached servos
 
+uint8_t ContinuousServo_BothForward = 0;
 
 // convenience macros
 #define SERVO_INDEX_TO_TIMER(_servo_nbr) ((timer16_Sequence_t)(_servo_nbr / SERVOS_PER_TIMER)) // returns the timer controlling this servo
@@ -97,7 +98,9 @@ static inline void handle_interrupts(timer16_Sequence_t timer, volatile uint16_t
     uint32_t nt;
     tcntn *= SERVO_ACCEL_SCALE;
 
-    if (accel > 0 && targetTicks > curTicks && targetTicks > SERVO_CENTER_TICKS)
+    if (accel > 0 && targetTicks > curTicks && targetTicks > SERVO_CENTER_TICKS
+		&& ContinuousServo_BothForward == 0x03
+		)
     {
       curTicks += accel;
       if (curTicks < SERVO_CENTER_TICKS)
@@ -109,7 +112,9 @@ static inline void handle_interrupts(timer16_Sequence_t timer, volatile uint16_t
         curTicks = targetTicks;
       }
     }
-    else if (accel < 0 && targetTicks < curTicks && targetTicks < SERVO_CENTER_TICKS)
+    else if (accel < 0 && targetTicks < curTicks && targetTicks < SERVO_CENTER_TICKS
+		&& ContinuousServo_BothForward == 0x03
+		)
     {
       curTicks += accel;
       if (curTicks > SERVO_CENTER_TICKS)

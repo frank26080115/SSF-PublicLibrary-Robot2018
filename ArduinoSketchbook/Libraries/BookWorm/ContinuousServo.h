@@ -45,6 +45,10 @@
 #ifndef ContinuousServo_h
 #define ContinuousServo_h
 
+#ifdef Servo_h
+#error Library conflict, please do not use Servo.h along with BookWorm
+#endif
+
 #include <inttypes.h>
 
 /*
@@ -109,6 +113,8 @@ typedef struct {
   uint32_t accel;
 } servo_t;
 
+extern uint8_t ContinuousServo_BothForward;
+
 class ContinuousServo
 {
 public:
@@ -133,6 +139,12 @@ private:
    int8_t max;                       // maximum is this value times 4 added to MAX_PULSE_WIDTH
 #endif
    uint8_t servoIndex;               // index into the channel data for this servo
+};
+
+class Servo : public ContinuousServo
+{
+	public:
+		Servo() : ContinuousServo() { }
 };
 
 #endif
