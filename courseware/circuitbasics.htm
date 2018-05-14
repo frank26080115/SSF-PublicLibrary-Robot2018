@@ -1,0 +1,117 @@
+<html>
+<head>
+<title>3D CAD Modelling Class</title>
+<link rel="stylesheet" type="text/css" href="css/stylesheet.css" title="style" />
+<script type="text/javascript" src="js/javascript.js"></script>
+
+<script type="text/javascript">
+
+function body_onload() {
+	makeAllVideos("img/film_animation.gif");
+
+	makeTableOfContents("tableofcontents", "h2");
+
+	makeAllHidables();
+}
+
+</script>
+
+</head>
+<body onload="body_onload()">
+<div class="body_div">
+
+<div id="banner_black"><img src="img/banner_black.png" /></div>
+<div id="banner_white"><img src="img/banner_white.png" /></div>
+
+<h1>Circuit Basics</h1>
+
+<fieldset>
+<legend>Foreword</legend>
+I want to help you understand the circuit of this robot as fast as possible, and I don't want to bore you with any math. But electricity is such a huge topic and it's hard to predict what knowledge you need before you can understand what I want to teach you. So on this page, there are many links to other websites with longer and more detailed lessons. You should read these.
+
+You might notice that a lot of links are to the <a href="https://learn.sparkfun.com/" target="_blank">SparkFun</a> or <a href="https://learn.adafruit.com/" target="_blank">Adafruit</a> website. Both of them are great companies who have dedicated themselves to helping hobbyists who are interested in electronics, thus they often publish great educational material on their website. SparkFun has better theory lessons and Adafruit tends to have better project based lessons.
+
+There is no "live" class for this page, but please feel free to come to the library with any questions, or email me.
+</fieldset>
+
+<div id="tableofcontents"></div></p>
+
+<h2>Reading a Circuit Diagram</h2>
+
+<p>A circuit diagram is a drawing that has symbols and lines in it to show how components are connected in a circuit. Here below I will show you the circuit diagram of our robot:</p>
+
+<p>Some commmon components have a specific symbol to represent them. For example, resistors are usually zig-zag lines.</p>
+
+<p>But sometimes there is no standardized symbol for a part you are using, so you can make it up, or even just draw a rectangle and give it a label.</p>
+
+<p>To keep things neat, we can label connections instead of drawing a really long line to represent a connection.<p>
+
+<p>SparkFun has <a href="https://learn.sparkfun.com/tutorials/how-to-read-a-schematic/" target="_blank">their own page about reading circuits</a>, it is more in-depth. You do not have to memorize circuit symbols right now but their page does list a lot of symbols.</p>
+
+<h2>Power Supply</h2>
+
+<p>There are two major characteristic of electricity: "voltage" and "current". Think of voltage as "pressure", and think of current as "flow".</p>
+
+<p>Your robot uses 4 batteries in series as the power supply. Each battery gives around 1.5 volts. This means your total voltage is about 6 volts. Thus, we consider the positive terminal of the whole battery pack to be 6 volts, and the negative terminal of the whole battery pack to be 0 volts.</p>
+
+<p>When you use the batteries, you drain its power, the voltage will go lower. This is bad for sensors, most sensors need a steady voltage that does not change.</p>
+
+<p>Your robot has an Arduino on it. One part on the Arduino is a "voltage regulator". When you give it 6 volts, it outputs 5 volts. When you give it 7 volts, it still outputs 5 volts. (by the way, if you give it something lower than 5 volts, it stops working correctly, 4 volts in means 3 volts out)</p>
+
+<p>Any component or circuit that needs a steady voltage is usually connected to some type of voltage regulator.</p>
+
+<p>The voltage regulator on the Arduino is small. It cannot pass a lot of current. Motors need a lot of current and do not need a steady voltage to work. We can connect the motors to the batteries directly.</p>
+
+<p>SparkFun has <a href="https://learn.sparkfun.com/tutorials/how-to-read-a-schematic/" target="_blank">their own page about reading circuits</a>, it is more in-depth. You do not have to memorize circuit symbols right now but their page does list a lot of symbols.</p>
+
+<h2>LEDs</h2>
+
+<p>We have many LEDs (<a href="https://en.wikipedia.org/wiki/Light-emitting_diode" target="_blank">Wikipedia page</a>) in our circuits. LED means Light Emitting Diode. A diode is something that electricity can only flow one way through. So this means if the electricity is flowing through the diode in the correct way, it will light up. If you connect a diode backwards, it will block the flow of electricity.</p>
+
+<p>When you connect a LED in a circuit, you need something to control the amount of current flowing through it, or else it could get too hot and burn. To do this easily, we add a resistor into the path of the flow. A resistor is like a very narrow water pipe, the higher the resistance, the tighter the pipe, the lower the flow.</p>
+
+<p>For lighting up a LED, it doesn’t matter if the resistor is before or after the LED.</p>
+
+<h2>Infrared Sensor</h2>
+
+<p>Our sensors on the bottom and the side of the robot are infrared sensors. Infrared light is a type of light that humans cannot see. Each sensor has a LED that shines infrared light, and a "phototransistor" that receives infrared light.</p>
+
+<p>A phototransistor changes the amount of current flowing through it, like a resistor that can change resistance. When it senses more infrared light, there’s more current flowing. This means we can see how close an object is or how reflective an object is depending on how much current is flowing through the phototransistor.</p>
+
+<p>It’s not easy to measure current. It is easy to measure voltage. This is why a lot of sensors output a voltage that can change according to what it is sensing, because it is easy to measure voltage.</p>
+
+<p>But a phototransistor changes current, not voltage, how can we measure the infrared light?</p>
+
+<h2>Voltage Divider</h2>
+
+<p>There is a circuit known as a voltage divider. It is usually made of two resistors connected together in series. One of the ends is connected to a voltage, like our 5 volt output. The other end is connected to our batteries negative terminal, which is 0 volts. The voltage in between the two resistors can be measured, and it will change depending on which resistor has more resistance than the other.</p>
+
+<p>Like I said before, the phototransistor is like a resistor that changes resistance depending the amount of infrared light it receives. So we can replace one resistor in a voltage divider and get a voltage that is higher when the infrared light is bright and a lower voltage when the infrared light is dark.</p>
+
+<p>SparkFun has <a href="https://learn.sparkfun.com/tutorials/voltage-dividers" target="_blank">their own page about voltage dividers</a>, it is a bit more focused on the mathematics. You should read it when you are ready to get a better understanding.</p>
+
+<h2>Potentiometer</h2>
+
+<p>Our robot also has a potentiometer, which has a knob that you can twist. A potentiometer is like a single resistor that you choose where you can split in two. This means it becomes a voltage divider where the output voltage changes depending on where you pick to split the resistor. This means if you turn the knob, you change the voltage it outputs.</p>
+
+<p>Sometimes, potentiometers are used like volume knobs, and in our robot, you can choose to use it for whatever you want. You can use it to choose how fast it moves, how fast it turns, or something like that. Or a really great idea for your robot is to use it to set a brightness threshold for your sensors. You can tell the robot that, if the floor sensor voltage is more than the potentiometer voltage, then the floor is considered white, and if the floor sensor voltage is less than the potentiometer voltage, then the floor is considered black. This way, if we change the black line on the race track to a grey line, you just need to turn the potentiometer to make your robot follow a grey line instead of a black line.</p>
+
+<h2>Button Switch</h2>
+
+<p>The robot also has a button on it. A button is a switch, when you press it, it makes a connection, and it breaks the connection when you release it. We connect the button between the Arduino, and the negative terminal of the battery. Because of the way Arduino is built on the inside, it reads high voltage by default. So when you connect a button to the Arduino and also connect it to ground, it will read high voltage when you do not press the button, and it will read low voltage when you press the button.</p>
+
+<p>It is a good idea to use the button as a start button. We do not want the robot to unexpectedly run away when you put the batteries in.</p>
+
+<h2>Next Class</h2>
+
+<p>The other components we have not really talked about are:
+<ul>
+<li>Continuous rotation servo motors</li>
+<li>TV remote receiver</li>
+<li>Accelerometer and gyroscope</li>
+</ul></p>
+
+<p>These will be covered in the next few sections</p>
+
+</body>
+</html>
