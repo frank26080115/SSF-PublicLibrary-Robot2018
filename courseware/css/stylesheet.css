@@ -30,6 +30,13 @@ a:hover
 	color: #88F;
 }
 
+video
+{
+	border-style: solid;
+	border-width: 1px;
+	border-color: grey;
+}
+
 #banner_black
 {
 	margin: 0 auto;
