@@ -1,17 +1,48 @@
 <html>
 <head>
-<title>3D CAD Modelling Class</title>
+<title>Our Robot's Circuit</title>
 <link rel="stylesheet" type="text/css" href="css/stylesheet.css" title="style" />
+<link rel="stylesheet" type="text/css" href="css/divtable.css" title="style" />
 <script type="text/javascript" src="js/javascript.js"></script>
 
 <script type="text/javascript">
 
 function body_onload() {
-	makeAllVideos("img/film_animation.gif");
+	//makeAllVideos("img/film_animation.gif");
 
 	makeTableOfContents("tableofcontents", "h2");
 
 	makeAllHidables();
+}
+
+function voltagedivider_onchange() {
+	var r1 = document.getElementById("voltagedivider_slider_r1").value;
+	var r2 = document.getElementById("voltagedivider_slider_r2").value;
+	var txtr1 = document.getElementById("voltagedivider_txt_r1");
+	var txtr2 = document.getElementById("voltagedivider_txt_r2");
+	var txt = Math.round(r1).toString();
+	while (txt.length < 5) {
+		txt = "&nbsp;" + txt;
+	}
+	txtr1.innerHTML = txt;
+	txt = Math.round(r2).toString();
+	while (txt.length < 5) {
+		txt = "&nbsp;" + txt;
+	}
+	txtr2.innerHTML = txt;
+
+	var vin = 5000;
+	var vout = 0;
+	if (r2 > 0) {
+		vout = vin*r2/(r1-(-1)*r2);
+	}
+	var vout10 = Math.round(vout / 100);
+	var txtout = document.getElementById("voltagedivider_txt_output");
+	txtout.innerHTML = (vout10 / 10).toString();
+
+	var imgnum = Math.round(vout / 2 / 100) * 2 * 100;
+	var imgEle = document.getElementById("voltagedivider_txt_voltmeter");
+	imgEle.src = "img/voltmeter/vm_" + imgnum.toString() + ".jpg";
 }
 
 </script>
@@ -23,7 +54,7 @@ function body_onload() {
 <div id="banner_black"><img src="img/banner_black.png" /></div>
 <div id="banner_white"><img src="img/banner_white.png" /></div>
 
-<h1>Circuit Basics</h1>
+<h1>Our Robot's Circuit</h1>
 
 <fieldset>
 <legend>Foreword</legend>
@@ -40,41 +71,59 @@ There is no "live" class for this page, but please feel free to come to the libr
 
 <p>A circuit diagram is a drawing that has symbols and lines in it to show how components are connected in a circuit. Here below I will show you the circuit diagram of our robot:</p>
 
-<p>Some commmon components have a specific symbol to represent them. For example, resistors are usually zig-zag lines.</p>
+<p><a href="img/robot_circuit.png"><img src="img/robot_circuit.png" width="100%"/></a></p>
+
+<p>Some common components have a specific symbol to represent them. For example, resistors are usually zig-zag lines.</p>
+
+<p><a href="img/ckt_makingupsymbols.jpg"><img src="img/ckt_makingupsymbols.jpg"  width="100%" /></a></p>
 
 <p>But sometimes there is no standardized symbol for a part you are using, so you can make it up, or even just draw a rectangle and give it a label.</p>
 
 <p>To keep things neat, we can label connections instead of drawing a really long line to represent a connection.<p>
 
+<p><a href="img/ckt_thesediagramsmeanthesamething.jpg"><img src="img/ckt_thesediagramsmeanthesamething.jpg"  width="100%" /></a></p>
+
 <p>SparkFun has <a href="https://learn.sparkfun.com/tutorials/how-to-read-a-schematic/" target="_blank">their own page about reading circuits</a>, it is more in-depth. You do not have to memorize circuit symbols right now but their page does list a lot of symbols.</p>
 
 <h2>Power Supply</h2>
 
-<p>There are two major characteristic of electricity: "voltage" and "current". Think of voltage as "pressure", and think of current as "flow".</p>
+<p>There are two major characteristic of electricity: <i>voltage</i> and <i>current</i>. Think of voltage as "pressure", and think of current as "flow".</p>
 
 <p>Your robot uses 4 batteries in series as the power supply. Each battery gives around 1.5 volts. This means your total voltage is about 6 volts. Thus, we consider the positive terminal of the whole battery pack to be 6 volts, and the negative terminal of the whole battery pack to be 0 volts.</p>
 
+<p><a href="img/batteries_in_series.jpg"><img src="img/batteries_in_series.jpg" width="100%"/></a></p>
+
+<p>(When you see "GND" in the schematic, it means <i>ground</i>, which almost always mean 0 volts.)</p>
+
 <p>When you use the batteries, you drain its power, the voltage will go lower. This is bad for sensors, most sensors need a steady voltage that does not change.</p>
 
-<p>Your robot has an Arduino on it. One part on the Arduino is a "voltage regulator". When you give it 6 volts, it outputs 5 volts. When you give it 7 volts, it still outputs 5 volts. (by the way, if you give it something lower than 5 volts, it stops working correctly, 4 volts in means 3 volts out)</p>
+<p>Your robot has an Arduino on it. One part on the Arduino is a <i>voltage regulator</i>. When you give it 6 volts, it outputs 5 volts. When you give it 7 volts, it still outputs 5 volts. (by the way, if you give it something lower than 5 volts, it stops working correctly, 4 volts in means 3 volts out)</p>
 
 <p>Any component or circuit that needs a steady voltage is usually connected to some type of voltage regulator.</p>
 
 <p>The voltage regulator on the Arduino is small. It cannot pass a lot of current. Motors need a lot of current and do not need a steady voltage to work. We can connect the motors to the batteries directly.</p>
 
-<p>SparkFun has <a href="https://learn.sparkfun.com/tutorials/how-to-read-a-schematic/" target="_blank">their own page about reading circuits</a>, it is more in-depth. You do not have to memorize circuit symbols right now but their page does list a lot of symbols.</p>
+<p>SparkFun has <a href="https://learn.sparkfun.com/tutorials/how-to-power-a-project" target="_blank">their own page about powering circuits</a>, it covers additional math around battery capacity, Ohm's Law, and various connectors.</p>
 
 <h2>LEDs</h2>
 
-<p>We have many LEDs (<a href="https://en.wikipedia.org/wiki/Light-emitting_diode" target="_blank">Wikipedia page</a>) in our circuits. LED means Light Emitting Diode. A diode is something that electricity can only flow one way through. So this means if the electricity is flowing through the diode in the correct way, it will light up. If you connect a diode backwards, it will block the flow of electricity.</p>
+<p><a href="img/leds.jpg"><img src="img/leds.jpg" width="100%"/></a></p>
+
+<p>We have many LEDs (<a href="https://en.wikipedia.org/wiki/Light-emitting_diode" target="_blank">Wikipedia page</a>) in our circuits. LED means <i>Light Emitting Diode</i>. A <i>diode</i> is something that electricity can only flow one way through. So "light emitting" means if the electricity is flowing through the diode in the correct way, it will light up. If you connect a diode backwards, it will block the flow of electricity (and a backwards LED will not light up).</p>
 
 <p>When you connect a LED in a circuit, you need something to control the amount of current flowing through it, or else it could get too hot and burn. To do this easily, we add a resistor into the path of the flow. A resistor is like a very narrow water pipe, the higher the resistance, the tighter the pipe, the lower the flow.</p>
+
+<p>(<a href="https://en.wikipedia.org/wiki/Resistor" target="_blank">resistors</a> have a resistance value, the unit is called "ohm", and the symbol is Ω, more Ω means less current)</p>
+
+<p><a href="img/ckt_ledresistor.jpg"><img src="img/ckt_ledresistor.jpg" width="100%"/></a></p>
 
 <p>For lighting up a LED, it doesn’t matter if the resistor is before or after the LED.</p>
 
 <h2>Infrared Sensor</h2>
 
-<p>Our sensors on the bottom and the side of the robot are infrared sensors. Infrared light is a type of light that humans cannot see. Each sensor has a LED that shines infrared light, and a "phototransistor" that receives infrared light.</p>
+<p>Our sensors on the bottom and the side of the robot are infrared sensors. Infrared light is a type of light that humans cannot see. Each sensor we use is actually two parts built into one: a LED that shines infrared light, and a <i>phototransistor</i> that receives infrared light.</p>
+
+<p><img src="img/tctr5000.jpg" width="100%" /></p>
 
 <p>A phototransistor changes the amount of current flowing through it, like a resistor that can change resistance. When it senses more infrared light, there’s more current flowing. This means we can see how close an object is or how reflective an object is depending on how much current is flowing through the phototransistor.</p>
 
@@ -86,32 +135,137 @@ There is no "live" class for this page, but please feel free to come to the libr
 
 <p>There is a circuit known as a voltage divider. It is usually made of two resistors connected together in series. One of the ends is connected to a voltage, like our 5 volt output. The other end is connected to our batteries negative terminal, which is 0 volts. The voltage in between the two resistors can be measured, and it will change depending on which resistor has more resistance than the other.</p>
 
+<p>Here is an interactive example of a voltage divider. Drag around the slider knobs to change the resistor values, and see what happens to the output voltage.</p>
+
+<p><img src="img/voltagedivider_interactive.png" width="100%" /></p>
+
+<div class="divTable" style="border: 2px solid #AAA;" >
+<div class="divTableBody">
+<div class="divTableRow">
+<div class="divTableCell">R1</div>
+<div class="divTableCell">
+<input type="range"
+min="0" max="10000" value="5000"
+class="slider" width="100%" style="width: 100% !important;"
+id="voltagedivider_slider_r1" onchange="voltagedivider_onchange()" oninput="voltagedivider_onchange()"
+/>
+</div>
+<div class="divTableCell" style="font-family: monospace; font-size: 16pt"><span id="voltagedivider_txt_r1">&nbsp;5000</span>Ω</div>
+</div>
+<div class="divTableRow">
+<div class="divTableCell">R2</div>
+<div class="divTableCell">
+<input type="range"
+min="0" max="10000" value="5000"
+class="slider" width="100%" style="width: 100% !important;"
+id="voltagedivider_slider_r2" onchange="voltagedivider_onchange()" oninput="voltagedivider_onchange()"
+/>
+</div>
+<div class="divTableCell" style="font-family: monospace; font-size: 16pt"><span id="voltagedivider_txt_r2">&nbsp;5000</span>Ω</div>
+</div>
+<div class="divTableRow">
+<div class="divTableCell" style="vertical-align:middle;">Measured<br />Output<br />Voltage:</div>
+<div class="divTableCell"><img src="img/voltmeter/vm_2600.jpg" id="voltagedivider_txt_voltmeter" /></div>
+<div class="divTableCell" style="vertical-align:middle; font-family: monospace; font-size: 16pt"><span id="voltagedivider_txt_output">2.5</span>V</div>
+</div>
+</div>
+</div>
+
 <p>Like I said before, the phototransistor is like a resistor that changes resistance depending the amount of infrared light it receives. So we can replace one resistor in a voltage divider and get a voltage that is higher when the infrared light is bright and a lower voltage when the infrared light is dark.</p>
+
+<p><img src="img/ckt_replaceresistorwithphototransistor.png" width="100%" /></p>
 
 <p>SparkFun has <a href="https://learn.sparkfun.com/tutorials/voltage-dividers" target="_blank">their own page about voltage dividers</a>, it is a bit more focused on the mathematics. You should read it when you are ready to get a better understanding.</p>
 
 <h2>Potentiometer</h2>
 
+<p><a href="img/ckt_pot_styles.jpg"><img src="img/ckt_pot_styles.jpg" width="100%"/></a></p>
+
 <p>Our robot also has a potentiometer, which has a knob that you can twist. A potentiometer is like a single resistor that you choose where you can split in two. This means it becomes a voltage divider where the output voltage changes depending on where you pick to split the resistor. This means if you turn the knob, you change the voltage it outputs.</p>
+
+<p><img src="img/ckt_pot_split.png" width="100%" /></p>
 
 <p>Sometimes, potentiometers are used like volume knobs, and in our robot, you can choose to use it for whatever you want. You can use it to choose how fast it moves, how fast it turns, or something like that. Or a really great idea for your robot is to use it to set a brightness threshold for your sensors. You can tell the robot that, if the floor sensor voltage is more than the potentiometer voltage, then the floor is considered white, and if the floor sensor voltage is less than the potentiometer voltage, then the floor is considered black. This way, if we change the black line on the race track to a grey line, you just need to turn the potentiometer to make your robot follow a grey line instead of a black line.</p>
 
 <h2>Button Switch</h2>
 
-<p>The robot also has a button on it. A button is a switch, when you press it, it makes a connection, and it breaks the connection when you release it. We connect the button between the Arduino, and the negative terminal of the battery. Because of the way Arduino is built on the inside, it reads high voltage by default. So when you connect a button to the Arduino and also connect it to ground, it will read high voltage when you do not press the button, and it will read low voltage when you press the button.</p>
+<p>The robot also has a button on it. A button is a switch, when you press it, it makes a connection, and it breaks the connection when you release it.</p>
 
-<p>It is a good idea to use the button as a start button. We do not want the robot to unexpectedly run away when you put the batteries in.</p>
+<p><img src="img/ckt_pushbuttonswitch.jpg" width="100%" /></p>
 
-<h2>Next Class</h2>
+<p>We connect the button between the Arduino, and the negative terminal of the battery (aka ground). Because of the way Arduino is built on the inside, it reads high voltage by default. So when you connect a button to the Arduino and also connect it to ground, it will read high voltage when you do not press the button, and it will read low voltage when you press the button.</p>
 
-<p>The other components we have not really talked about are:
-<ul>
-<li>Continuous rotation servo motors</li>
-<li>TV remote receiver</li>
-<li>Accelerometer and gyroscope</li>
-</ul></p>
+<p><img src="img/ckt_explainingbuttons.jpg" width="100%" /></p>
 
-<p>These will be covered in the next few sections</p>
+<p>(The resistor inside the Arduino is called the "internal pull-up resistor". The resistance is high, somewhere between 10kΩ and 100kΩ. They are not made very exact because that's difficult to do when they are internal.)</p>
+
+<p>It is a good idea to use the button as a start button for the robot. We do not want the robot to unexpectedly run away when you put the batteries in.</p>
+
+<h2>Continuous Rotation Servo Motor</h2>
+
+<p>Our robot needs two motors to spin its wheels.</p>
+
+<div class="center_outer"><div class="center_inner"><img src="img/cont_servo_wheel.jpg" /></div></div>
+
+<p>Servos are smart motors. A servo is a motor that you give a command to. A normal servo will go to any angle you tell it to go to, and stay at that angle. A continuous rotation servo will spin at a certain speed that you tell it to spin at.</p>
+
+<p>The difference between a servo motor and a plain motor is that the servo has a built-in smart <i>driver</i>, and a plain motor needs you to connect your own <i>motor driver</i>. This means buying a small servo motor is cheaper than buying both a motor and a driver.</p>
+
+<p>Also, a servo's built-in driver takes less wires on the Arduino to control, in comparison to a motor driver that you can buy. Most servos only need a single wire for the control, then power and ground, meaning 3 wires. A typical motor driver needs two wires for the control, then power and ground, meaning 4 wires.</p>
+
+<p>A servo's control signal is an electrical pulse. The length of the pulse (known as <i>pulse width</i>) determines what the servo does. For a normal servo, a pulse that is 1.5 milliseconds long means "go to 0° and stay there", 2 milliseconds means "go to 90° towards the right and stay there", 1 milliseconds means "go to 90° towards the left and stay there". Also, a pulse that is 1.6 milliseconds long means "go to 18° and stay there". The length of the pulses control the servo's angle.</p>
+
+<p><img src="img/ckt_servopulses.jpg" width="100%" /></p>
+
+<p>A continuous servo also takes the same electrical pulses as commands. A pulse that is 1.5 milliseconds long means "stop spinning", 2 milliseconds means "spin clockwise", 1 milliseconds means "spin counterclockwise". Also, a pulse that is 1.6 milliseconds long means "spin clockwise but slowly". The length of the pulses control speed and direction.</p>
+
+<p>For any servo, each pulse means the servo will only do your command for the next 20 milliseconds. This means you need to repeat the pulses at least once every 20 milliseconds, or the servo stops spinning. Don't worry, the Arduino can do this automatically for you.</p>
+
+<p>Your Arduino uses a crystal clock to track time so it can send the right pulses, but our servos are really cheap and don't have an accurate crystal clock. When your Arduino sends 1.5 millisecond pulses, your servo might count 1.6 milliseconds, and spin slowly even though you wanted it to stop. If this happens, there's a small adjustment potentiometer on the back of the servo that you can turn with a screwdriver. Send it repeated 1.5 millisecond pulses and turn the potentiometer until the servo stops spinning.</p>
+
+<p><img src="img/ckt_servopot.jpg" width="100%" /></p>
+
+<p>Adafruit has a <a href="https://learn.adafruit.com/adafruit-motor-selection-guide/continuous-rotation-servos" target="_blank">guide on different motors, servos, and their drivers</a>. SparkFun has a <a href="https://learn.sparkfun.com/tutorials/hobby-servo-tutorial" target="_blank"> page on servos</a> as well.</p>
+
+<h2>Homework</h2>
+
+<fieldset>
+<legend>Question</legend>
+<div>
+<p>What would the positive terminal voltage be if you put 6 AA batteries in series? (as shown in the diagram)</p>
+<div class="center_outer"><div class="center_inner"><img src="img/ckt_batteriesseries_homework.png" /></div></div>
+<div>
+<fieldset class="hidable">
+<legend>Answer</legend>
+<div>
+<div class="center_outer"><div class="center_inner"><img src="img/ckt_batteriesseries_homeworkanswer.png" /></div></div>
+<p>The positive terminal voltage would be 9V.</p>
+</div>
+</fieldset>
+</div>
+</div>
+</fieldset>
+
+<fieldset>
+<legend>Question</legend>
+<div>
+<p>Take a look at this next diagram, the phototransistor is now replacing R2 instead of R1. What would happen to the measured voltage in each of the two cases?</p>
+<div class="center_outer"><div class="center_inner"><img src="img/ckt_phototransistor_homework.png" /></div></div>
+<div>
+<fieldset class="hidable">
+<legend>Answer</legend>
+<div>
+<p><img src="img/ckt_phototransistor_homeworkanswer.png" width="100%" /></p>
+<p>The output voltage will now go lower when the light is brighter, and vice-versa.</p>
+</div>
+</fieldset>
+</div>
+</div>
+</fieldset>
+
+<h2>Footnotes</h2>
+
+<p>When you put any sort of transistor and a resistor together like how we did, usually engineers do not call that a voltage divider any more. It simply helps for people to think of them as voltage dividers. They are technically a simple amplifier, it looks very similar to a "common collector amplifier" except it uses a phototransistor instead of a BJT transistor.</p>
 
 </body>
 </html>
