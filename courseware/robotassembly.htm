@@ -1,0 +1,329 @@
+<html>
+<head>
+<title>Robot Assembly</title>
+<link rel="stylesheet" type="text/css" href="css/stylesheet.css" title="style" />
+<link rel="stylesheet" type="text/css" href="css/divtable.css" title="style" />
+
+<style>
+.qty_col
+{
+	font-size: 25pt;
+}
+</style>
+
+<script type="text/javascript" src="js/javascript.js"></script>
+
+<script type="text/javascript">
+
+function body_onload() {
+	makeAllVideos("img/film_animation.gif");
+
+	makeTableOfContents("tableofcontents", "h2");
+
+	makeAllHidables();
+}
+
+</script>
+
+</head>
+<body onload="body_onload()">
+<div class="body_div">
+
+<div id="banner_black"><img src="img/banner_black.png" /></div>
+<div id="banner_white"><img src="img/banner_white.png" /></div>
+
+<h1>Robot Assembly</h1>
+
+<p>Today is the day when we assemble the robot. This is supposed to be a live class that involves soldering and hand tools.</p><p>Since we only have a limited time here at the library to use the tools, we shouldn't waste too much time reading. So please read this page before coming to class if you can.</p>
+
+<div id="tableofcontents"></div>
+
+<h2>Part List</h2>
+
+<p>You should have been provided a pre-packaged kit of parts. If anything is missing, the classroom should have extras. Sometimes, your kit may contain a part that is different from the list, that's OK. Please do not worry about any missing or different parts until you need it (do not ask at the beginning of the class, only ask in the middle of the class).</p>
+
+<fieldset class="hidable">
+<legend>Big Long List Of Parts</legend>
+<div>
+<div class="divTable" style="border: 2px solid #AAA;" >
+<div class="divTableBody">
+
+<div class="divTableRow">
+	<div class="divTableCell">Quantity</div>
+	<div class="divTableCell">Name</div>
+	<div class="divTableCell">Picture</div>
+</div>
+<div class="divTableRow">
+	<div class="divTableCell qty_col">1</div>
+	<div class="divTableCell">PCB (<i>Printed Circuit Board</i>)</div>
+	<div class="divTableCell"><a href="img/parts/pcb.jpg"><img src="img/parts/pcb.jpg" width="200px" /></a></div>
+</div>
+<div class="divTableRow">
+	<div class="divTableCell qty_col">1</div>
+	<div class="divTableCell">AA battery holder</div>
+	<div class="divTableCell"><a href="img/parts/battholder.jpg"><img src="img/parts/battholder.jpg" width="200px" /></a></div>
+</div>
+<div class="divTableRow">
+	<div class="divTableCell qty_col">4</div>
+	<div class="divTableCell">AA battery</div>
+	<div class="divTableCell"><a href="img/parts/aabattery.jpg"><img src="img/parts/aabattery.jpg" width="200px" /></a></div>
+</div>
+<div class="divTableRow">
+	<div class="divTableCell qty_col">1</div>
+	<div class="divTableCell">robot body (3D printed)</div>
+	<div class="divTableCell"><a href="img/parts/cad_finished.jpg"><img src="img/parts/cad_finished.jpg" width="200px" /></a></div>
+</div>
+<div class="divTableRow">
+	<div class="divTableCell qty_col">2</div>
+	<div class="divTableCell">sensor shroud (3D printed)</div>
+	<div class="divTableCell"><a href="img/parts/sensorshroud.jpg"><img src="img/parts/sensorshroud.jpg" width="200px" /></a></div>
+</div>
+<div class="divTableRow">
+	<div class="divTableCell qty_col">4</div>
+	<div class="divTableCell">infrared sensor (TCRT5000L)</div>
+	<div class="divTableCell"><a href="img/parts/tcrt5000l.jpg"><img src="img/parts/tcrt5000l.jpg" width="200px" /></a></div>
+</div>
+<div class="divTableRow">
+	<div class="divTableCell qty_col">1</div>
+	<div class="divTableCell">Arduino Nano</div>
+	<div class="divTableCell"><a href="img/parts/arduinonano.jpg"><img src="img/parts/arduinonano.jpg" width="200px" /></a></div>
+</div>
+<div class="divTableRow">
+	<div class="divTableCell qty_col">1</div>
+	<div class="divTableCell">10x2 male pin header (or two 5x2)</div>
+	<div class="divTableCell"><a href="img/parts/10x2maleheader.jpg"><img src="img/parts/10x2maleheader.jpg" width="200px" /></a></div>
+</div>
+<div class="divTableRow">
+	<div class="divTableCell qty_col">2</div>
+	<div class="divTableCell">15x1 male pin header<br />included in Arduino Nano package</div>
+	<div class="divTableCell"><a href="img/parts/15x1maleheader.jpg"><img src="img/parts/15x1maleheader.jpg" width="200px" /></a></div>
+</div>
+<div class="divTableRow">
+	<div class="divTableCell qty_col">1</div>
+	<div class="divTableCell">6x1 male pin header (or two 3x1)</div>
+	<div class="divTableCell"><a href="img/parts/6x1maleheader.jpg"><img src="img/parts/6x1maleheader.jpg" width="200px" /></a></div>
+</div>
+<div class="divTableRow">
+	<div class="divTableCell qty_col">2</div>
+	<div class="divTableCell">20x2 female pin socket header</div>
+	<div class="divTableCell"><a href="img/parts/20x2femaleheader.jpg"><img src="img/parts/20x2femaleheader.jpg" width="200px" /></a></div>
+</div>
+<div class="divTableRow">
+	<div class="divTableCell qty_col">6</div>
+	<div class="divTableCell">220Ω resistor</div>
+	<div class="divTableCell"><a href="img/parts/220ohmresistor.jpg"><img src="img/parts/220ohmresistor.jpg" width="200px" /></a></div>
+</div>
+<div class="divTableRow">
+	<div class="divTableCell qty_col">4</div>
+	<div class="divTableCell">10kΩ resistor</div>
+	<div class="divTableCell"><a href="img/parts/10kohmresistor.jpg"><img src="img/parts/10kohmresistor.jpg" width="200px" /></a></div>
+</div>
+<div class="divTableRow">
+	<div class="divTableCell qty_col">2</div>
+	<div class="divTableCell">LED</div>
+	<div class="divTableCell"><a href="img/parts/led.jpg"><img src="img/parts/led.jpg" width="200px" /></a></div>
+</div>
+<div class="divTableRow">
+	<div class="divTableCell qty_col">1</div>
+	<div class="divTableCell">button switch</div>
+	<div class="divTableCell"><a href="img/parts/buttonswitch.jpg"><img src="img/parts/buttonswitch.jpg" width="200px" /></a></div>
+</div>
+<div class="divTableRow">
+	<div class="divTableCell qty_col">1</div>
+	<div class="divTableCell">potentiometer</div>
+	<div class="divTableCell"><a href="img/parts/potentiometer.jpg"><img src="img/parts/potentiometer.jpg" width="200px" /></a></div>
+</div>
+<div class="divTableRow">
+	<div class="divTableCell qty_col">2</div>
+	<div class="divTableCell">continuous rotation servo motor</div>
+	<div class="divTableCell"><a href="img/parts/servo.jpg"><img src="img/parts/servo.jpg" width="200px" /></a></div>
+</div>
+<div class="divTableRow">
+	<div class="divTableCell qty_col">2</div>
+	<div class="divTableCell">wheel</div>
+	<div class="divTableCell"><a href="img/parts/wheel.jpg"><img src="img/parts/wheel.jpg" width="200px" /></a></div>
+</div>
+<div class="divTableRow">
+	<div class="divTableCell qty_col">2</div>
+	<div class="divTableCell">tire<br />included in wheel package</div>
+	<div class="divTableCell"><a href="img/parts/tire.jpg"><img src="img/parts/tire.jpg" width="200px" /></a></div>
+</div>
+<div class="divTableRow">
+	<div class="divTableCell qty_col">2</div>
+	<div class="divTableCell">screw for wheel<br />included in servo package<br />substitute: #1 thread-forming screw, 1/4 inch long</div>
+	<div class="divTableCell"><a href="img/parts/wheelscrew.jpg"><img src="img/parts/wheelscrew.jpg" width="200px" /></a></div>
+</div>
+<div class="divTableRow">
+	<div class="divTableCell qty_col">4</div>
+	<div class="divTableCell">screw for servo<br />included in servo package<br />substitute: #1 thread-forming screw, 1/2 inch long</div>
+	<div class="divTableCell"><a href="img/parts/servoscrew.jpg"><img src="img/parts/servoscrew.jpg" width="200px" /></a></div>
+</div>
+<div class="divTableRow">
+	<div class="divTableCell qty_col">2</div>
+	<div class="divTableCell">screw for battery holder<br />#4 countersunk/tapered wood screw, 1/2 inch long</div>
+	<div class="divTableCell"><a href="img/parts/battholderscrew.jpg"><img src="img/parts/battholderscrew.jpg" width="200px" /></a></div>
+</div>
+<div class="divTableRow">
+	<div class="divTableCell qty_col">1</div>
+	<div class="divTableCell">solderless breadboard</div>
+	<div class="divTableCell"><a href="img/parts/breadboard.jpg"><img src="img/parts/breadboard.jpg" width="200px" /></a></div>
+</div>
+
+</div>
+</div>
+</div>
+</fieldset>
+
+<h2>Tool List</h2>
+
+<p>Please do not take any tools home from the library, unless instructed to do so.</p>
+
+<ul>
+<li>required soldering related tools:<ul>
+	<li>soldering iron</li>
+	<li>solder</li>
+	<li>soldering iron stand</li>
+	<li>brass wool or wet sponge</li>
+	</ul></li>
+<li>optional soldering related tools:<ul>
+	<li>desoldering braid/wick</li>
+	<li>desoldering pump</li>
+	<li>flux</li>
+	<li>flux cleaner</li>
+	</ul></li>
+<li>required hand tools:<ul>
+	<li>phillips screwdriver, #0 size</li>
+	<li>wire cutter, or flush cutter, or diagonal cutter</li>
+	</ul></li>
+<li>optional tools:<ul>
+	<li>needle nose pliers</li>
+	<li>wire stripper</li>
+	<li>hot melt glue gun</li>
+	<li>work mat</li>
+	</ul></li>
+</ul>
+
+<h2>Introduction to Soldering</h2>
+
+<p>Soldering is easy, and it's easier to learn through pictures and videos than for me to write long boring sentences.</p>
+
+<div class="center_outer"><div class="center_inner"><a href="img/soldering/soldering1.png"><img src="img/soldering/soldering1.png" width="100%" /></a></div></div>
+
+<p>Here is a video:</p>
+
+<video controls="controls" loop="loop" preload="none">
+  <source src="vid/basicsoldering.mp4" type="video/mp4">
+  Your browser does not support the video tag.
+</video>
+
+<p>Here are some tips about good and bad solder joints:</p>
+
+<div class="center_outer"><div class="center_inner"><a href="img/soldering/sparkfuntips.png"><img src="img/soldering/sparkfuntips.png" width="100%" /></a></div></div>
+<br />
+<div class="center_outer"><div class="center_inner"><a href="img/soldering/adafruitsolderjoints.png"><img src="img/soldering/adafruitsolderjoints.png" width="100%" /></a></div></div>
+<br />
+<div class="center_outer"><div class="center_inner"><a href="img/soldering/perfection.jpg"><img src="img/soldering/perfection.jpg" width="100%" /></a></div></div>
+
+<p>MightyOhm made this awesome comic about soldering. There is a small version...</p>
+<div class="center_outer"><div class="center_inner"><a href="img/soldering/solderingcomic.png"><img src="img/soldering/solderingcomic.png" width="100%" /></a></div></div>
+<p>... and his long version can be found on his website: <a href="https://mightyohm.com/blog/2011/04/soldering-is-easy-comic-book/" target="_blank">https://mightyohm.com/blog/2011/04/soldering-is-easy-comic-book/</a></p>
+
+<h2>Additional Soldering Tips and Tricks</h2>
+
+<p>It's OK to make mistakes! We can fix mistakes, but we can only fix one mistake at a time. Please solder one joint at a time, and then double check that everything is nice and straight. Only do a second joint if the previous joint is perfect.</p>
+
+<fieldset class="hidable">
+<legend>Fixing a Crooked Joint</legend>
+<div>
+<p>If something is crooked, just melt the solder again, and move it straight while the solder is melted.</p>
+<video controls="controls" loop="loop" preload="none">
+  <source src="vid/fixingcrooked.mp4" type="video/mp4">
+  Your browser does not support the video tag.
+</video>
+</div>
+</fieldset>
+
+<fieldset class="hidable">
+<legend>Removing Solder</legend>
+<div>
+<p>Also called <i>desoldering</i>. Using desoldering braid (aka desoldering wick) is the best way.</p>
+<video controls="controls" loop="loop" preload="none">
+  <source src="vid/desoldering.mp4" type="video/mp4">
+  Your browser does not support the video tag.
+</video>
+</div>
+</fieldset>
+
+<h3>Please pay attention to which side all the components go on.</h3>
+
+<h2>Soldering: Pin Headers</h2>
+
+<p>I want you to start soldering the pin headers first. They are easy to solder and hard to break, so they will give you some good practice before soldering other components.</p>
+
+<div class="center_outer"><div class="center_inner"><a href="img/instruct/all_big_headers_placement.png"><img src="img/instruct/all_big_headers_placement.png" width="100%" /></a></div></div><br />
+<div class="center_outer"><div class="center_inner"><a href="img/instruct/push_down_big_headers.png"><img src="img/instruct/push_down_big_headers.png" width="100%" /></a></div></div>
+
+<p>Solder in all the bigger headers first, with the hints from the previous pictures. These have to be perfectly straight or else you won't be able to plug in your Arduino Nano.</p><p>Then move on to soldering the two smaller 3x1 male pin headers. (if you have a 6x1 male pin header, cut it in two)</p>
+
+<div class="center_outer"><div class="center_inner"><a href="img/instruct/servo_male_headers.png"><img src="img/instruct/servo_male_headers.png" width="100%" /></a></div></div>
+
+<p>Soldering: Arduino Nano</p>
+
+<p>With the big female pin socket headers in place, it is really easy to solder male pin headers into the Arduino Nano. The trick is to use the female pin socket headers to keep the male pin headers straight while you solder.</p>
+<div class="center_outer"><div class="center_inner"><a href="img/instruct/arduino_soldering.png"><img src="img/instruct/arduino_soldering.png" width="100%" /></a></div></div>
+
+<h2>Soldering: Infrared Sensors (Side)</h2>
+
+<p>The drawing on the circuit board shows you how to put in the infrared sensors. Please follow it and do not install the sensors backwards.</p>
+
+<div class="center_outer"><div class="center_inner"><a href="img/instruct/sidesensor_bothviews.png"><img src="img/instruct/sidesensor_bothviews.png" width="100%" /></a></div></div>
+
+<p>Do this for both the left side sensor and the right side sensor.</p>
+
+<h2>Soldering Infrared Sensors (Floor)</h2>
+
+<p>These two sensors need to have their little extra plastic bits removed, cut them off with your cutters. Do not cut the metal leads.</p>
+
+<div class="center_outer"><div class="center_inner"><a href="img/instruct/cliptheseoff.jpg"><img src="img/instruct/cliptheseoff.jpg" width="100%" /></a></div></div>
+
+<p>These two sensors require even more bending. If this is too hard to do with your fingers, then use some needle-nose pliers to help you.</p>
+
+<div class="center_outer"><div class="center_inner"><a href="img/instruct/floorsensor_step1.png"><img src="img/instruct/floorsensor_step1.png" width="100%" /></a></div></div>
+<br />
+<div class="center_outer"><div class="center_inner"><a href="img/instruct/floorsensor_bendblackleads.png"><img src="img/instruct/floorsensor_bendblackleads.png" width="100%" /></a></div></div>
+<br />
+<div class="center_outer"><div class="center_inner"><a href="img/instruct/floorsensor_soldering.png"><img src="img/instruct/floorsensor_soldering.png" width="100%" /></a></div></div>
+
+<p>Do this for both the left floor sensor and the right floor sensor.</p>
+
+<h2>Soldering: Resistors</h2>
+<p>Please check the colour codes on the resistor to find out their value (use the pictures in the parts list). Please place them in the correct locations according to their value.</p>
+<div class="center_outer"><div class="center_inner"><a href="img/instruct/resistors.png"><img src="img/instruct/resistors.png" width="100%" /></a></div></div>
+
+<p>There are a lot of resistors, four 10kΩ resistors and six 220Ω resistors. Solder all of them in.</p>
+
+<h2>Soldering: LEDs</h2>
+<p>LEDs must be installed in the correct direction. The circuit board shows the LED as a round shape but with a flat side. The LED itself does have a flat side, you have to look really closely or use your fingers to feel the flat side.</p>
+<div class="center_outer"><div class="center_inner"><a href="img/instruct/ledsoldering.png"><img src="img/instruct/ledsoldering.png" width="100%" /></a></div></div>
+
+<p>Solder in both the left LED and the right LED.</p>
+
+<h2>Soldering: Button and Potentiometer</h2>
+<p>The button switch and the potentiometer are really easy components to solder. It will be really hard for you to make a mistake here. Just make sure you put them in the right place on the right side of the board.</p>
+<div class="center_outer"><div class="center_inner"><a href="img/instruct/buttonpotentiometer.jpg"><img src="img/instruct/buttonpotentiometer.jpg" width="100%" /></a></div></div>
+
+<h2>Soldering: Battery Holder</h2>
+
+<p>The battery holders should have a red and black wire already, and they should be stripped for you already. If they are not, then use a wire stripper to strip the wires.</p>
+
+<p>You should twist the two wires together. This keeps them neat (there are other advantages too).</p>
+<p>There are holes on the circuit board with the label "battery", "red", and "black". The wires snake through the holes without the metal pad, and the exposed end of the wires are soldered to the metal pad.</p>
+
+<div class="center_outer"><div class="center_inner"><a href="img/instruct/battery_holder_twist_wires.png"><img src="img/instruct/battery_holder_twist_wires.png" width="100%" /></a></div></div>
+<br />
+<div class="center_outer"><div class="center_inner"><a href="img/instruct/battery_wires_solder.png"><img src="img/instruct/battery_wires_solder.png" width="100%" /></a></div></div>
+
+<p>The "snake" prevents the wire from breaking.</p>
+
+</div>
+</body>

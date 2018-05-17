@@ -65,7 +65,7 @@ You might notice that a lot of links are to the <a href="https://learn.sparkfun.
 There is no "live" class for this page, but please feel free to come to the library with any questions, or email me.
 </fieldset>
 
-<div id="tableofcontents"></div></p>
+<div id="tableofcontents"></div>
 
 <h2>Reading a Circuit Diagram</h2>
 
@@ -84,6 +84,16 @@ There is no "live" class for this page, but please feel free to come to the libr
 <p><a href="img/ckt_thesediagramsmeanthesamething.jpg"><img src="img/ckt_thesediagramsmeanthesamething.jpg"  width="100%" /></a></p>
 
 <p>SparkFun has <a href="https://learn.sparkfun.com/tutorials/how-to-read-a-schematic/" target="_blank">their own page about reading circuits</a>, it is more in-depth. You do not have to memorize circuit symbols right now but their page does list a lot of symbols.</p>
+
+<h2>Brains</h2>
+
+<p>Our robot's brain is an <a href="https://store.arduino.cc/usa/arduino-nano" target="_blank">Arduino Nano</a>, which is a circuit board that contains a microcontroller and some other tiny parts to help it work.</p>
+
+<div class="center_outer"><div class="center_inner"><img src="img/arduinonano.jpg" /></div></div>
+
+<p>A <a href="https://en.wikipedia.org/wiki/Microcontroller" target="_blank">microcontroller</a> is a tiny computer built into a single microchip. This microchip contains a CPU, memory, and pins. The CPU follows instructions that are stored in the memory and does calculations. The memory is split between storing instructions and storing data. The pins allow the microcontroller to read signals and output signals, allowing it to do things and talk with other circuits.</p>
+
+<p>When you use the Arduino IDE software to write code, a compiler turns your code into the instructions for the microcontroller, and then it is written to the microcontroller's memory through some sort of cable.</p>
 
 <h2>Power Supply</h2>
 
@@ -121,7 +131,9 @@ There is no "live" class for this page, but please feel free to come to the libr
 
 <h2>Infrared Sensor</h2>
 
-<p>Our sensors on the bottom and the side of the robot are infrared sensors. Infrared light is a type of light that humans cannot see. Each sensor we use is actually two parts built into one: a LED that shines infrared light, and a <i>phototransistor</i> that receives infrared light.</p>
+<p>Our sensors on the bottom and the side of the robot are infrared sensors. The official part number for this sensor is TCRT5000L.</p>
+<p>Infrared light is a type of light that humans cannot see.</p>
+<p>Each sensor we use is actually two parts built into one: a LED that shines infrared light, and a <i>phototransistor</i> that receives infrared light.</p>
 
 <p><img src="img/tctr5000.jpg" width="100%" /></p>
 
@@ -135,9 +147,11 @@ There is no "live" class for this page, but please feel free to come to the libr
 
 <p>There is a circuit known as a voltage divider. It is usually made of two resistors connected together in series. One of the ends is connected to a voltage, like our 5 volt output. The other end is connected to our batteries negative terminal, which is 0 volts. The voltage in between the two resistors can be measured, and it will change depending on which resistor has more resistance than the other.</p>
 
-<p>Here is an interactive example of a voltage divider. Drag around the slider knobs to change the resistor values, and see what happens to the output voltage.</p>
+<p>Here is an interactive example of a voltage divider.</p>
 
 <p><img src="img/voltagedivider_interactive.png" width="100%" /></p>
+
+<p>Drag around the slider knobs to change the resistor values, and see what happens to the output voltage.</p>
 
 <div class="divTable" style="border: 2px solid #AAA;" >
 <div class="divTableBody">
