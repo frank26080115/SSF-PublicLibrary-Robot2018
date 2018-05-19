@@ -36,6 +36,10 @@ function body_onload() {
 
 <p>Today is the day when we assemble the robot. This is supposed to be a live class that involves soldering and hand tools.</p><p>Since we only have a limited time here at the library to use the tools, we shouldn't waste too much time reading. So please read this page before coming to class if you can.</p>
 
+<p>If we do not finish the entire robot today, that's OK. Just come back another day, the tools will always be here at the library.</p>
+
+<p>If you want to do some of this at home, that's great! It will save some time while you are at the library. This requires you to read this entire page first, understand what to do, and <b>understand why you are doing it</b>.</p>
+
 <div id="tableofcontents"></div>
 
 <h2>Part List</h2>
@@ -228,6 +232,8 @@ function body_onload() {
 <div class="center_outer"><div class="center_inner"><a href="img/soldering/solderingcomic.png"><img src="img/soldering/solderingcomic.png" width="100%" /></a></div></div>
 <p>... and his long version can be found on his website: <a href="https://mightyohm.com/blog/2011/04/soldering-is-easy-comic-book/" target="_blank">https://mightyohm.com/blog/2011/04/soldering-is-easy-comic-book/</a></p>
 
+<p>The long metal legs on a component is also often called <i>leads</i>. You should cut them off after you solder something, but only when you are absolutely sure you haven't made a mistake.</p>
+
 <h2>Additional Soldering Tips and Tricks</h2>
 
 <p>It's OK to make mistakes! We can fix mistakes, but we can only fix one mistake at a time. Please solder one joint at a time, and then double check that everything is nice and straight. Only do a second joint if the previous joint is perfect.</p>
@@ -236,6 +242,7 @@ function body_onload() {
 <legend>Fixing a Crooked Joint</legend>
 <div>
 <p>If something is crooked, just melt the solder again, and move it straight while the solder is melted.</p>
+<p>Obviously, nothing can move if the solder is solid. This is why fixing two mistakes is very hard, because you need to melt two solder joints at once if you make two mistakes at once.</p>
 <video controls="controls" loop="loop" preload="none">
   <source src="vid/fixingcrooked.mp4" type="video/mp4">
   Your browser does not support the video tag.
@@ -247,18 +254,50 @@ function body_onload() {
 <legend>Removing Solder</legend>
 <div>
 <p>Also called <i>desoldering</i>. Using desoldering braid (aka desoldering wick) is the best way.</p>
+<p>There are two situations, when you have a part with a short lead, and when you have a part with a long lead (because you didn't cut it yet and still need to keep the lead long).</p>
+<p>The braid/wick may not remove absolutely all of the solder, and that's OK. In the end, the last step requires you to push the part out with a hot soldering iron, because we need to melt that last remaining bit of solder before moving the part out.</p>
+<h3>Video: desoldering a part with a short lead</h3>
 <video controls="controls" loop="loop" preload="none">
   <source src="vid/desoldering.mp4" type="video/mp4">
   Your browser does not support the video tag.
 </video>
+<h3>Video: desoldering a part with a long lead</h3>
+<video controls="controls" loop="loop" preload="none">
+  <source src="vid/desoldering2.mp4" type="video/mp4">
+  Your browser does not support the video tag.
+</video>
+<p>Sometimes you need to destroy the component in order to desolder it, because you care more about keeping the circuit board. This is a decision that you have to make. Remember that most components are dirt cheap.</p>
+<h3>Safety Note:</h3>
+<p>You might find information about another way to desolder, by melting the solder and smacking the circuit board. DO NOT EVER DO THIS. This is not safe because the molten solder will splatter, it may get on your skin or in your eyes while it is very hot. This technique is only used by really really old people because back then, electrical components were gigantic. Today, components are tiny and this trick doesn't work well and break easily.</p>
 </div>
 </fieldset>
+
+<fieldset>
+<legend>Soldering Safety</legend>
+<p>The soldering iron is <b>very hot</b>, any part of a soldering iron that is made of metal will be very hot. You should do your best to avoid touching any part of the soldering iron that is made of metal, <b>even if it is turned off</b>.</p>
+
+<p>If you drop a soldering iron, or if it falls, <b>DO NOT TRY TO CATCH IT!</b> (obviously because it is very hot and you might grab the hot part if you try to catch it) <i>"A falling knife has no handle"</i></p>
+
+<p>Do not be afraid of the soldering iron. The best way to stay safe is to keep the soldering iron under your control when you are holding it, and putting it back into its stand when you are not holding it. When I say "under your control", I mean you need to keep a <b>firm grip</b> on it, not a loose grip as if you are afraid of it.</p>
+
+<p>Only solder circuits that are turned off. Remove all batteries. Unplug all power cables. Turn off all switches. Otherwise, you might get electrocuted or damage the circuit.</p>
+
+<p>This robot project is extremely safe though, because it uses low power AA batteries, and most parts can be replaced if you break them. But let's not waste the batteries (they will still get damaged if you do something bad), remember to remove the batteries if you need to solder.<p>
+
+<p>When you are cutting anything, bits might fly off and hit your eyes. It's a good idea to hold the part that might fly off with your hands when you are cutting it.</p>
+</fieldset>
+
+<h3>Enough Talk, Let's Start!</h3>
 
 <h3>Please pay attention to which side all the components go on.</h3>
 
 <h2>Soldering: Pin Headers</h2>
 
 <p>I want you to start soldering the pin headers first. They are easy to solder and hard to break, so they will give you some good practice before soldering other components.</p>
+
+<p>Doing this first will also make it much easier to solder the Arduino Nano later.</p>
+
+<p>The 10x2 male pin header must be cut into two 5x2 male pin headers first.</p>
 
 <div class="center_outer"><div class="center_inner"><a href="img/instruct/all_big_headers_placement.png"><img src="img/instruct/all_big_headers_placement.png" width="100%" /></a></div></div><br />
 <div class="center_outer"><div class="center_inner"><a href="img/instruct/push_down_big_headers.png"><img src="img/instruct/push_down_big_headers.png" width="100%" /></a></div></div>
@@ -308,8 +347,10 @@ function body_onload() {
 
 <p>Solder in both the left LED and the right LED.</p>
 
+<p>Remember that LEDs are <i>diodes</i>, they only allow electricity to flow in one direction. If you install it in the wrong direction, they will not work.</p>
+
 <h2>Soldering: Button and Potentiometer</h2>
-<p>The button switch and the potentiometer are really easy components to solder. It will be really hard for you to make a mistake here. Just make sure you put them in the right place on the right side of the board.</p>
+<p>The button switch and the potentiometer are really easy components to solder. It will be really hard for you to make a mistake here, because the symbols and the positioning of the holes shows you how to insert them. Just make sure you put them in the right place on the right side of the board.</p>
 <div class="center_outer"><div class="center_inner"><a href="img/instruct/buttonpotentiometer.jpg"><img src="img/instruct/buttonpotentiometer.jpg" width="100%" /></a></div></div>
 
 <h2>Soldering: Battery Holder</h2>
@@ -321,9 +362,59 @@ function body_onload() {
 
 <div class="center_outer"><div class="center_inner"><a href="img/instruct/battery_holder_twist_wires.png"><img src="img/instruct/battery_holder_twist_wires.png" width="100%" /></a></div></div>
 <br />
+<div class="center_outer"><div class="center_inner"><a href="img/instruct/batterywiresdiagram.png"><img src="img/instruct/batterywiresdiagram.png" width="100%" /></a></div></div>
+<br />
 <div class="center_outer"><div class="center_inner"><a href="img/instruct/battery_wires_solder.png"><img src="img/instruct/battery_wires_solder.png" width="100%" /></a></div></div>
 
 <p>The "snake" prevents the wire from breaking.</p>
+
+<h3>Remember to cut all extra leads from finished solder joints!</h3>
+
+<h2>Attach the Robot Body</h2>
+
+<p>The robot's 3D printed body has tiny grooves on it for the 5x2 male pin headers to slide into. So push the body into the header pins.</p>
+
+<div class="center_outer"><div class="center_inner"><a href="img/instruct/holdingpcb.jpg"><img src="img/instruct/holdingpcb.jpg" width="100%" /></a></div></div>
+
+<h2>Plug in Servos</h2>
+
+<p>It's time to plug in the servos into the circuit board. Pay attention to the colours of the wires when you plug in the servo cables into the circuit board. The circuit board is labelled with which colour goes where. (ORG means orange, WHT means white, BLK means black, BRN means brown, RED means red)</p>
+
+<h2>Screw in Servos</h2>
+
+<p>Place the servos into the robot's body, with the output shaft near the back of the robot. Use the screws (see part list) and a screwdriver to attach the servos to the robot.</p>
+
+<div class="center_outer"><div class="center_inner"><a href="img/instruct/screwinservos.jpg"><img src="img/instruct/screwinservos.jpg" width="100%" /></a></div></div>
+
+<p>Tuck all the cables away neatly, there's some space between the servos where you can stuff the extra cables.</p>
+
+<h2>Screw on Battery Holder</h2>
+
+<p>The battery holder is screwed into the bottom of the robot's body using the appropriate screws (see part list). Position it in a way so that the wires are closest to the circuit board (we will tuck the wires away later).</p>
+<p>Screw in the side with the round hole first. Screw in the side with the slot second. Otherwise, you might not be able to line up the hole on the holder with the hole on the body.</p>
+
+<p>Tuck away the battery holder wires after the holder is screwed in place.</p>
+
+<h2>Screw on Wheels</h2>
+
+<p>Put the tires on the wheels if they are not already put together.</p>
+
+<p>Use the tiny screw to attach each wheel to each servo.</p>
+
+<div class="center_outer"><div class="center_inner"><a href="img/instruct/screwonwheel.jpg"><img src="img/instruct/screwonwheel.jpg" width="100%" /></a></div></div>
+
+<h2>Attaching the Sensor Shrouds</h2>
+
+<p>The 3D printed sensor shrouds should snap into the bottom of the circuit board, around the downward-facing infrared sensors.</p>
+
+<div class="center_outer"><div class="center_inner"><a href="img/instruct/install_sensor_shroud.jpg"><img src="img/instruct/install_sensor_shroud.jpg" width="100%" /></a></div></div>
+
+<h2>Congrats! You are Done!</h2>
+
+<p>Your robot is finished! But it won't do anything until the Arduino Nano is programmed. Plug the Arduino Nano into your circuit board now. Make sure it is in the correct spot and in the correct orientation.</p>
+<p>There's no power switch on this robot, so to stop your batteries from dying, only install the battery when you want to play with the robot, and remove the batteries when you want to turn the robot off.</p>
+
+<p>Testing the robot will be done in the next class, where we learn to use the Arduino Nano.</p>
 
 </div>
 </body>

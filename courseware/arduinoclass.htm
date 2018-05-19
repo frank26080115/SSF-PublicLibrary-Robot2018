@@ -1,0 +1,105 @@
+<html>
+<head>
+<title>Arduino Programming</title>
+<link rel="stylesheet" type="text/css" href="css/stylesheet.css" title="style" />
+<link rel="stylesheet" type="text/css" href="css/divtable.css" title="style" />
+
+<script type="text/javascript" src="js/javascript.js"></script>
+
+<script type="text/javascript">
+
+function body_onload() {
+	makeAllVideos("img/film_animation.gif");
+
+	makeTableOfContents("tableofcontents", "h2");
+
+	makeAllHidables();
+}
+
+</script>
+
+</head>
+<body onload="body_onload()">
+<div class="body_div">
+
+<div id="banner_black"><img src="img/banner_black.png" /></div>
+<div id="banner_white"><img src="img/banner_white.png" /></div>
+
+<h1>Arduino Programming</h1>
+
+<p>This class will cover how to use Arduino, and then how to program the Arduino Nano on your robot. Everything in this class can be done at home, but there will be a live class at the library just in case you have questions.</p>
+
+<p>If you are using the library's computer, then do not worry about installing the Arduino IDE or device drivers, because the library's computers already has them installed. But you do need to bring a USB drive to download the sketches and save your sketches.</p>
+
+<p>You really REALLY should have your own laptop by now. If you've completed the previous two classes, you have definitely earned it. Having access to a computer and the internet is essential for continued learning from research and experimentation. It is my hope that this robot and these classes encourage you to keep learning on your own. You don't have to like school, you don't have to like homework or tests, but you should love learning and discovery.</p>
+
+<p>If you are coming to class with your own computer, please make sure all of the Arduino software and the device drivers you need are already installed. This will save us a lot of time.</p>
+
+<p>If you don't understand anything here, please use Google to look up your question if you are at home, or come to the library to ask me directly (bring your computer if you have one!)</p>
+
+<fieldset class="hidable">
+<legend>You need basic computer skills first</legend>
+<div>
+<p>You need to know how to use a computer before being able to learn how to program a computer (the Arduino Nano microcontroller is just a very small computer). You should already have the following skills before coming to class:</p>
+<ul>
+	<li>installing software</li>
+	<li>running software</li>
+	<li>navigating folders</li>
+	<li>creating, renaming, deleting folders</li>
+	<li>copying and moving files and folders</li>
+	<li>extracting (aka unzipping) ZIP files (compressed archive files)</li>
+</ul>
+<p>This class will not teach you these skills, because they are better taught in a class that is focused on basic computer usage.</p>
+</div>
+</fieldset>
+
+<div id="tableofcontents"></div>
+
+<h2>Installing Arduino IDE</h2>
+
+<p>Remember: If you are using the library's computer, then you don't need to do any installation! Skip this step if you are using the library's computer.</p>
+
+<p>IDE means <i>Integrated Development Environment</i>, in this case, it means a piece of software that includes a text editor designed for coding, a compiler that can translate code into instructions, and a way to write (upload) those instructions into your microcontroller. There are other IDEs out there for different programming languages and with different features. The Arduino IDE is only designed for different types of Arduinos.</p>
+
+<p>The Arduino IDE can be downloaded from <a href="https://www.arduino.cc/en/Main/Software" target="_blank">here</a>. Simply download the latest version of the IDE, and then install it to your computer. During the installation, follow the instructions provided in the installation, and use the default options.</p>
+
+<h2>Installing Device Drivers</h2>
+
+<p>Remember: If you are using the library's computer, then you don't need to do any installation! Skip this step if you are using the library's computer.</p>
+
+<p>Download and install the device drivers from SparkFun's page <a href="https://learn.sparkfun.com/tutorials/serial-basic-hookup-guide#drivers-if-you-need-them" target="_blank">here</a>. Look for "drivers if you need them" and download the one for your operating system. You will need to extract (aka unzip) the downloaded file first, and then run the "setup.exe" to perform the installation. Follow the instructions provided during the installation, use the default options, and give the computer permission if it asks for permission (press "allow" or "trust" when the computer asks).
+
+<h2>Preparing the Sketchbook</h2>
+
+<p>Arduino likes to call projects as <i>sketches</i> and saves them in a sketchbook. This is because Arduino was originally derived from software designed for artists. If you are on a library computer, we need to put the sketchbook on your USB drive. If you are on your own computer, then you can put the sketchbook wherever you want (or leave it in the default location).</p>
+
+<p>Sketchbooks also contains <i>libraries</i>. In computer programming, a library is basically some code that you can reuse. If you have five different robot projects that all use servos, you can use just one servo library, instead of writing the servo code five times. Usually, the user of the library does not ever edit the library, but with Arduino libraries, you can look at library code and even edit it.</p>
+
+<p>I have prepared a sketchbook for you already, it contains pieces of code and also the libraries you need. <a href="">Click here to download it</a>. Either save this to your own computer or save it to the USB drive. It is a ZIP file, so you need to extract (aka unzip) it to your own computer or to your USB drive.</p>
+
+<p>You need to tell the Arduino IDE where the sketchbook is. Run the Arduino IDE and follow these steps:</p>
+
+<h2>Running Code</h2>
+
+<p>Put all 4 AA batteries into your robot first.</p>
+
+<fieldset class="hidable">
+<legend>If you are using your own computer</legend>
+<div>
+<p>If you are using your own computer, just plug in your USB cable between the Arduino Nano and your computer.</p>
+</div>
+</fieldset>
+
+<fieldset class="hidable">
+<legend>If you are using a library computer</legend>
+<div>
+<p>If you are using a library computer, then you will be provided with a special programming cable that I made. Please do not take this home with you, you do not need it at home, you can use an ordinary USB cable at home.</p>
+<p>The square part of this dongle has a tab that goes into the computer's USB port, pay attention to which side faces up.</p>
+<p>The end of the cable with the pins will plug into your robot's circuit board. There's a small group of female sockets that say "PROG", plug it in there, as shown in the picture:</p>
+</div>
+</fieldset>
+
+<p>Inside the Arduino IDE, open the "HardwareTestLEDBlink" sketch. Once the sketch is open, simply press the upload button.</p>
+
+</div>
+</body>

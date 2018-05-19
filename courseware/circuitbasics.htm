@@ -58,11 +58,12 @@ function voltagedivider_onchange() {
 
 <fieldset>
 <legend>Foreword</legend>
-I want to help you understand the circuit of this robot as fast as possible, and I don't want to bore you with any math. But electricity is such a huge topic and it's hard to predict what knowledge you need before you can understand what I want to teach you. So on this page, there are many links to other websites with longer and more detailed lessons. You should read these.
+<p>
+I want to help you understand the circuit of this robot as fast as possible, and I don't want to bore you with any math. But electricity is such a huge topic and it's hard to predict what knowledge you need before you can understand what I want to teach you. So on this page, there are many links to other websites with longer and more detailed lessons. You should read these.</p>
 
-You might notice that a lot of links are to the <a href="https://learn.sparkfun.com/" target="_blank">SparkFun</a> or <a href="https://learn.adafruit.com/" target="_blank">Adafruit</a> website. Both of them are great companies who have dedicated themselves to helping hobbyists who are interested in electronics, thus they often publish great educational material on their website. SparkFun has better theory lessons and Adafruit tends to have better project based lessons.
+<p>You might notice that a lot of links are to the <a href="https://learn.sparkfun.com/" target="_blank">SparkFun</a> or <a href="https://learn.adafruit.com/" target="_blank">Adafruit</a> website. Both of them are great companies who have dedicated themselves to helping hobbyists who are interested in electronics, thus they often publish great educational material on their website. SparkFun has better theory lessons and Adafruit tends to have better project based lessons.</p>
 
-There is no "live" class for this page, but please feel free to come to the library with any questions, or email me.
+<p>There is no "live" class for this page, but please feel free to come to the library with any questions, or email me.</p>
 </fieldset>
 
 <div id="tableofcontents"></div>
@@ -98,6 +99,10 @@ There is no "live" class for this page, but please feel free to come to the libr
 <h2>Power Supply</h2>
 
 <p>There are two major characteristic of electricity: <i>voltage</i> and <i>current</i>. Think of voltage as "pressure", and think of current as "flow".</p>
+
+<p>Electricity flows from positive to negative, but only when there is a completely path. This path is what we mean when we say <i>circuit</i>. If the path is disconnected in any place along the path, electricity at all points along that path stops moving, this is what we mean if we say "the circuit is <i>open</i>". Here's an interactive circuit where you can open and close switches to see where the electricity will flow:<p>
+
+<div class="center_outer"><div class="center_inner"><iframe width="560" height="360" src="http://everycircuit.com/embed/5548668177612800" frameborder="0"></iframe></div></div>
 
 <p>Your robot uses 4 batteries in series as the power supply. Each battery gives around 1.5 volts. This means your total voltage is about 6 volts. Thus, we consider the positive terminal of the whole battery pack to be 6 volts, and the negative terminal of the whole battery pack to be 0 volts.</p>
 
@@ -227,11 +232,18 @@ id="voltagedivider_slider_r2" onchange="voltagedivider_onchange()" oninput="volt
 
 <p>Also, a servo's built-in driver takes less wires on the Arduino to control, in comparison to a motor driver that you can buy. Most servos only need a single wire for the control, then power and ground, meaning 3 wires. A typical motor driver needs two wires for the control, then power and ground, meaning 4 wires.</p>
 
-<p>A servo's control signal is an electrical pulse. The length of the pulse (known as <i>pulse width</i>) determines what the servo does. For a normal servo, a pulse that is 1.5 milliseconds long means "go to 0° and stay there", 2 milliseconds means "go to 90° towards the right and stay there", 1 milliseconds means "go to 90° towards the left and stay there". Also, a pulse that is 1.6 milliseconds long means "go to 18° and stay there". The length of the pulses control the servo's angle.</p>
+<p>A servo's control signal is an electrical pulse. The length of the pulse (known as <i>pulse width</i>) determines what the servo does. For a normal standard servo, a pulse that is 1.5 milliseconds long means "go to 0° and stay there", 2 milliseconds means "go to 90° towards the right and stay there", 1 milliseconds means "go to 90° towards the left and stay there". Also, a pulse that is 1.6 milliseconds long means "go to 18° and stay there". The length of the pulses control the servo's angle.</p>
 
 <p><img src="img/ckt_servopulses.jpg" width="100%" /></p>
 
 <p>A continuous servo also takes the same electrical pulses as commands. A pulse that is 1.5 milliseconds long means "stop spinning", 2 milliseconds means "spin clockwise", 1 milliseconds means "spin counterclockwise". Also, a pulse that is 1.6 milliseconds long means "spin clockwise but slowly". The length of the pulses control speed and direction.</p>
+
+<h3>A video to show you the difference between a standard servo and a continuous rotation servo, and how each one reacts to the same command:</h3>
+
+<video controls="controls" loop="loop" muted="muted" autoplay="autoplay" style="width:100%">
+  <source src="vid/servocomparisons_500.mp4" type="video/mp4">
+  Your browser does not support the video tag.
+</video>
 
 <p>For any servo, each pulse means the servo will only do your command for the next 20 milliseconds. This means you need to repeat the pulses at least once every 20 milliseconds, or the servo stops spinning. Don't worry, the Arduino can do this automatically for you.</p>
 
