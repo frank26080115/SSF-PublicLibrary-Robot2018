@@ -234,6 +234,26 @@ function body_onload() {
 
 <p>The long metal legs on a component is also often called <i>leads</i>. You should cut them off after you solder something, but only when you are absolutely sure you haven't made a mistake.</p>
 
+<fieldset class="hidable">
+<legend>More Websites with Soldering Instructions</legend>
+<div>
+<p>Adafruit Industries: <a href="https://learn.adafruit.com/adafruit-guide-excellent-soldering/" target="_blank">Adafruit Guide To Excellent Soldering</a></p>
+<p>Adafruit Industries: <a href="https://learn.adafruit.com/adafruit-guide-excellent-soldering/common-problems" target="_blank">Common Soldering Problems</a></p>
+<p>SparkFun Electronics: <a href="https://learn.sparkfun.com/tutorials/how-to-solder-through-hole-soldering#soldering-your-first-component-" target="_blank">Soldering Your First Component</a>. SparkFun tends to use a lot more videos in their guides.</p>
+</div>
+</fieldset>
+
+<fieldset class="hidable">
+<legend>Buying a Soldering Iron</legend>
+<div>
+<p>If you don't have a soldering iron, the library can always let you use theirs. But that might become really inconvenient later on.</p>
+<p>If you are looking to buy a cheap soldering iron, you should be buying <a href="https://www.sparkfun.com/products/14456" target="_blank">this one</a>. This one may look similar to other ones but there is one key difference you cannot see. The cable on this one is safer, it can withstand higher temperatures. <b>I have personally tried to <i>melt</i> it and I <i>couldn't</i></b> (and I did try other ones, other ones all failed). This is the one to buy if you don't want kids to burn your house down, a melted power cable can cause fires or electrocution.</p>
+<p>Do not buy soldering irons from Fry's Electronics, or any other physical retail stores. The soldering irons they have are all overpriced for their value.</p>
+<p>Do not buy the TS100 soldering iron. Sure, it looks cool and futuristic... But it lacks a flared handle, which means it's easy to burn your hand with it!</p>
+<p>If you love soldering and want to setup a really good soldering station, then you should get a <a href="https://www.hakko.com/english/products/hakko_fx888d.html" target="_blank">Hakko FX-888D</a>. It usually costs about $100.</p>
+</div>
+</fieldset>
+
 <h2>Additional Soldering Tips and Tricks</h2>
 
 <p>It's OK to make mistakes! We can fix mistakes, but we can only fix one mistake at a time. Please solder one joint at a time, and then double check that everything is nice and straight. Only do a second joint if the previous joint is perfect.</p>
@@ -269,6 +289,18 @@ function body_onload() {
 <p>Sometimes you need to destroy the component in order to desolder it, because you care more about keeping the circuit board. This is a decision that you have to make. Remember that most components are dirt cheap.</p>
 <h3>Safety Note:</h3>
 <p>You might find information about another way to desolder, by melting the solder and smacking the circuit board. DO NOT EVER DO THIS. This is not safe because the molten solder will splatter, it may get on your skin or in your eyes while it is very hot. This technique is only used by really really old people because back then, electrical components were gigantic. Today, components are tiny and this trick doesn't work well and break easily.</p>
+</div>
+</fieldset>
+
+<fieldset class="hidable">
+<legend>What's the brown stuff around my solder joints?</legend>
+<div>
+<p>Soldering flux is a liquid that helps you make better solder joints. It is usually put in the middle of solder. When flux gets hot from the soldering iron, it cleans metal and it helps liquid metal flow.</p>
+<p>Sometimes when something is hard to solder, we buy more flux in a bottle (or syringe, or "pen") and put it on the joint before we solder the joint. This makes it much easier to solder something that is hard to solder because a cleaner surface makes it easier for solder to stick, and flux helps the solder form that nice volcano shape.</p>
+<p>It does leave behind a brown stain sometimes, that's <i>flux residue</i>. We can clean this off but only if we use <i>flux cleaner</i> (which is mostly isopropyl alcohol, aka rubbing alcohol). Obviously this makes the circuit wet, it takes time to dry, and breathing alcohol fumes is bad for you.</p>
+<p>Flux is not harmful to people, the brown kind is made of pine tree sap. It does slowly damage circuit boards, but it takes so long to do real damage that hobbyists don't need to clean it.</p>
+<p>(if the flux residue is white, then it's probably <i>no-clean flux</i>, a different version that does not cause damage, it does have some drawbacks, big factories obviously like it since it saves time)</p>
+<p>If you do decide to clean your circuit board, then remember to remove the batteries! You should never power a wet circuit! And use an anti-static brush to avoid damage from static electricity.</p>
 </div>
 </fieldset>
 
@@ -380,6 +412,8 @@ function body_onload() {
 
 <p>It's time to plug in the servos into the circuit board. Pay attention to the colours of the wires when you plug in the servo cables into the circuit board. The circuit board is labelled with which colour goes where. (ORG means orange, WHT means white, BLK means black, BRN means brown, RED means red)</p>
 
+<div class="center_outer"><div class="center_inner"><a href="img/instruct/plug_in_servos.jpg"><img src="img/instruct/plug_in_servos.jpg" width="100%" /></a></div></div>
+
 <h2>Screw in Servos</h2>
 
 <p>Place the servos into the robot's body, with the output shaft near the back of the robot. Use the screws (see part list) and a screwdriver to attach the servos to the robot.</p>
@@ -388,12 +422,16 @@ function body_onload() {
 
 <p>Tuck all the cables away neatly, there's some space between the servos where you can stuff the extra cables.</p>
 
+<div class="center_outer"><div class="center_inner"><a href="img/instruct/tuckawaythewires.jpg"><img src="img/instruct/tuckawaythewires.jpg" width="100%" /></a></div></div>
+
 <h2>Screw on Battery Holder</h2>
 
 <p>The battery holder is screwed into the bottom of the robot's body using the appropriate screws (see part list). Position it in a way so that the wires are closest to the circuit board (we will tuck the wires away later).</p>
 <p>Screw in the side with the round hole first. Screw in the side with the slot second. Otherwise, you might not be able to line up the hole on the holder with the hole on the body.</p>
 
 <p>Tuck away the battery holder wires after the holder is screwed in place.</p>
+
+<div class="center_outer"><div class="center_inner"><a href="img/instruct/tuck_away_batt_wire.jpg"><img src="img/instruct/tuck_away_batt_wire.jpg" width="100%" /></a></div></div>
 
 <h2>Screw on Wheels</h2>
 
@@ -411,7 +449,10 @@ function body_onload() {
 
 <h2>Congrats! You are Done!</h2>
 
-<p>Your robot is finished! But it won't do anything until the Arduino Nano is programmed. Plug the Arduino Nano into your circuit board now. Make sure it is in the correct spot and in the correct orientation.</p>
+<p>Your robot is finished! But it won't do anything until the Arduino Nano is programmed. Plug the Arduino Nano into your circuit board now. Make sure it is in the correct spot and in the correct orientation. Make sure all the pins are in the right place!</p>
+
+<div class="center_outer"><div class="center_inner"><a href="img/instruct/plug_in_arduino.jpg"><img src="img/instruct/plug_in_arduino.jpg" width="100%" /></a></div></div>
+
 <p>There's no power switch on this robot, so to stop your batteries from dying, only install the battery when you want to play with the robot, and remove the batteries when you want to turn the robot off.</p>
 
 <p>Testing the robot will be done in the next class, where we learn to use the Arduino Nano.</p>
