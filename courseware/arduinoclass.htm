@@ -99,7 +99,54 @@ function body_onload() {
 </div>
 </fieldset>
 
-<p>Inside the Arduino IDE, open the "HardwareTestLEDBlink" sketch. Once the sketch is open, simply press the upload button.</p>
+<p>Start the Arduino IDE if you don't already have it open. Then you need to make sure that you've selected Arduino Nano as your board, and selected the correct port. (the port number might be different, that's OK, the number doesn't matter)</p>
+
+<div class="center_outer"><div class="center_inner"><a href="img/arduino/board_and_port.png"><img src="img/arduino/board_and_port.png" width="100%" /></a></div></div>
+
+<p>Inside the Arduino IDE, open the "HardwareTestLEDBlink" sketch. Once the sketch is open, simply press the upload button. The compilation process will start first, and then the upload process will start. Wait for both to finish.</p>
+
+<p>The LEDs on your robot should start to blink!</p>
+
+<h2>Debugging</h2>
+
+<p><i>Debugging</i> means to get rid of bugs. When computers were first invented, there was actually a insect that crawed into the computer that caused problems, so removing the bug fixed it. And that's how the term <i>de<b>bug</b></i> came to be.</p>
+
+<p>There is no one way to debug a computer program. It typically involves a combination of gathering information and performing experiments. With Arduino, we can "gather information" through its pins (for example, turning on the LED if something happens), or through its communication port (we can make the Arduino write information onto a computer screen). By "performing experiments", I mean on Arduino, we can change the code it runs slightly, and see what the result is through "gathering information". With more experiments, we get more clues as to what is wrong.</p>
+
+<p>Some bugs happen too fast, so using the pins and LEDs wouldn't work because the LED blink would be too fast to see, so people generally prefer to write information to a computer screen instead. To make Arduino write stuff onto a computer screen, we use the Arduino Nano's <i>serial port</i>, which writes information that we can view with Arduino IDE's <i>serial monitor</i>.</p>
+
+<p>Try uploading the sketch named "SerialPortDemo". It will count a number through the serial terminal.</p>
+
+<h2>Troubleshooting Errors</h2>
+
+<p>If the Arduino IDE says there is an error, what should you do?</p>
+<p>There should be a message saying what the error is, you can search up the error on a search engine for help.</p>
+<p>Sometimes the error says that there's a problem with a particular line of code. You should then go read that line of code, and see if you made any mistakes.</p>
+<p>Sometimes the error says that something is missing (like a missing variable, missing function, or a missing file). Then obviously you should check if it is actually missing, or maybe you misspelt a word. If you are sure that the thing is actually there, then ask "why can't the computer find it?" and think of the possibilities.</p>
+<p>Most of the errors you get are probably just typos, spelling mistakes, or missing punctuation in the code.</p>
+<p>If you get errors during upload, it might be because you have the wrong board or wrong port selected, and you can also try unplugging your USB cable, and then plugging it back in again.</p>
+
+<h2>Code Comments</h2>
+
+<p>Sometimes we want to write something in our code to explain something or to just make a note, but since programming languages have strict rules, normal English will confuse it. A <i>code comment</i> is a section of code that the computer ignores completely, so within a code comment, you can write whatever you want, in any language you want. Sometimes we even draw crude pictures using code comments.</p>
+
+<p>In the Arduino programming language (which is also the same as C++), a code comment can be started with <span class="inlinecode">/*</span> and ended with <span class="inlinecode">*/</span>, or if your comment is just one line, you can start it with <span class="inlinecode">//</span> and it will automatically end at the end of the line.
+
+<pre class="code">
+/*
+This is a big
+multiple line
+code comment
+*/
+// this is a small single line code comment
+thisIsNotCodeComment(); // this is a code comment
+</pre>
+
+<h2>Testing the Robot</h2>
+
+<p>We need to run more code to make sure all of our circuit works correctly, that all the components are not broken and all your soldering joints are done right. I have written a few setches for you to run:</p>
+
+
 
 </div>
 </body>
