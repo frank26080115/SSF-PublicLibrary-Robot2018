@@ -7,20 +7,20 @@
 #include <avr/pgmspace.h>
 #include "WString.h"
 
-#define pinButton 10
-#define pinLedLeft 6
-#define pinLedRight 5
-#define pinLedBack 13
-#define pinEmitterLeft 3
-#define pinEmitterRight 4
-#define pinSensorLeftFloor A3
-#define pinSensorLeftSide A2
+#define pinButton           10
+#define pinLedLeft           6
+#define pinLedRight          5
+#define pinLedBack          13
+#define pinEmitterLeft       3
+#define pinEmitterRight      4
+#define pinSensorLeftFloor  A3
+#define pinSensorLeftSide   A2
 #define pinSensorRightFloor A6
-#define pinSensorRightSide A7
-#define pinPotentiometer A1
-#define pinServoLeft 9 
-#define pinServoRight 7
-#define pinTvRemoteInput 8
+#define pinSensorRightSide  A7
+#define pinPotentiometer    A1
+#define pinServoLeft         9
+#define pinServoRight        7
+#define pinTvRemoteInput     8
 
 class __FlashStringHelper;
 
