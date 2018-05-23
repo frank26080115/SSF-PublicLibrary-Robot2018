@@ -20,10 +20,44 @@
 	margin-right: auto;
 }
 
+h2
+{
+	margin-top: 50pt;
+}
+
 fieldset
 {
 	margin-bottom: 12px;
 	margin-top: 12px;
+}
+
+.code
+{
+	font-family:monospace;
+}
+
+pre.code
+{
+	font-family:monospace;
+	border-style: solid;
+	border-color: grey;
+	border-width: 1pt;
+	padding: 2pt;
+}
+
+.inlinecode
+{
+	font-family:monospace;
+	white-space:nowrap;
+}
+
+span.inlinecode
+{
+	font-family:monospace;
+	border-style: solid;
+	border-color: grey;
+	border-width: 1pt;
+	padding: 1pt;
 }
 
 @media screen {
@@ -50,6 +84,48 @@ video
 	border-style: solid;
 	border-width: 1px;
 	border-color: grey;
+}
+
+.table-bordered td a,
+.table td a,
+.src td a {
+    font-weight: bold
+}
+
+.table {
+    width: 100%;
+    max-width: 100%;
+    margin-bottom: 20px
+}
+
+.table>thead>tr>th,
+.table>tbody>tr>th,
+.table>tfoot>tr>th,
+.table>thead>tr>td,
+.table>tbody>tr>td,
+.table>tfoot>tr>td {
+    padding: 8px;
+    line-height: 1.42857143;
+    vertical-align: top;
+    border-top: 1px solid #ddd
+}
+
+.table-bordered {
+    border: 1px solid #ddd
+}
+
+.table-bordered>thead>tr>th,
+.table-bordered>tbody>tr>th,
+.table-bordered>tfoot>tr>th,
+.table-bordered>thead>tr>td,
+.table-bordered>tbody>tr>td,
+.table-bordered>tfoot>tr>td {
+    border: 1px solid #ddd
+}
+
+.table-bordered>thead>tr>th,
+.table-bordered>thead>tr>td {
+    border-bottom-width: 2px
 }
 
 #banner_black

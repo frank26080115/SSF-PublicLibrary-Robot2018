@@ -27,7 +27,7 @@ function body_onload() {
 
 <h1>Arduino Programming</h1>
 
-<p>This class will cover how to use Arduino, and then how to program the Arduino Nano on your robot. Everything in this class can be done at home, but there will be a live class at the library just in case you have questions.</p>
+<p>This class will cover how to use Arduino, and then how to program the Arduino Nano on your robot. Everything in this class can be done at home, but there will be a live class at the library just in case you have questions. Before coming to the library, please PLEASE please try to read all of this lesson before coming to the live class.</p>
 
 <p>If you are using the library's computer, then do not worry about installing the Arduino IDE or device drivers, because the library's computers already has them installed. But you do need to bring a USB drive to download the sketches and save your sketches.</p>
 
@@ -101,19 +101,24 @@ function body_onload() {
 
 <p>Start the Arduino IDE if you don't already have it open. Then you need to make sure that you've selected Arduino Nano as your board, and selected the correct port. (the port number might be different, that's OK, the number doesn't matter)</p>
 
-<div class="center_outer"><div class="center_inner"><a href="img/arduino/board_and_port.png"><img src="img/arduino/board_and_port.png" width="100%" /></a></div></div>
+<div class="center_outer"><div class="center_inner"><a href="img/arduino/arduino_select_board.png"><img src="img/arduino/arduino_select_board.png" /></a></div></div>
 
-<p>Inside the Arduino IDE, open the "HardwareTestLEDBlink" sketch. Once the sketch is open, simply press the upload button. The compilation process will start first, and then the upload process will start. Wait for both to finish.</p>
+<p>Inside the Arduino IDE, open the "HardwareTestLEDsBlink" sketch...</p>
+<p>Once the sketch is open, simply press the upload button...</p>
+<div class="center_outer"><div class="center_inner"><a href="img/arduino/click_upload.png"><img src="img/arduino/click_upload.png" /></a></div></div>
+<p>The compilation process will start first, and then the upload process will start. Wait for both to finish.</p>
 
 <p>The LEDs on your robot should start to blink!</p>
 
 <h2>Debugging</h2>
 
-<p><i>Debugging</i> means to get rid of bugs. When computers were first invented, there was actually a insect that crawed into the computer that caused problems, so removing the bug fixed it. And that's how the term <i>de<b>bug</b></i> came to be.</p>
+<p>When computers were first invented, there was actually a insect that crawled into the computer that caused problems, so removing the bug fixed it. And that's how the term <i>de<b>bug</b></i> came to be. Now in the modern world, debugging means more than just getting getting rid of bugs. Debugging is a term that sort of means "finding out what your code is doing", and then it also sometimes mean "getting rid of bugs".</p>
 
-<p>There is no one way to debug a computer program. It typically involves a combination of gathering information and performing experiments. With Arduino, we can "gather information" through its pins (for example, turning on the LED if something happens), or through its communication port (we can make the Arduino write information onto a computer screen). By "performing experiments", I mean on Arduino, we can change the code it runs slightly, and see what the result is through "gathering information". With more experiments, we get more clues as to what is wrong.</p>
+<p>Debugging typically involves a combination of gathering information and performing experiments. With Arduino, we can "gather information" through its pins (for example, turning on the LED if something happens), or through its communication port (we can make the Arduino write information onto a computer screen). By "performing experiments", I mean on Arduino, we can change the code it runs slightly, and see what the result is through "gathering information". With more experiments, we get more clues as to what is wrong.</p>
 
 <p>Some bugs happen too fast, so using the pins and LEDs wouldn't work because the LED blink would be too fast to see, so people generally prefer to write information to a computer screen instead. To make Arduino write stuff onto a computer screen, we use the Arduino Nano's <i>serial port</i>, which writes information that we can view with Arduino IDE's <i>serial monitor</i>.</p>
+
+<div class="center_outer"><div class="center_inner"><a href="img/arduino/click_serialmonitor.png"><img src="img/arduino/click_serialmonitor.png" /></a></div></div>
 
 <p>Try uploading the sketch named "SerialPortDemo". It will count a number through the serial terminal.</p>
 
@@ -144,9 +149,254 @@ thisIsNotCodeComment(); // this is a code comment
 
 <h2>Testing the Robot</h2>
 
-<p>We need to run more code to make sure all of our circuit works correctly, that all the components are not broken and all your soldering joints are done right. I have written a few setches for you to run:</p>
+<p>We need to run more code to make sure all of our circuit works correctly, that all the components are not broken and all your soldering joints are done right. I have written a few sketches for you to run:</p>
+
+<ul>
+<li>HardwareTestMotorsSpin<ul><li>this will spin both motors and make your robot do a simple dance</li></ul></li>
+<li>HardwareTestSideSensors<ul><li>this will use the LEDs to show you what the side-facing sensors see, by making the LEDs dimmer or brighter</li></ul></li>
+<li>HardwareTestFloorSensors<ul><li>this will use the LEDs to show you what the floor sensors see, by making the LEDs dimmer or brighter</li></ul></li>
+<li>HardwareTestPotentiometerAndButton<ul><li>this will use the LEDs to show you what the potentiometer is set to, and whether or not the button is being pressed</li></ul></li>
+</ul>
+
+<p>In each sketch, you should read the code, and read the code comments within the code to understand the code better. With the sketch files, I have also included flow charts to graphically represent the logic behind the code.</p>
+
+<h2>The "BookWorm" Library</h2>
+
+<p>As I mentioned before, the sketchbook you've downloaded contains some code libraries. One of them is called "BookWorm", and you see code such as <span class="inlinecode">#include &lt;BookWorm.h&gt;</span> and <span class="inlinecode">BookWorm.someWords();</span> a lot.</p>
+
+<p><span class="inlinecode">#include &lt;BookWorm.h&gt;</span> is how we tell the compiler and IDE to include the "BookWorm" library.</p>
+
+<p>The BookWorm library is here to make the code easier to understand, and easier to write. It also prevents the robot from doing sometime really stupid during one of the homework exercises.</p>
+
+<p>For example, when you want to read the left side floor sensors, without the library, you need to write <span class="inlinecode">x = analogRead(A3);</span>. But using the library, you can write <span class="inlinecode">x = BookWorm.readSensorLeftFloor();</span> instead.</p>
+
+<p>How do you know what the library contains?</p>
+<fieldset class="hidable">
+<legend>Reading Library Code</legend>
+<div>
+<p>One way is to just read the code of the library. The files are inside your sketchbook (under "Libraries" then "BookWorm").</p>
+<p>You will see many files, some of them are <span class="inlinecode">.cpp</span> files, meaning they are code files, and they mostly contain functions. Some are <span class="inlinecode">.h</span> files, these are header files, these usually only contain a list of the functions but not the contents of the functions. Header files also usually contain useful definitions of things.</p>
+<p>If you open <span class="inlinecode">BookWorm.cpp</span> , you can see functions that look like: </p>
+<pre class="code">
+unsigned int cBookWorm::readPotentiometer(void)
+{
+	return analogRead(pinPotentiometer);
+}
+</pre>
+<p>... which means, whenever you write <span class="inlinecode">BookWorm.readPotentiometer();</span>, what your code will do is actually <span class="inlinecode">analogRead(A1);</span></p>
+<p>If you read a bit above that piece of code, you can see a block of comment:</p>
+<pre class="code">
+/*
+Reads the analog reading of the potentiometer
+
+return:	unsigned 10 bit integer, range 0 to 1023,
+		0 meaning rotated all the way down (counterclockwise),
+		1023 meaning rotated all the way up (clockwise)
+
+parameters:	none
+*/
+</pre>
+<p>This is important, comments that look like this describes what the function does, what it will tell you (the return), and what it needs to know (the parameters). Libraries often have comments like this to help people understand how to use a function.</p>
+<p>The <span class="inlinecode">BookWorm.h</span> header file contains a definition list of all the pins used on our robot. It looks like:</p>
+<pre class="code">
+#define pinButton           10
+#define pinLedLeft           6
+#define pinLedRight          5
+#define pinLedBack          13
+#define pinEmitterLeft       3
+#define pinEmitterRight      4
+#define pinSensorLeftFloor  A3
+#define pinSensorLeftSide   A2
+#define pinSensorRightFloor A6
+#define pinSensorRightSide  A7
+#define pinPotentiometer    A1
+#define pinServoLeft         9
+#define pinServoRight        7
+#define pinTvRemoteInput     8
+</pre>
+<p>... and also a list of functions that you can use ...</p>
+<pre class="code">
+	void begin(void);
+	void setLedLeft(int bright);
+	void setLedLeftOn(void);
+	void setLedLeftOff(void);
+	void setLedRight(int bright);
+	void setLedRightOn(void);
+	void setLedRightOff(void);
+	void setLedBackOn(void);
+	void setLedBackOff(void);
+	void setEmittersOn(void);
+	void setEmittersOff(void);
+	bool isButtonPressed(void);
+	unsigned int readPotentiometer(void);
+	unsigned int readSensorLeftSide(void);
+	unsigned int readSensorLeftFloor(void);
+	unsigned int readSensorRightSide(void);
+	unsigned int readSensorRightFloor(void);
+	void move(signed int left, signed int right);
+</pre>
+<p>Sometimes, comments are inside header files because code files can be very long, but I choose to put them in the code file since our code is very simple.</p>
+</div>
+</fieldset>
+
+<h2>Continue Learning</h2>
+<p>The best way to learn how to write code is to first read code, run the code, and then make changes to the code. When you read code, you will see patterns, you will see the same words or symbols being used over and over again, your brain should be able to eventually work out how to repeat these patterns to write code. Sometimes you will see a number in the code, maybe it's a delay for the LED blinking? Change it and run the code and see if the LED blinks faster or slower. Maybe it's how fast the motor spins? Change it and see if the motor spins faster or slower. <b>Play around, do not be afraid to make mistakes, mistakes can be undone or fixed and the robot is never going to break because of bad code.</b></p>
+
+<p>Programming and computer science are huge subjects, I can't possibly write about all of them without literally quitting my job and becoming a full time author. But the beauty of Arduino is that it is open source and there is an enormous helpful online community around it and around electronics in general. It is very easy to find information and help, and there are plenty of websites with tutorials and guides for you to read.</p>
+
+<p>But before I show you where to learn more, I need to make sure you can make the mental connection between what you read and our robot. Remember that our robot uses an Arduino Nano, and most websites will be writing about ordinary Arduinos (Uno, or Diecimila, or Duemilanove). All Arduinos have at least one LED, and one reset button. I will show you with a picture, so that when you read other tutorials and it talks about a LED or the reset button, you know where to look on the robot.</p>
+
+<p>Our Arduino Nano has the same pins as an ordinary Arduino, but most of them are already connected to things on our robot, such as sensors. If you want to follow a tutorial and need to connect to a pin that is already used, then you can very simply unplug the Arduino Nano from the robot. Then you are able to just plug wires into the pins or plug the whole Arduino Nano into a breadboard, before following the tutorial you want to follow.</p>
+
+<p>You do need to select "Arduino Nano" in the "board" menu, even if you are following tutorials for ordinary Arduinos.</p>
+
+<p>Remember that all tutorials on the internet will not know about the BookWorm library.</p>
+
+<fieldset><legend>Websites to learn from</legend>
+<p>The official Arduino page on <a href="https://www.arduino.cc/en/Tutorial/Foundations" target="_blank"> fundamental knowledge</a></p>
+<p>The official Arduino page on <a href="https://www.arduino.cc/en/Tutorial/BuiltInExamples" target="_blank"> basic example sketches</a></p>
+<p>Adafruit Industries: Arduino <a href="https://learn.adafruit.com/ladyadas-learn-arduino-lesson-number-1" target="_blank"> Lesson #1</a>, followed by <a href="https://learn.adafruit.com/ladyadas-learn-arduino-lesson-number-2" target="_blank"> Lesson #2</a></p>
+<p>Adafruit Industries: <a href="https://learn.adafruit.com/category/learn-arduino" target="_blank">All Arduino Guides</a></p>
+</fieldset>
+
+<p>If you run out of things to try and tutorials to read, you should try doing an entire project that's completely your own. But what should you build? To answer that question, think about what else you find fun and what part of your life could be improved with electronics. I like video games so I've built plenty of different video game controllers. I like Geocaching so I've built my own GPS locator. It doesn't have to be a robot, remember you can take the Arduino Nano off the robot, or just buy another Arduino.</p>
+
+<p>And go join a team, maybe a robotics team, maybe a rocketry club, participate in competitions and hackathons. I've met the greatest people, made many friends, even found love, by looking for other people who love to do what I love to do.</p>
+
+<!--
+<p>The following topics should help you write your own code. You will be writing your own code for the homework.</p>
+
+<fieldset class="hidable">
+<legend>Programming Language and Syntax</legend>
+<div>
+<p>The programming language we are using is called <i>C++</i>, which has more features than the <i>C</i> programming language. When you are using the Arduino IDE to write code, you are writing in C++, but with a few things that the Arduino IDE has added to make it easier. Sometimes people call it the "Arduino programming language" (or just "Arduino code") instead of C++ to avoid the confusion.<p>
+<p>This means any concepts you learn for C++ can be applied to Arduino code. If you look up a question for Arduino online and find an answer about C++, you can probably still use the answer.</p>
+<p>The <i>syntax</i> of a programming language is essentially the grammar and punctuation rules of the programming language. The compiler is the part of the IDE that will be reading your code, and it is very easy to confuse the compiler if you don't follow the grammar and punctuation rules of the Arduino programming language.</p>
+</div>
+</fieldset>
 
 
+<fieldset class="hidable">
+<legend>Variables</legend>
+<div>
+<p>Variables are how your code remember things.</p>
+<p>Some variables are numbers, some variables are letters, some variables can be whole sentences. We call this the <i>type</i> of the variable.</p>
+<p>When the variable type is a number, a number can be a range. The more storage memory you choose to use for a variable, the bigger that range can be. You can also choose if the number can be negative, or if the number is only positive. When a number can become negative, we call that a <i>signed</i> integer, and if the number is positive only, we call that an <i>unsigned</i> integer.</p>
+<div>
+<table style="text-align:center;" class="table table-bordered">
+<tbody><tr>
+<th style="width:23%;text-align:center;">Integer Type</th>
+<th style="width:20%;text-align:center;">Storage Size</th>
+<th style="text-align:center;">Value Range</th>
+</tr>
+<tr>
+<td>char</td>
+<td>1 byte</td>
+<td>-128 to 127 or 0 to 255<br />(if you don't write "signed" or "unsigned" in front of "char", the computer chooses for you, it might choose wrong)</td>
+</tr>
+<tr>
+<td>unsigned char</td>
+<td>1 byte</td>
+<td>0 to 255</td>
+</tr>
+<tr>
+<td>signed char</td>
+<td>1 byte</td>
+<td>-128 to 127</td>
+</tr>
+<tr>
+<td style="vertical-align:middle;">int</td>
+<td style="vertical-align:middle;">2 or 4 bytes</td>
+<td>-32768 to 32767 or -2147483648 to 2147483647</td>
+</tr>
+<tr>
+<td>unsigned int</td>
+<td>2 or 4 bytes</td>
+<td>0 to 65535 or 0 to 4294967295</td>
+</tr>
+<tr>
+<td>short</td>
+<td>2 bytes</td>
+<td>-32768 to 32767</td>
+</tr>
+<tr>
+<td>unsigned short</td>
+<td>2 bytes</td>
+<td>0 to 65535</td>
+</tr>
+<tr>
+<td>long</td>
+<td>4 bytes</td>
+<td>-2147483648 to 2147483647</td>
+</tr>
+<tr>
+<td>unsigned long</td>
+<td>4 bytes</td>
+<td>0 to 4294967295</td>
+</tr>
+</tbody></table>
+</div>
+<p>Notice that "int" and "unsigned int" could be 2 bytes or 4 bytes. It is different depending on what CPU you are using. On the Arduino CPU, it is 2 bytes.<p>
+<p>Integers are whole numbers like 1, 2, 3, etc. <i>Floating point</i> numbers are different, floating point numbers can be 1.5, 3.4, 7.3652, etc. <i>Double floating point</i> numbers are like floating point numbers but with <i>double</i> the precision (but this uses <i>double</i> the memory). Arduino only use "double", if you tried to use "float", the compiler inside the IDE turns "float" into "double" for you.</p>
+<p>A <i>boolean</i> (often written as <i>bool</i>) variable is one that can only be <i>true</i> or <i>false</i>. Variable types can be translated, a false boolean variable can only become a 0 integer, a true variable can only become a 1 integer. The reverse is kind of true, 0 integers can only become false, but any integer that is not exactly 0 becomes true.</p>
+<p>Variables can also be <i>global</i> or <i>local</i>. This is called the <i>scope</i> of the variable, the scope depends on where you <i>declare</i> the variable. If you use a global variable, it can be accessed everywhere in your code, this means that memory is always being used, and the name of the variable cannot be used for anything else. A local variable is one that you declare and use between <span class="inlinecode">{</span> and <span class="inlinecode">}</span> (these are called <i>curly braces</i> or <i>curly brackets</i>), outside these curly braces, the variable doesn't work. Local variables are nice for when you want to save memory (because outside of the variable's scope, the memory can be reused) and when you need to reuse the name of the variable somewhere else.</p>
+<p>A lot of Arduino code uses global variables more than local variables, which is easy for a beginner. More professional programmers do think about code performance and memory performance a lot more. For now, write code however you like, make your robot work first before thinking about saving memory.</p>
+</div>
+</fieldset>
+
+<fieldset class="hidable">
+<legend>Variables</legend>
+<div>
+</div>
+</fieldset>
+-->
+
+<h2>Homework</h2>
+
+<p>I have a few excersizes for you to try programming into your robot for practice. Then, the library will hold a robotics competition, and so the final homework will be for you to be ready for the competition.</p>
+<p>Feel free to email
+
+<fieldset class="hidable"><legend>Exercise 1</legend>
+<div>
+<p>By modifying some of the examples, make your robot do a disco dance!</p><p>Just make your motors spin in some sort of pattern and make the LEDs blink at the same time.</p>
+<p>This requires you to understand how to spin the motors, how to turn the LEDs on and off, and how to use the delay function.</p>
+</div>
+</fieldset>
+
+<fieldset class="hidable"><legend>Exercise 2</legend>
+<div>
+<p>Make your robot chase a TV remote, but at the same time, avoid objects, such as your hand.</p>
+<p>This will require you to understand how to use if-statements, how to spin the motors, how to read the side sensors, and how to turn the infrared emitters on and off.</p>
+<p>Hint: if your infrared emitters are ON, and your sensors detect something, then you are detecting an object that is reflecting infrared light. If your infrared emitters are OFF, and your sensors detect something, then you are detecting an object that is emitting infrared light (such as a TV remote).</p>
+<p>Hint: you can use the serial port and serial monitor to read what the infrared phototransistor sees as a number on your screen.</p>
+<p>An example answer to this homework excersise is in the sketch called "ChaseOrAvoid"</p>
+</div>
+</fieldset>
+
+<fieldset class="hidable"><legend>Competition</legend>
+<div>
+<p>The library will hold a line-following robot race. There will be a black line on a white floor as the race track, and your robot must follow the black track from the start to the finish line. The fastest robot wins.</p>
+<p>This will require you to understand how to use if-statements, how to spin the motors, and how to read the floor sensors.</p>
+<p>Hint: you can use the serial port and serial monitor to read what the infrared phototransistor sees as a number on your screen.</p>
+<p>Hint: ask yourself "if your left side floor sensor sees the black line, what should your robot do?"</p>
+</div>
+</fieldset>
+
+<h2>Asking Questions, and participating in online communities</h2>
+
+<p>If you have a question, I am not the only person who can help. There's an entire internet full of people who can help you. But people on the internet get really annoyed if you ask a question in a wrong way, or worse, when you shouldn't be asking that question. Also, some people on the internet might sound very mean but they are not actually being mean, I don't want you to get offended when you read any answers.</p>
+
+<p>The correct time and correct way to ask a question on the internet is actually a very large, and funny topic. There's an actually very famous webpage about how to ask questions: <a href="http://www.catb.org/~esr/faqs/smart-questions.html" target="_blank">http://www.catb.org/~esr/faqs/smart-questions.html "How To Ask Questions The Smart Way" by Eric Steven Raymond and Rick Moen</a></p>
+<p>(Eric and Rick wrote that webpage, they don't know much about Arduino and robotics so please do not email them)</p>
+
+<p>The internet is sometimes a dangerous place. Remember, the people of almost any hobbyist community are really nice people, but the internet is visible to all people. You should definitely avoid ever writing your real name, phone number, email address, or real address. Somebody might pretend to be you, or give you prank phone calls, spam emails, or send the police to your house.</p>
+
+<p>For our robot and Arduino in general, the best website to ask questions on are:</p>
+<ul>
+	<li>The official <a href="https://forum.arduino.cc/" target="_blank">Arduino Forum</a></li>
+	<li><a href="https://www.reddit.com/r/arduino/" target="_blank">/r/arduino</a> , the subreddit of Arduino on Reddit</li>
+	<li><a href="https://arduino.stackexchange.com/" target="_blank">Arduino Stack Exchange</a></li>
+</ul>
 
 </div>
 </body>
