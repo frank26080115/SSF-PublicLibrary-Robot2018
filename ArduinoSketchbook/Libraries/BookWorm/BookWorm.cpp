@@ -145,6 +145,7 @@ void cBookWorm::setEmittersOn(void)
 	pinMode(pinEmitterRight, OUTPUT);
 	digitalWrite(pinEmitterLeft, HIGH);
 	digitalWrite(pinEmitterRight, HIGH);
+	delay(1); // wait to ensure full brightness
 }
 
 /*
@@ -159,6 +160,7 @@ void cBookWorm::setEmittersOff(void)
 	digitalWrite(pinEmitterRight, LOW);
 	pinMode(pinEmitterLeft, INPUT);
 	pinMode(pinEmitterRight, INPUT);
+	delay(1); // wait to ensure fully off
 }
 
 /*
