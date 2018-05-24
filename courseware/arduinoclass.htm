@@ -114,7 +114,7 @@ function body_onload() {
 
 <p>When computers were first invented, there was actually a insect that crawled into the computer that caused problems, so removing the bug fixed it. And that's how the term <i>de<b>bug</b></i> came to be. Now in the modern world, debugging means more than just getting getting rid of bugs. Debugging is a term that sort of means "finding out what your code is doing", and then it also sometimes mean "getting rid of bugs".</p>
 
-<p>Debugging typically involves a combination of gathering information and performing experiments. With Arduino, we can "gather information" through its pins (for example, turning on the LED if something happens), or through its communication port (we can make the Arduino write information onto a computer screen). By "performing experiments", I mean on Arduino, we can change the code it runs slightly, and see what the result is through "gathering information". With more experiments, we get more clues as to what is wrong.</p>
+<p>Debugging typically involves a combination of gathering information and performing experiments (so you can gather more information). With Arduino, we can "gather information" through its pins (for example, turning on the LED if something happens), or through its communication port (we can make the Arduino write information onto a computer screen). By "performing experiments", I mean on Arduino, we can either give it different input signals, or we can change the code it runs slightly, and see what the result is through "gathering information". With more experiments, we get more clues as to what is wrong.</p>
 
 <p>Some bugs happen too fast, so using the pins and LEDs wouldn't work because the LED blink would be too fast to see, so people generally prefer to write information to a computer screen instead. To make Arduino write stuff onto a computer screen, we use the Arduino Nano's <i>serial port</i>, which writes information that we can view with Arduino IDE's <i>serial monitor</i>.</p>
 
@@ -158,7 +158,7 @@ thisIsNotCodeComment(); // this is a code comment
 <li>HardwareTestPotentiometerAndButton<ul><li>this will use the LEDs to show you what the potentiometer is set to, and whether or not the button is being pressed</li></ul></li>
 </ul>
 
-<p>In each sketch, you should read the code, and read the code comments within the code to understand the code better. With the sketch files, I have also included flow charts to graphically represent the logic behind the code.</p>
+<p>In each sketch, you should read the code, and read the code comments within the code to understand the code better.</p>
 
 <h2>The "BookWorm" Library</h2>
 
@@ -373,6 +373,13 @@ parameters:	none
 </div>
 </fieldset>
 
+<fieldset class="hidable"><legend>Excercise 2 Big Hint</legend>
+<div>
+<p>Sometimes it helps to draw a logic flow diagram before you code.</p>
+<div class="center_outer"><div class="center_inner"><a href="img/excercise2flow.png"><img src="img/excercise2flow.png" width="100%" /></a></div></div>
+</div>
+</fieldset>
+
 <fieldset class="hidable"><legend>Competition</legend>
 <div>
 <p>The library will hold a line-following robot race. There will be a black line on a white floor as the race track, and your robot must follow the black track from the start to the finish line. The fastest robot wins.</p>
@@ -389,7 +396,7 @@ parameters:	none
 <p>The correct time and correct way to ask a question on the internet is actually a very large, and funny topic. There's an actually very famous webpage about how to ask questions: <a href="http://www.catb.org/~esr/faqs/smart-questions.html" target="_blank">http://www.catb.org/~esr/faqs/smart-questions.html "How To Ask Questions The Smart Way" by Eric Steven Raymond and Rick Moen</a></p>
 <p>(Eric and Rick wrote that webpage, they don't know much about Arduino and robotics so please do not email them)</p>
 
-<p>The internet is sometimes a dangerous place. Remember, the people of almost any hobbyist community are really nice people, but the internet is visible to all people. You should definitely avoid ever writing your real name, phone number, email address, or real address. Somebody might pretend to be you, or give you prank phone calls, spam emails, or send the police to your house.</p>
+<p>The internet is sometimes a dangerous place. Remember, the people of almost any hobbyist community are really nice people, but the internet is visible to <b>all</b> people. You should definitely avoid ever writing your real name, phone number, email address, or real address. Somebody might pretend to be you, or give you prank phone calls, spam emails, or send the police to your house.</p>
 
 <p>For our robot and Arduino in general, the best website to ask questions on are:</p>
 <ul>
