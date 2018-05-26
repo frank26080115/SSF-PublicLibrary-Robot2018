@@ -4,7 +4,7 @@ This repo contains the hardware, software, and courseware of a small robotics ST
 
 Perhaps the data here is useful for other educational organizations on a budget.
 
-Please click "Clone or Download" and then "Download ZIP". When the ZIP file is downloaded, unzip it somewhere and open "index.htm" with a web browser. This will start the course. All the courseware is written as web pages, with pictures, videos, and interactive demos.
+Please click "Clone or Download" and then "Download ZIP". When the ZIP file is downloaded, unzip it somewhere and open "courseware/index.htm" with a web browser. This will start the course. All the courseware is written as web pages, with pictures, videos, and interactive demos.
 
 ## Software Required
 
