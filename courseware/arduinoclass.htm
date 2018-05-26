@@ -37,7 +37,9 @@ function body_onload() {
 <p>Everything in this class can be done at home, but there will be a live class at the library just in case you have questions. Before coming to the library, please PLEASE please try to read all of this lesson before coming to the live class. Even better, if you have your own computer at home, try to do as much of this lesson on your own as possible, and come to the class only for help.</p>
 </fieldset>
 
-<p>If you are using the library's computer, then do not worry about installing the Arduino IDE or device drivers, because the library's computers already has them installed. But you do need to bring a USB drive to download the sketches and save your sketches.</p>
+<p>If you are using the library's computer, then do not worry about installing the Arduino IDE or device drivers, because the library's computers already has them installed.</p>
+
+<h3>You do need to bring a USB drive to download the sketches and save your sketches, if you are using the library's computers.</h3>
 
 <fieldset><legend>Your Own Computer</legend>
 <p>You really REALLY should have your own laptop by now. If you've completed the previous two classes, you have definitely earned it. Having access to a computer and the internet is essential for continued learning from research and experimentation. It is my hope that this robot and these classes encourage you to keep learning on your own. You don't have to like school, you don't have to like homework or tests, but you should love learning and discovery.</p>
@@ -93,9 +95,11 @@ function body_onload() {
 
 <p>Sketchbooks also contains <i>libraries</i>. In computer programming, a library is basically some code that you can reuse. If you have five different robot projects that all use servos, you can use just one servo library, instead of writing the servo code five times. Usually, the user of the library does not ever edit the library, but with Arduino libraries, you can look at library code and even edit it.</p>
 
-<p>I have prepared a sketchbook for you already, it contains pieces of code and also the libraries you need. <a href="">Click here to download it</a>. Either save this to your own computer or save it to the USB drive. It is a ZIP file, so you need to extract (aka unzip) it to your own computer or to your USB drive.</p>
+<p>I have prepared a sketchbook for you already, it contains pieces of code and also the libraries you need. <a href="">Click here to download it</a>. Either save this to your own computer or save it to the USB drive. It is a ZIP file, so you need to extract (aka unzip) the folder from inside the ZIP file to somewhere on your own computer or to your USB drive. It's almost the same as copying the folder.</p>
 
-<p>You need to tell the Arduino IDE where the sketchbook is. Run the Arduino IDE and use the "preferences" dialog to change the sketchbook location. See screenshot below</p>
+<div class="center_outer"><div class="center_inner"><a href="img/arduino/copy_sketchbook.png"><img src="img/arduino/copy_sketchbook.png" width="100%" /></a></div></div>
+
+<p>You need to tell the Arduino IDE where the sketchbook is (where you copied/extracted it to). Run the Arduino IDE and use the "preferences" dialog to change the sketchbook location. See screenshot below</p>
 
 <div class="center_outer"><div class="center_inner"><a href="img/arduino/preferences_for_sketchbook.png"><img src="img/arduino/preferences_for_sketchbook.png" /></a></div></div>
 
@@ -174,7 +178,9 @@ This is a big
 multiple line
 code comment
 */
+
 // this is a small single line code comment
+
 thisIsNotCodeComment(); // this is a code comment
 </pre>
 
@@ -182,12 +188,35 @@ thisIsNotCodeComment(); // this is a code comment
 
 <p>We need to run more code to make sure all of our circuit works correctly, that all the components are not broken and all your soldering joints are done right. I have written a few sketches for you to run:</p>
 
-<ul>
-<li>HardwareTestMotorsSpin<ul><li>this will spin both motors and make your robot do a simple dance</li></ul></li>
-<li>HardwareTestSideSensors<ul><li>this will use the LEDs to show you what the side-facing sensors see, by making the LEDs dimmer or brighter</li></ul></li>
-<li>HardwareTestFloorSensors<ul><li>this will use the LEDs to show you what the floor sensors see, by making the LEDs dimmer or brighter</li></ul></li>
-<li>HardwareTestPotentiometerAndButton<ul><li>this will use the LEDs to show you what the potentiometer is set to, and whether or not the button is being pressed</li></ul></li>
-</ul>
+<fieldset><legend>Sketch: HardwareTestMotorsSpin</legend><p>This will spin both motors and make your robot dizzy. This makes sure that both motors work and accepts your commands.</p>
+<!-- <div><video controls="controls" loop="loop" preload="none">
+  <source src="vid/demo_dance.mp4" type="video/mp4">
+  Your browser does not support the video tag.
+</video></div> -->
+<div class="center_outer"><div class="center_inner"><img src="img/arduino/spintest.gif" width="100%" /></div></div>
+</fieldset>
+
+<fieldset><legend>Sketch: HardwareTestSideSensors</legend><p>This will use the LEDs to show you what the side-facing sensors see, by making the LEDs dimmer or brighter. This checks if your side-facing sensors work and are connected correctly.</p>
+<!-- <div><video controls="controls" loop="loop" preload="none">
+  <source src="vid/demo_sidesensors.mp4" type="video/mp4">
+  Your browser does not support the video tag.
+</video></div> -->
+<div class="center_outer"><div class="center_inner"><img src="img/arduino/sidesensortest.gif" width="100%" /></div></div>
+</fieldset>
+
+<fieldset><legend>Sketch: HardwareTestFloorSensors</legend><p>This will use the LEDs to show you what the floor sensors see, by making the LEDs dimmer or brighter. This checks if your floor sensors work and are connected correctly.</p>
+<div><video controls="controls" loop="loop" preload="none">
+  <source src="vid/floorsensortest_500.mp4" type="video/mp4">
+  Your browser does not support the video tag.
+</video></div>
+</fieldset>
+
+<fieldset><legend>Sketch: HardwareTestPotentiometerAndButton</legend><p>This will use the LEDs to show you what the potentiometer is set to, and whether or not the button is being pressed. This checks if the button and potentiometer are connected correctly.</p>
+<div><video controls="controls" loop="loop" preload="none">
+  <source src="vid/potbuttontest_500.mp4" type="video/mp4">
+  Your browser does not support the video tag.
+</video></div>
+</fieldset>
 
 <p>In each sketch, you should read the code, and read the code comments within the code to understand the code better.</p>
 
