@@ -1,0 +1,82 @@
+<html>
+<head>
+<title>Connecting More Parts</title>
+<link rel="stylesheet" type="text/css" href="css/stylesheet.css" title="style" />
+<link rel="stylesheet" type="text/css" href="css/divtable.css" title="style" />
+
+<style>
+.qty_col
+{
+	font-size: 25pt;
+}
+</style>
+
+<script type="text/javascript" src="js/javascript.js"></script>
+
+<script type="text/javascript">
+
+function body_onload() {
+	makeAllVideos("img/film_animation.gif");
+
+	makeTableOfContents("tableofcontents", "h2");
+
+	makeAllHidables();
+}
+
+</script>
+
+</head>
+<body onload="body_onload()">
+<div class="body_div">
+
+<div id="banner_black"><img src="img/banner_black.png" /></div>
+<div id="banner_white"><img src="img/banner_white.png" /></div>
+
+<h1>Connecting More Parts</h1>
+
+<div id="tableofcontents"></div>
+
+<h2>Using a Breadboard</h2>
+
+<p>A <i>solderless breadboard</i> is a type of circuit board that does not require soldering, instead, you simply plug in wires and components into it. You can also take the components out really easily. This all means that breadboards makes it easy to fix any mistakes.</p>
+
+<p>(using a breadboard also means your circuit will break if you drop it, since the components can pop out easily)</p>
+
+<p>Breadboards have rows of female sockets that are already connected together for you. Each row usually has 5 pin sockets. This means if you plug something into one pin socket, you can make 4 more connections to it. In the picture below, you see what a breadboard looks like on the bottom, it has rows of metal clips that your wires will squeeze into, it's the clips that make the connections.</p>
+
+
+
+<p>You need wires to plug into breadboards. Sometimes you can just buy "breadboard jumper wires" from somewhere, otherwise, you could look for 22 AWG solid core wire. Do not use stranded core wire.</p>
+
+<p>(<i>AWG</i> is sometimes known just as <i><b>g</b>auge</i>, it means the size of the wire, higher gauge means thinner wire, lower gauge means thicker wire. A 22 gauge wire is thicker than a 30 guage wire.)</p>
+
+<h2>Availble Connections on the Robot</h2>
+
+<p>The robot's circuit board has huge female pin socket headers around the Arduino Nano. This allows you to connect additional wires to the robot and to the Arduino Nano.</p>
+
+<p>There are pins for GND (remember our circuit class, GND means ground, and is at 0 volts), for battery voltage (about 6 volts and not regulated), and for a steady 5 volts (from the voltage regulator).</p>
+
+<p>Every pin from the Arduino Nano can be connected to. But keep in mind that some of these pins already have something connected already, such as a sensor, LED, etc. While sometimes it is OK to share one pin for two connections, you need to think about the design before sharing a pin. For now, try to use only the unconnected pins for experiments.</p>
+
+<fieldset class="hidable"><legend>Signal Direction and Sharing Connections</legend>
+<div>
+<p>Think of pins as able to become inputs or outputs. If you try to use a pin as an input (try to read it) while it is already outputting something, obviously, you are only going to read what you are already outputting.</p>
+<p>When a pin is an input, and you have a device with an output pin, then you can connect them together. And vice versa, if a device has an input pin, then you should make your pin an output.</p>
+<p>If you connect an input Arduino pin to an input device pin, then your Arduino won't read anything useful, and your device won't read anything useful. Both of them will get really confused.</p>
+<p>If you connect an output Arduino pin to an output device pin, then you will cause a bad situation called a <i>conflict</i>. This could potentially damage your device or your Arduino. The resulting voltage and current depends on the <i>drive strength</i> and <i>output resistance</i> of the pins (simply, more resistance means less strength).</p>
+<p>Don't worry, clever engineers have already invented ways to make pins both an input and output, and ways of allowing hundreds of devices talk using only one wire. Remember that pins and wires cost money so these are important features! The possibilities are endless. Devices that can do this are very intelligent devices, not dumb devices like LEDs. Some devices only "talk" when "spoken to", sometimes a device in a group knows how to take turns "talking", sometimes you simply use another signal to select which device should be communicating.</p>
+<p>
+</div>
+</fieldset>
+
+<h2>Simple Excercise</h2>
+
+<p>Use the breadboard to make a LED light up. All you need to do is use a LED, a 220Ω resistor, and some wires.</p>
+
+<h2>Infrared Remote Control</h2>
+
+<p>We can make your robot remote controlled by any TV remote. If you have attended the classes, I have given you a little device that is the infrared remote receiver. Now we will connect it to your robot and teach you how to make your robot read commands from your TV remote.</p>
+
+<p>Each sensor has three pins, one for 5V power, one for ground, and one for the data output. (I know this because I read the part datasheet)</p>
+
+<p>
