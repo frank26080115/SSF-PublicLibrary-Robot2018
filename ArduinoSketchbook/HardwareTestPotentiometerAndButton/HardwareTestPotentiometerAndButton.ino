@@ -19,14 +19,25 @@ void loop() {
   // set the LED brightness
   BookWorm.setLedLeft(leftBrightness);
 
+  // debug output to serial monitor
+  Serial.print(pot, DEC); Serial.print(", ");
+
   if (BookWorm.isButtonPressed()) // determine if the button is pressed
   {
     // if it is pressed
     BookWorm.setLedRightOn();
+
+    // debug output to serial monitor
+    Serial.print("button pressed");
   }
   else
   {
     // if it is not pressed
     BookWorm.setLedRightOff();
+
+    // debug output to serial monitor
+    Serial.print("button released");
   }
+
+  Serial.println(); // new line
 }
