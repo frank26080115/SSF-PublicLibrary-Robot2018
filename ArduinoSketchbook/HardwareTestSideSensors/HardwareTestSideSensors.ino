@@ -21,4 +21,11 @@ void loop() {
   // set the LED brightness
   BookWorm.setLedLeft(leftBrightness);
   BookWorm.setLedRight(rightBrightness);
+
+  // debug output to serial monitor
+  Serial.print(leftSensor, DEC); Serial.print(", ");
+  Serial.print(rightSensor, DEC); Serial.print(", ");
+  Serial.print(leftBrightness, DEC); Serial.print(", ");
+  Serial.print(rightBrightness, DEC); Serial.print(", ");
+  Serial.println(); // new line
 }
