@@ -44,11 +44,15 @@ function body_onload() {
 
 <p>Breadboards have rows of female sockets that are already connected together for you. Each row usually has 5 pin sockets. This means if you plug something into one pin socket, you can make 4 more connections to it. In the picture below, you see what a breadboard looks like on the bottom, it has rows of metal clips that your wires will squeeze into, it's the clips that make the connections.</p>
 
+<div class="center_outer"><div class="center_inner"><a href="img/solderless_breadboard_bottom.jpg"><img src="img/solderless_breadboard_bottom.jpg" width="100%" /></a></div></div>
+<br />
+<div class="center_outer"><div class="center_inner"><a href="img/disassembled_breadboard.jpg"><img src="img/disassembled_breadboard.jpg" /></a></div></div>
 
-
-<p>You need wires to plug into breadboards. Sometimes you can just buy "breadboard jumper wires" from somewhere, otherwise, you could look for 22 AWG solid core wire. Do not use stranded core wire.</p>
+<p>You need wires to plug into breadboards. Sometimes you can just buy "breadboard jumper wires" from somewhere, otherwise, you could buy a big roll of 22 AWG solid core wire, and cut it yourself. Do not use stranded core wire.</p>
 
 <p>(<i>AWG</i> is sometimes known just as <i><b>g</b>auge</i>, it means the size of the wire, higher gauge means thinner wire, lower gauge means thicker wire. A 22 gauge wire is thicker than a 30 guage wire.)</p>
+
+<div class="center_outer"><div class="center_inner"><a href="img/breadboard_wire_types.jpg"><img src="img/breadboard_wire_types.jpg" /></a></div></div>
 
 <h2>Availble Connections on the Robot</h2>
 
@@ -65,18 +69,84 @@ function body_onload() {
 <p>If you connect an input Arduino pin to an input device pin, then your Arduino won't read anything useful, and your device won't read anything useful. Both of them will get really confused.</p>
 <p>If you connect an output Arduino pin to an output device pin, then you will cause a bad situation called a <i>conflict</i>. This could potentially damage your device or your Arduino. The resulting voltage and current depends on the <i>drive strength</i> and <i>output resistance</i> of the pins (simply, more resistance means less strength).</p>
 <p>Don't worry, clever engineers have already invented ways to make pins both an input and output, and ways of allowing hundreds of devices talk using only one wire. Remember that pins and wires cost money so these are important features! The possibilities are endless. Devices that can do this are very intelligent devices, not dumb devices like LEDs. Some devices only "talk" when "spoken to", sometimes a device in a group knows how to take turns "talking", sometimes you simply use another signal to select which device should be communicating.</p>
-<p>
 </div>
 </fieldset>
 
-<h2>Simple Excercise</h2>
+<h3>Below is a diagram with all the pins of the headers labelled with their general function and what they can be used for</h3>
+<div class="center_outer"><div class="center_inner"><a href="img/headers_overhead_labelled.png"><img src="img/headers_overhead_labelled.png" width="100%" /></a></div></div>
+<br />
+<h3>For even more detail, go back to the <a href="circuitbasics.htm"> circuit basics lesson </a> and then look at the complete schematic, where all the signals are labelled.</h3>
+<br />
 
-<p>Use the breadboard to make a LED light up. All you need to do is use a LED, a 220Ω resistor, and some wires.</p>
+<fieldset class="hidable"><legend>Advanced Pin Functions</legend>
+<div>
+<p>For users of the Arduino that need to know the special functionality of each pin, check this diagram:</p>
+<div class="center_outer"><div class="center_inner"><a href="img/arduino_nano_adv_pinout.png"><img src="img/arduino_nano_adv_pinout.png" /></a></div></div>
+</div>
+</fieldset>
+
+<h2>Simple Exercise</h2>
+
+<p>Use the breadboard to make a LED light up. All you need to do is use a LED, a 220Ω resistor, and some wires. We will connect the LED in series with the resistor and power it with the regulated 5V power supply. The LED should glow.</p>
+
+<div class="center_outer"><div class="center_inner"><a href="img/extraclass/wiring_led_diagram.jpg"><img src="img/extraclass/wiring_led_diagram.jpg" width="100%" /></a></div></div>
+<br />
+<div class="center_outer"><div class="center_inner"><a href="img/extraclass/led_on_breadboard.jpg"><img src="img/extraclass/led_on_breadboard.jpg" width="100%" /></a></div></div>
 
 <h2>Infrared Remote Control</h2>
 
-<p>We can make your robot remote controlled by any TV remote. If you have attended the classes, I have given you a little device that is the infrared remote receiver. Now we will connect it to your robot and teach you how to make your robot read commands from your TV remote.</p>
+<p>We can make your robot remote controlled by any TV remote. If you have attended the classes, I have given you a little device that is the infrared remote receiver (part number is PY-1030A-2). Now we will connect it to your robot and teach you how to make your robot read commands from your TV remote.</p>
 
 <p>Each sensor has three pins, one for 5V power, one for ground, and one for the data output. (I know this because I read the part datasheet)</p>
 
-<p>
+<div class="center_outer"><div class="center_inner"><a href="img/extraclass/irrx_pins.jpg"><img src="img/extraclass/irrx_pins.jpg" /></a></div></div>
+
+<p>We already know how to connect the VCC pin to 5V, and how to connect the GND pin to the ground of the robot. The data pin should be connected to the Arduino pin D8. (D8 is free to use, and it can measure pulses very precisely)</p>
+
+<div class="center_outer"><div class="center_inner"><a href="img/extraclass/irrx_on_breadboard_labelled.jpg"><img src="img/extraclass/irrx_on_breadboard_labelled.jpg" width="100%" /></a></div></div>
+
+<h2>How do TV remotes work?</h2>
+<p>TV remotes work by sending pulses of IR light. IR light is chosen because people cannot see it. But your light bulbs in your home, the sun, and many other things also output IR light, so how does your TV know which IR light is coming from the remote control?</p>
+
+<p>The IR light from a remote control blinks very fast (pulsing), about 38000 times per second, we call this 38000 Hz, or 38 kHz. The sun doesn't blink at all. The IR remote receiver is a sensor that can detect when IR light is increasing and decreasing repeatedly at about 38 kHz. This is known as modulation (transmitting pulses) and demodulation (receiving the pulses).</p>
+
+<p>The receiver's data pin will output a low voltage signal when the pulses are being detected, and vice versa, it will output a high voltage signal when pulses are not detected (or when the pulses are too slow or too fast, it has to be close to 38 kHz). In the topic of communication, we call the output "<i>mark</i>" (pulses detected) and "<i>space</i>" (no pulses).</p>
+
+<div><video controls="controls" loop="loop" autoplay="autoplay" muted="muted">
+  <source src="vid/irrx_moddemod_500.mp4" type="video/mp4">
+  Your browser does not support the video tag.
+</video></div>
+
+<fieldset><legend>Difference Between IR Phototransistor and IR Remote Receiver</legend>
+<p>An ordinary phototransistor is used to measure the amount of light, because it varies the electrical current through it according to how much light it senses.</p>
+<p>An IR remote receiver can only output marks or spaces, as long as the remote control is not too far away (the IR light pulses will be too dim to detect).</p>
+<p>An IR remote receiver is actually constructed using an IR phototransistor, but connected to a filter circuit.</p>
+<p>In your kitchen, a coffee filter is something that allow liquid coffee through but block solids like beans and grind. In electrical circuits, a filter allows certain signals through while blocking other signals. The IR remote receiver has a filter inside that only allows pulses that are 38 kHz through.</p>
+</fieldset>
+
+<p>Every different combination of marks and spaces means a different command, such as changing the channel on your TV. Sometimes (and not every time), it's not just the order of marks and spaces you need to know, you might need to know the time duration of each mark and space before understanding the command.</p>
+
+<p>The Arduino can read the marks and spaces as low or high voltage on a pin, and translate (decode) the marks and spaces into an integer. The way it does this actually depends on which brand of TV you have, Sony uses a different protocol than Samsung. This code involves a few layers of code:<ol><li>detect when there's a signal</li><li>measure the duration length of the pulse</li><li>store the pulse length data into a list</li><li>check which brand of TV using the list (this is kind of complicated)</li><li>decode the list into an integer, according to which TV brand (knowing the brand first makes this much easier, without knowing the brand, it's very hard)</li></ol></p>
+
+<p>Sounds pretty complicated, luckily for you, somebody has already written an Arduino library to take care of all this. You still need to know what the integer code for each of the buttons on your remote. This is when you need to use the serial monitor to debug what the receiver is sensing after the library has done the decoding.</p>
+
+<h2>Exercise: Reading your TV remote</h2>
+
+<p>Make your robot move forward when you press "channel-up", and backward when you press "channel-down".</p>
+
+<p>First, you need to know what integer code command is being sent when you press channel-up and when you press channel-down. There's a sketch in your sketchbook called TvRemoteDebug, connect the IR remote receiver as shown before, and upload this sketch. Open the serial monitor the upload is complete, point your TV remote at the IR remote receiver, and press the channel-up button. Read and remember the text that appears on the screen. Do the same thing again for the channel-down button.</p>
+
+<p>Second, you need to use your code writing skills. Start writing a new sketch, your logic flow should look like this:</p>
+
+<div class="center_outer"><div class="center_inner"><a href="img/extraclass/irrx_exercise_flow.png"><img src="img/extraclass/irrx_exercise_flow.png" /></a></div></div>
+
+<h2>Soldering your IR Remote Receiver</h2>
+
+<p>I want to introduce you to another type of circuit board: the <i>perfboard</i>. A perfboard means perforated board, it has a grid of holes (which is what perforated means). Each of the holes is not connected to any other hole. You can solder components into these holes, and then solder wires between the holes to make connections.</p>
+
+<p>The printed circuit board for your robot has a small section that is often called the "<i>prototyping area</i>" and it has a grid of holes, just like a perfboard. You can solder the IR remote receiver into this prototyping area, and the solder wires between the IR remote receiver and the Arduino Nano. Using soldering is much more reliable than using a solderless breadboard, because the wires and components cannot fall out accidentally if they are soldered in.</p>
+
+
+
+</div>
+</fieldset>

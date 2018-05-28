@@ -275,6 +275,23 @@ id="voltagedivider_slider_r2" onchange="voltagedivider_onchange()" oninput="volt
 
 <p>Adafruit has a <a href="https://learn.adafruit.com/adafruit-motor-selection-guide/continuous-rotation-servos" target="_blank">guide on different motors, servos, and their drivers</a>. SparkFun has a <a href="https://learn.sparkfun.com/tutorials/hobby-servo-tutorial" target="_blank"> page on servos</a> as well.</p>
 
+<h2>What is a Printed Circuit Board?</h2>
+
+<p>A printed circuit board, or <i>PCB</i>, is a type of circuit board where a fiber-glass (sometimes people use paper too) is covered with a sheet of copper, and then electrical connections are etched into the copper. The connections are called <i>tracks</i> or <i>traces</i>. This means a PCB often requires no wires, just components, which saves a lot of money and time. Plus, they are much more durable when there are no loose wires to break.</p>
+
+<div class="center_outer"><div class="center_inner"><a href="img/pcb_vs_perf.jpg"><img src="img/pcb_vs_perf.jpg" width="100%" /></a></div></div>
+
+<p>PCBs are usually made by one or several robots, so that it is made very precisely. If there are holes that need to be drilled, a robot will do the drilling. The robots can make a lot of PCBs at once but somebody has to program those robots, which takes a while. Thus, usually, if you want to buy just one PCB, it will take 10 days, but if you want 20 PCBs, it will still take 10 days. (remember, it's not just you buying PCBs, there are other people and you have to wait in line)</p>
+
+<p>PCBs look green most of the time because there's a protective coating put on it that is naturally green. Without this coating, circuit boards usually look a bit brown. The robot can also print text onto the PCB to help people understand what component goes where.</p>
+
+<p>PCBs are usually drawn in a PCB layout CAD tool. You need to draw a circuit schematic diagram first, and the PCB layout software will use the schematic to help you, give you hints, and prevent you from making mistakes. Below is a screenshot of what I drew when I designed our robot's PCB, and what the factory made from my drawing.</p>
+
+<div class="center_outer"><div class="center_inner"><a href="img/robot_pcb.png"><img src="img/robot_pcb.png" width="100%" /></a></div></div>
+<div class="center_outer"><div class="center_inner"><a href="img/parts/pcb2.jpg"><img src="img/parts/pcb2.jpg" width="100%" /></a></div></div>
+
+<p>The difficulty of designing a PCB varies. A child can design a PCB that only has to light up a LED. When you get involved in designing high speed (speed as in data rate), low noise, and high power circuits, then it takes some serious expertise to know how thick and how long each trace must be, and also how close two traces could be next to each other. Our robot certainly does not require the same expertise as a computer motherboard, our robot only uses 2 layers of copper, a laptop motherboard can need a dozen layers with hundreds of traces per layer.</p>
+
 <h2>Homework</h2>
 
 <fieldset>
@@ -315,5 +332,8 @@ id="voltagedivider_slider_r2" onchange="voltagedivider_onchange()" oninput="volt
 
 <p>When you put any sort of transistor and a resistor together like how we did, usually engineers do not call that a voltage divider any more. It simply helps for people to think of them as voltage dividers. They are technically a simple amplifier, it looks very similar to a "common collector amplifier" except it uses a phototransistor instead of a BJT transistor.</p>
 
+<p>Our robotics classes will not be covering how to design a PCB. You should be able to learn this on your own by exploring the internet about this subject. I can certainly help you if you need help. A class on this subject is possible but it will have to be a much simpler project than a robot.</p>
+
+</div>
 </body>
 </html>

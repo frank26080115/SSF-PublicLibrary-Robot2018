@@ -50,6 +50,9 @@ function makeAllVideos(poster) {
 			entry.id = "vid_" + rndId.toString();
 			rndId += 1;
 		}
+		if (entry.autoplay == "autoplay") {
+			continue;
+		}
 		var aspectRatio = 1.667;
 		if (entry.videoWidth > 0 && entry.videoHeight > 0) {
 			aspectRatio = entry.videoWidth / entry.videoHeight;

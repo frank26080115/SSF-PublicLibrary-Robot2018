@@ -87,7 +87,7 @@ function body_onload() {
 
 <p>Remember: If you are using the library's computer, then you don't need to do any installation! Skip this step if you are using the library's computer.</p>
 
-<p>Download and install the device drivers from SparkFun's page <a href="https://learn.sparkfun.com/tutorials/serial-basic-hookup-guide#drivers-if-you-need-them" target="_blank">here</a>. Look for "drivers if you need them" and download the one for your operating system. You will need to extract (aka unzip) the downloaded file first, and then run the "setup.exe" to perform the installation. Follow the instructions provided during the installation, use the default options, and give the computer permission if it asks for permission (press "allow" or "trust" when the computer asks).
+<p>Download and install the device drivers from SparkFun's page <a href="https://learn.sparkfun.com/tutorials/serial-basic-hookup-guide#drivers-if-you-need-them" target="_blank">here</a>. Look for "<b>drivers if you need them</b>" and download the one for your operating system. You will need to extract (aka unzip) the downloaded file first, and then run the "<b>setup.exe</b>" to perform the installation. Follow the instructions provided during the installation, use the default options, and give the computer permission if it asks for permission (press "allow" or "trust" when the computer asks).
 
 <h2>Preparing the Sketchbook</h2>
 
@@ -95,7 +95,7 @@ function body_onload() {
 
 <p>Sketchbooks also contains <i>libraries</i>. In computer programming, a library is basically some code that you can reuse. If you have five different robot projects that all use servos, you can use just one servo library, instead of writing the servo code five times. Usually, the user of the library does not ever edit the library, but with Arduino libraries, you can look at library code and even edit it.</p>
 
-<p>I have prepared a sketchbook for you already, it contains pieces of code and also the libraries you need. <a href="">Click here to download it</a>. Either save this to your own computer or save it to the USB drive. It is a ZIP file, so you need to extract (aka unzip) the folder from inside the ZIP file to somewhere on your own computer or to your USB drive. It's almost the same as copying the folder.</p>
+<p>I have prepared a sketchbook for you already, it contains pieces of code and also the libraries you need. <br /> <a href=""><h3>Click here to download the sketchbook</h3></a> <br /> Either save this to your own computer or save it to the USB drive. It is a ZIP file, so you need to extract (aka unzip) the folder from inside the ZIP file to somewhere on your own computer or to your USB drive. It's almost the same as copying the folder.</p>
 
 <div class="center_outer"><div class="center_inner"><a href="img/arduino/copy_sketchbook.png"><img src="img/arduino/copy_sketchbook.png" width="100%" /></a></div></div>
 
@@ -202,13 +202,15 @@ thisIsNotCodeComment(); // this is a code comment
   Your browser does not support the video tag.
 </video></div> -->
 <div class="center_outer"><div class="center_inner"><img src="img/arduino/sidesensortest.gif" width="100%" /></div></div>
+<p>You can also use the serial monitor to debug what values the sensors are reading</p>
 </fieldset>
 
-<fieldset><legend>Sketch: HardwareTestFloorSensors</legend><p>This will use the LEDs to show you what the floor sensors see, by making the LEDs dimmer or brighter. This checks if your floor sensors work and are connected correctly.</p>
+<fieldset><legend>Sketch: HardwareTestFloorSensors</legend><p>This will use the LEDs to show you what the floor sensors see (white or black surface), by making the LEDs dimmer or brighter. This checks if your floor sensors work and are connected correctly.</p>
 <div><video controls="controls" loop="loop" preload="none" muted="muted">
   <source src="vid/floorsensortest_500.mp4" type="video/mp4">
   Your browser does not support the video tag.
 </video></div>
+<p>You can also use the serial monitor to debug what values the sensors are reading</p>
 </fieldset>
 
 <fieldset><legend>Sketch: HardwareTestPotentiometerAndButton</legend><p>This will use the LEDs to show you what the potentiometer is set to, and whether or not the button is being pressed. This checks if the button and potentiometer are connected correctly.</p>
@@ -216,6 +218,7 @@ thisIsNotCodeComment(); // this is a code comment
   <source src="vid/potbuttontest_500.mp4" type="video/mp4">
   Your browser does not support the video tag.
 </video></div>
+<p>You can also use the serial monitor to debug what values the potentiometer is reading, and if the button is pressed.</p>
 </fieldset>
 
 <p>In each sketch, you should read the code, and read the code comments within the code to understand the code better.</p>
@@ -343,7 +346,7 @@ parameters:	none
 <p>This will require you to understand how to use <i>if-statements</i>, how to spin the motors, how to read the side sensors, and how to turn the infrared emitters on and off.</p>
 <p>Hint: if your infrared emitters are ON, and your sensors detect something, then you are detecting an object that is reflecting infrared light. If your infrared emitters are OFF, and your sensors detect something, then you are detecting an object that is emitting infrared light (such as a TV remote).</p>
 <p>Hint: you can use the serial port and serial monitor to read what the infrared phototransistor sees as a number on your screen.</p>
-<p>An example answer to this homework excersise is in the sketch called "ChaseOrAvoid"</p>
+<p>An example answer to this homework exercise is in the sketch called "ChaseOrAvoid"</p>
 </div>
 </fieldset>
 
