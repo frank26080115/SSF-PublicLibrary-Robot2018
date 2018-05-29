@@ -21,8 +21,8 @@ void cBookWorm::begin(void)
 	pinMode(pinLedLeft, OUTPUT);
 	pinMode(pinLedRight, OUTPUT);
 
-	pinMode(pinEmitterLeft, OUTPUT);
-	pinMode(pinEmitterRight, OUTPUT);
+	pinMode(pinIrEmitterLeft, OUTPUT);
+	pinMode(pinIrEmitterRight, OUTPUT);
 
 	pinMode(pinButton, INPUT);
 	digitalWrite(pinButton, HIGH);
@@ -31,8 +31,8 @@ void cBookWorm::begin(void)
 	digitalWrite(pinTvRemoteInput, HIGH);
 
 	// default emitters ON so students don't wonder why there's no reading
-	digitalWrite(pinEmitterLeft, HIGH);
-	digitalWrite(pinEmitterRight, HIGH);
+	digitalWrite(pinIrEmitterLeft, HIGH);
+	digitalWrite(pinIrEmitterRight, HIGH);
 
 	servoLeft.attach(pinServoLeft);
 	servoRight.attach(pinServoRight);
@@ -139,12 +139,12 @@ Turns on all of the infrared emitters on the left and right side of the robot
 return:	none
 parameters:	none
 */
-void cBookWorm::setEmittersOn(void)
+void cBookWorm::setIrEmittersOn(void)
 {
-	pinMode(pinEmitterLeft, OUTPUT);
-	pinMode(pinEmitterRight, OUTPUT);
-	digitalWrite(pinEmitterLeft, HIGH);
-	digitalWrite(pinEmitterRight, HIGH);
+	pinMode(pinIrEmitterLeft, OUTPUT);
+	pinMode(pinIrEmitterRight, OUTPUT);
+	digitalWrite(pinIrEmitterLeft, HIGH);
+	digitalWrite(pinIrEmitterRight, HIGH);
 	delay(1); // wait to ensure full brightness
 }
 
@@ -154,12 +154,12 @@ Turns off all of the infrared emitters on the left and right side of the robot
 return:	none
 parameters:	none
 */
-void cBookWorm::setEmittersOff(void)
+void cBookWorm::setIrEmittersOff(void)
 {
-	digitalWrite(pinEmitterLeft, LOW);
-	digitalWrite(pinEmitterRight, LOW);
-	pinMode(pinEmitterLeft, INPUT);
-	pinMode(pinEmitterRight, INPUT);
+	digitalWrite(pinIrEmitterLeft, LOW);
+	digitalWrite(pinIrEmitterRight, LOW);
+	pinMode(pinIrEmitterLeft, INPUT);
+	pinMode(pinIrEmitterRight, INPUT);
 	delay(1); // wait to ensure fully off
 }
 

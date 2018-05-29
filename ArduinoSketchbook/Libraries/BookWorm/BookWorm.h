@@ -11,8 +11,8 @@
 #define pinLedLeft           6
 #define pinLedRight          5
 #define pinLedBack          13
-#define pinEmitterLeft       3
-#define pinEmitterRight      4
+#define pinIrEmitterLeft     3
+#define pinIrEmitterRight    4
 #define pinSensorLeftFloor  A3
 #define pinSensorLeftSide   A2
 #define pinSensorRightFloor A6
@@ -36,8 +36,8 @@ public:
 	void setLedRightOff(void);
 	void setLedBackOn(void);
 	void setLedBackOff(void);
-	void setEmittersOn(void);
-	void setEmittersOff(void);
+	void setIrEmittersOn(void);
+	void setIrEmittersOff(void);
 	bool isButtonPressed(void);
 	unsigned int readPotentiometer(void);
 	unsigned int readSensorLeftSide(void);
