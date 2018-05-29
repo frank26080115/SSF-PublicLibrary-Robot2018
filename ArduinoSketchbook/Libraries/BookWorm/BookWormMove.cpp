@@ -50,6 +50,7 @@ void cBookWorm::moveLeftServo(signed int x)
 void cBookWorm::moveRightServo(signed int x)
 {
 	signed int ticks = SERVO_CENTER_TICKS;
+	x *= -1; // flip
 	if (x > 0) {
 		ticks += x;
 		ticks += servoDeadzoneRight;
