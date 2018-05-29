@@ -85,7 +85,7 @@ function body_onload() {
 </div>
 </fieldset>
 
-<h2>Simple Exercise</h2>
+<h2>Simple LED Exercise</h2>
 
 <p>Use the breadboard to make a LED light up. All you need to do is use a LED, a 220Ω resistor, and some wires. We will connect the LED in series with the resistor and power it with the regulated 5V power supply. The LED should glow.</p>
 
@@ -100,6 +100,10 @@ function body_onload() {
 <p>Each sensor has three pins, one for 5V power, one for ground, and one for the data output. (I know this because I read the part datasheet)</p>
 
 <div class="center_outer"><div class="center_inner"><a href="img/extraclass/irrx_pins.jpg"><img src="img/extraclass/irrx_pins.jpg" /></a></div></div>
+
+<p>The PY-1030A-2 is cheap, there are other ones you can buy, but if you do use another one, the pin functions will not be the same as the PY-1030A-2.</p>
+
+<div class="center_outer"><div class="center_inner"><img src="img/extraclass/other_irrx.png" /></div></div>
 
 <p>We already know how to connect the VCC pin to 5V, and how to connect the GND pin to the ground of the robot. The data pin should be connected to the Arduino pin D8. (D8 is free to use, and it can measure pulses very precisely)</p>
 
@@ -126,19 +130,37 @@ function body_onload() {
 
 <p>Every different combination of marks and spaces means a different command, such as changing the channel on your TV. Sometimes (and not every time), it's not just the order of marks and spaces you need to know, you might need to know the time duration of each mark and space before understanding the command.</p>
 
+<div class="center_outer"><div class="center_inner"><a href="img/extraclass/dataexamples.png"><img src="img/extraclass/dataexamples.png" width="100%" /></a></div></div>
+
 <p>The Arduino can read the marks and spaces as low or high voltage on a pin, and translate (decode) the marks and spaces into an integer. The way it does this actually depends on which brand of TV you have, Sony uses a different protocol than Samsung. This code involves a few layers of code:<ol><li>detect when there's a signal</li><li>measure the duration length of the pulse</li><li>store the pulse length data into a list</li><li>check which brand of TV using the list (this is kind of complicated)</li><li>decode the list into an integer, according to which TV brand (knowing the brand first makes this much easier, without knowing the brand, it's very hard)</li></ol></p>
 
 <p>Sounds pretty complicated, luckily for you, somebody has already written an Arduino library to take care of all this. You still need to know what the integer code for each of the buttons on your remote. This is when you need to use the serial monitor to debug what the receiver is sensing after the library has done the decoding.</p>
+
+<p>(if you have followed the previous lesson on Arduino programming, then you already have this library inside your sketchbook)</p>
 
 <h2>Exercise: Reading your TV remote</h2>
 
 <p>Make your robot move forward when you press "channel-up", and backward when you press "channel-down".</p>
 
-<p>First, you need to know what integer code command is being sent when you press channel-up and when you press channel-down. There's a sketch in your sketchbook called TvRemoteDebug, connect the IR remote receiver as shown before, and upload this sketch. Open the serial monitor the upload is complete, point your TV remote at the IR remote receiver, and press the channel-up button. Read and remember the text that appears on the screen. Do the same thing again for the channel-down button.</p>
+<div class="center_outer"><div class="center_inner"><a href="img/extraclass/sony_chupdown.jpg"><img src="img/extraclass/sony_chupdown.jpg" /></a></div></div>
+
+<p>First, you need to know what integer code command is being sent when you press channel-up and when you press channel-down. There's a sketch in your sketchbook called IrRemoteDebug, connect the IR remote receiver as shown before, and upload this sketch. Open the serial monitor the upload is complete, point your TV remote at the IR remote receiver, and press the channel-up button. Read and remember the text that appears on the screen. Do the same thing again for the channel-down button.</p>
 
 <p>Second, you need to use your code writing skills. Start writing a new sketch, your logic flow should look like this:</p>
 
 <div class="center_outer"><div class="center_inner"><a href="img/extraclass/irrx_exercise_flow.png"><img src="img/extraclass/irrx_exercise_flow.png" /></a></div></div>
+
+<fieldset class="hidable"><legend>Example with my Sony remote</legend>
+<div>
+<p>These screenshots only show what happens when I use my Sony remote. It will not be the same results as your TV remote, even if it is Sony branded.</p>
+<p>From the serial monitor, this is what I saw when I ran the IrRemoteDebug sketch:</p>
+<div class="center_outer"><div class="center_inner"><a href="img/extraclass/debug_ir_code.png"><img src="img/extraclass/debug_ir_code.png" /></a></div></div>
+<p>Using the information I obtained through debugging, I am able to write some code that looks partly like this:</p>
+<div class="center_outer"><div class="center_inner"><a href="img/extraclass/irrx_exercise_example.png"><img src="img/extraclass/irrx_exercise_example.png" /></a></div></div>
+<p>This doesn't follow the flow diagram above exactly, there's always more than one correct answer! From the code in the screen shot, you can learn a bit more about boolean operators like <span class="inlinecode">&amp;&amp;</span></p>
+<p>If you are confused about using numbers that start with <span class="inlinecode">0x</span> such as <span class="inlinecode">0x0890</span>, then you can study "<i>hexadecimal</i> numbers". There are several advantages of using hexadecimal numbers (also commonly written as just "<i>hex</i>") while programming. Right now, we are using it because it's a shorter way of writing numbers, and because it makes it clear which <i>bit</i> in the whole number is changing.</p>
+</div>
+</fieldset>
 
 <h2>Soldering your IR Remote Receiver</h2>
 
@@ -146,7 +168,36 @@ function body_onload() {
 
 <p>The printed circuit board for your robot has a small section that is often called the "<i>prototyping area</i>" and it has a grid of holes, just like a perfboard. You can solder the IR remote receiver into this prototyping area, and the solder wires between the IR remote receiver and the Arduino Nano. Using soldering is much more reliable than using a solderless breadboard, because the wires and components cannot fall out accidentally if they are soldered in.</p>
 
+<div class="center_outer"><div class="center_inner"><a href="img/extraclass/prototyping_area.jpg"><img src="img/extraclass/prototyping_area.jpg" width="100%" /></a></div></div>
 
+<p>First, solder your IR remote receiver into the prototyping area. Any spot is fine but think this through, you want to make connections later and you want to keep the wires short. You remember which lead goes to 5V, which lead goes to GND, and which lead goes to D8. The PCB is also labelled to help you find where to solder. Using wires, create the connections for these signals using three pieces of wire.</p>
+
+<div class="center_outer"><div class="center_inner"><a href="img/extraclass/irrx_soldered.jpg"><img src="img/extraclass/irrx_soldered.jpg" width="100%" /></a></div></div>
+
+<p>To help you understand, I have made a video on how to solder wires between points. Basically, make sure the solder joint has a lot of solder first, melt that solder and then stick in the wire's exposed end.</p>
+
+<div><video controls="controls" loop="loop" preload="none" muted="muted">
+  <source src="vid/soldering_wire_to_joint.mp4" type="video/mp4">
+  Your browser does not support the video tag.
+</video></div>
+
+<p>Also notice in the picture, all the solder joints and all the wires are soldered from the front side. There's no real rule that tells you which side you should use, in this case, it's easier to use the front so that's what we did. Get creative when you need to, if you are not sure if it will work, first, think about "what could go wrong?", and also... just try it out and see if it works, as long as nobody is going to get hurt.</p>
+
+<p>Now the IR remote receiver is a permanent part of your robot!</p>
+
+<h2>Afterword</h2>
+
+<p>You now know how to use a solderless breadboard, and you have a robot that can supply power and signals to any circuit you build using the breadboard. Breadboards are great because they save you money, since you can always re-use the parts you plug into it. But remember that the parts might accidentally pop out of a breadboard if you are not careful.</p>
+
+<p>You also know how to use a perfboard prototyping circuit board, when you need to make a circuit that is more durable than a breadboard. I also taught you how to desolder in the previous class, so you know how to both add components and remove components when you use a perfboard.</p>
+
+<p>If you ever need to build a big circuit, people do sell bigger breadboards, and you can actually connect breadboards together like lego bricks. Perfboards are available in all sizes and you can cut them if you have a saw or other cutting tool. Perfboards are dirt cheap.</p>
+
+<h2>Homework</h2>
+
+<p>Why not add more functions to your robot that can be activated by other buttons of your TV remote controller? All you need to do is read more command codes.</p>
+
+<p>Then, find some cool parts you want to attach to your robot. Perhaps you want to put a LCD screen on your robot and be able to display text? Maybe use a servo to give it a head that can look around?</p>
 
 </div>
-</fieldset>
+</body>
