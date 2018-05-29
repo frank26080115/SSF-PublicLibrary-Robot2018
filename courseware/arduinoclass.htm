@@ -288,8 +288,8 @@ parameters:	none
 	void setLedRightOff(void);
 	void setLedBackOn(void);
 	void setLedBackOff(void);
-	void setEmittersOn(void);
-	void setEmittersOff(void);
+	void setIrEmittersOn(void);
+	void setIrEmittersOff(void);
 	bool isButtonPressed(void);
 	unsigned int readPotentiometer(void);
 	unsigned int readSensorLeftSide(void);
@@ -342,18 +342,22 @@ parameters:	none
 
 <fieldset class="hidable"><legend>Exercise 2</legend>
 <div>
-<p>Make your robot chase a TV remote, but at the same time, avoid objects, such as your hand.</p>
+<p>Make your robot chase a TV remote when you press any button.</p>
 <p>This will require you to understand how to use <i>if-statements</i>, how to spin the motors, how to read the side sensors, and how to turn the infrared emitters on and off.</p>
-<p>Hint: if your infrared emitters are ON, and your sensors detect something, then you are detecting an object that is reflecting infrared light. If your infrared emitters are OFF, and your sensors detect something, then you are detecting an object that is emitting infrared light (such as a TV remote).</p>
 <p>Hint: you can use the serial port and serial monitor to read what the infrared phototransistor sees as a number on your screen.</p>
-<p>An example answer to this homework exercise is in the sketch called "ChaseOrAvoid"</p>
+<p>An example answer to this homework exercise is in the sketch called "ChaseTvRemote"</p>
 </div>
 </fieldset>
 
-<fieldset class="hidable"><legend>Exercise 2 Big Hint</legend>
+<fieldset class="hidable"><legend>Exercise 2 Hint</legend>
 <div>
+<p>Here's a basic video of what I meant for the robot to do.</p>
+<div><video controls="controls" loop="loop" preload="none">
+  <source src="vid/exercise2.mp4" type="video/mp4">
+  Your browser does not support the video tag.
+</video></div>
 <p>Sometimes it helps to draw a logic flow diagram before you code.</p>
-<div class="center_outer"><div class="center_inner"><a href="img/exercise2flow.png"><img src="img/exercise2flow.png" width="100%" /></a></div></div>
+<div class="center_outer"><div class="center_inner"><a href="img/arduino/exercise2flow.png"><img src="img/arduino/exercise2flow.png" width="100%" /></a></div></div>
 </div>
 </fieldset>
 
