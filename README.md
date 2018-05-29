@@ -6,6 +6,8 @@ Perhaps the data here is useful for other educational organizations on a budget.
 
 Please click "Clone or Download" and then "Download ZIP". When the ZIP file is downloaded, unzip it somewhere and open "courseware/index.htm" with a web browser. This will start the course. All the courseware is written as web pages, with pictures, videos, and interactive demos.
 
+The lessons are also hosted on my own website, http://eleccelerator.com/ssfpl_robotics_class_2018/
+
 ## Software Required
 
 - Arduino 1.8.1 (this is what SSF Public Library has currently installed)
