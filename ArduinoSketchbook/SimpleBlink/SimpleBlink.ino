@@ -1,5 +1,5 @@
 /*
- * This is a simple program that shows you how to make the two LEDs blink
+ * This is a simple program that shows you how to make the two LEDs blink without using any libraries
  * Here you will learn how to: 
  *  * define pin numbers
  *  * initialize pins as outputs

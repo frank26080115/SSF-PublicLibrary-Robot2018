@@ -37,7 +37,7 @@ void loop() {
     digitalWrite(pinLedLeft, HIGH);
     digitalWrite(pinLedRight, HIGH);
     servoLeft.writeMicroseconds(1500 + (pot - 512));
-    servoRight.writeMicroseconds(1500 - (pot - 512));
+    servoRight.writeMicroseconds(1500 + (pot - 512));
   }
   else
   {
