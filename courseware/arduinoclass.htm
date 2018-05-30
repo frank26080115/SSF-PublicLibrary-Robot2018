@@ -97,6 +97,14 @@ function body_onload() {
 
 <p>I have prepared a sketchbook for you already, it contains pieces of code and also the libraries you need. <br /> <a href="ArduinoSketchbook.zip"><h3>Click here to download the sketchbook</h3></a> <br /> Either save this to your own computer or save it to the USB drive. It is a ZIP file, so you need to extract (aka unzip) the folder from inside the ZIP file to somewhere on your own computer or to your USB drive. It's almost the same as copying the folder.</p>
 
+<fieldset class="hidable">
+<legend>Github</legend>
+<div>
+<p>Github is a website where people share code, and other files. I've included links to where the sketches are shared on Github. So you can follow along even if you cannot download the sketchbook, do not have Arduino IDE installed, or reading from a smartphone.</p>
+<p>Example <a href="https://github.com/frank26080115/SSF-PublicLibrary-Robot2018/tree/master/ArduinoSketchbook" target="_blank">main sketchbook folder Github link</a></p>
+</div>
+</fieldset>
+
 <div class="center_outer"><div class="center_inner"><a href="img/arduino/copy_sketchbook.png"><img src="img/arduino/copy_sketchbook.png" width="100%" /></a></div></div>
 
 <p>You need to tell the Arduino IDE where the sketchbook is (where you copied/extracted it to). Run the Arduino IDE and use the "preferences" dialog to change the sketchbook location. See screenshot below</p>
@@ -133,7 +141,7 @@ function body_onload() {
 
 <p>(the port number might be different, that's OK, the number could be different on a different computer, or the computer might have more than one port, if you pick wrong, just guess again later)</p>
 
-<p>Inside the Arduino IDE, open the "HardwareTestLEDsBlink" sketch...</p>
+<p>Inside the Arduino IDE, open the "HardwareTestLEDsBlink" sketch (<a href="https://github.com/frank26080115/SSF-PublicLibrary-Robot2018/tree/master/ArduinoSketchbook/HardwareTestLEDsBlink/HardwareTestLEDsBlink.ino" target="_blank">github link</a>)...</p>
 <div class="center_outer"><div class="center_inner"><a href="img/arduino/open_sketch_blank.png"><img src="img/arduino/open_sketch_blank.png" /></a></div></div>
 <p>Once the sketch is open, simply press the upload button...</p>
 <div class="center_outer"><div class="center_inner"><a href="img/arduino/click_upload.png"><img src="img/arduino/click_upload.png" /></a></div></div>
@@ -155,7 +163,7 @@ function body_onload() {
 
 <div class="center_outer"><div class="center_inner"><a href="img/arduino/serial_monitor.png"><img src="img/arduino/serial_monitor.png" /></a></div></div>
 
-<p>Try uploading the sketch named "SerialPortDemo". It will count a number through the serial terminal.</p>
+<p>Try uploading the sketch named "SerialPortDemo" (<a href="https://github.com/frank26080115/SSF-PublicLibrary-Robot2018/tree/master/ArduinoSketchbook/SerialPortDemo/SerialPortDemo.ino" target="_blank">github link</a>). It will count a number through the serial terminal.</p>
 
 <div><video controls="controls" loop="loop" preload="none">
   <source src="vid/serialportdemo.mp4" type="video/mp4">
@@ -194,6 +202,7 @@ thisIsNotCodeComment(); // this is a code comment
 <p>We need to run more code to make sure all of our circuit works correctly, that all the components are not broken and all your soldering joints are done right. I have written a few sketches for you to run:</p>
 
 <fieldset><legend>Sketch: HardwareTestMotorsSpin</legend><p>This will spin both motors and make your robot dizzy. This makes sure that both motors work and accepts your commands.</p>
+<p>(<a href="https://github.com/frank26080115/SSF-PublicLibrary-Robot2018/tree/master/ArduinoSketchbook/HardwareTestMotorsSpin/HardwareTestMotorsSpin.ino" target="_blank">github link</a>)</p>
 <!-- <div><video controls="controls" loop="loop" preload="none">
   <source src="vid/demo_dance.mp4" type="video/mp4">
   Your browser does not support the video tag.
@@ -202,6 +211,7 @@ thisIsNotCodeComment(); // this is a code comment
 </fieldset>
 
 <fieldset><legend>Sketch: HardwareTestSideSensors</legend><p>This will use the LEDs to show you what the side-facing sensors see, by making the LEDs dimmer or brighter. This checks if your side-facing sensors work and are connected correctly.</p>
+<p>(<a href="https://github.com/frank26080115/SSF-PublicLibrary-Robot2018/tree/master/ArduinoSketchbook/HardwareTestSideSensors/HardwareTestSideSensors.ino" target="_blank">github link</a>)</p>
 <!-- <div><video controls="controls" loop="loop" preload="none">
   <source src="vid/demo_sidesensors.mp4" type="video/mp4">
   Your browser does not support the video tag.
@@ -211,6 +221,7 @@ thisIsNotCodeComment(); // this is a code comment
 </fieldset>
 
 <fieldset><legend>Sketch: HardwareTestFloorSensors</legend><p>This will use the LEDs to show you what the floor sensors see (white or black surface), by making the LEDs dimmer or brighter. This checks if your floor sensors work and are connected correctly.</p>
+<p>(<a href="https://github.com/frank26080115/SSF-PublicLibrary-Robot2018/tree/master/ArduinoSketchbook/HardwareTestFloorSensors/HardwareTestFloorSensors.ino" target="_blank">github link</a>)</p>
 <div><video controls="controls" loop="loop" preload="none" muted="muted">
   <source src="vid/floorsensortest_500.mp4" type="video/mp4">
   Your browser does not support the video tag.
@@ -219,6 +230,7 @@ thisIsNotCodeComment(); // this is a code comment
 </fieldset>
 
 <fieldset><legend>Sketch: HardwareTestPotentiometerAndButton</legend><p>This will use the LEDs to show you what the potentiometer is set to, and whether or not the button is being pressed. This checks if the button and potentiometer are connected correctly.</p>
+<p>(<a href="https://github.com/frank26080115/SSF-PublicLibrary-Robot2018/tree/master/ArduinoSketchbook/HardwareTestPotentiometerAndButton/HardwareTestPotentiometerAndButton.ino" target="_blank">github link</a>)</p>
 <div><video controls="controls" loop="loop" preload="none" muted="muted">
   <source src="vid/potbuttontest_500.mp4" type="video/mp4">
   Your browser does not support the video tag.
@@ -234,7 +246,7 @@ thisIsNotCodeComment(); // this is a code comment
 
 <p><span class="inlinecode">#include &lt;BookWorm.h&gt;</span> is how we tell the compiler and IDE to include the "BookWorm" library.</p>
 
-<p>The BookWorm library is here to make the code easier to understand, and easier to write. It also prevents the robot from doing sometime really stupid during one of the homework exercises.</p>
+<p>The BookWorm library (<a href="https://github.com/frank26080115/SSF-PublicLibrary-Robot2018/tree/master/ArduinoSketchbook/Libraries/BookWorm" target="_blank">github link</a>) is here to make the code easier to understand, and easier to write. It also prevents the robot from doing sometime really stupid during one of the homework exercises.</p>
 
 <p>For example, when you want to read the left side floor sensors, without the library, you need to write <span class="inlinecode">x = analogRead(A3);</span>. But using the library, you can write <span class="inlinecode">x = BookWorm.readSensorLeftFloor();</span> instead.</p>
 
@@ -244,7 +256,7 @@ thisIsNotCodeComment(); // this is a code comment
 <div>
 <p>One way is to just read the code of the library. The files are inside your sketchbook (under "Libraries" then "BookWorm").</p>
 <p>You will see many files, some of them are <span class="inlinecode">.cpp</span> files, meaning they are code files, and they mostly contain functions. Some are <span class="inlinecode">.h</span> files, these are header files, these usually only contain a list of the functions but not the contents of the functions. Header files also usually contain useful definitions of things.</p>
-<p>If you open <span class="inlinecode">BookWorm.cpp</span> , you can see functions that look like: </p>
+<p>If you open <span class="inlinecode">BookWorm.cpp</span> (<a href="https://github.com/frank26080115/SSF-PublicLibrary-Robot2018/blob/master/ArduinoSketchbook/Libraries/BookWorm/BookWorm.cpp" target="_blank">github link</a>), you can see functions that look like: </p>
 <pre class="code">
 unsigned int cBookWorm::readPotentiometer(void)
 {
@@ -265,7 +277,7 @@ parameters:	none
 */
 </pre>
 <p>This is important, comments that look like this describes what the function does, what it will tell you (the return), and what it needs to know (the parameters). Libraries often have comments like this to help people understand how to use a function.</p>
-<p>The <span class="inlinecode">BookWorm.h</span> header file contains a definition list of all the pins used on our robot. It looks like:</p>
+<p>The <span class="inlinecode">BookWorm.h</span> header file (<a href="https://github.com/frank26080115/SSF-PublicLibrary-Robot2018/blob/master/ArduinoSketchbook/Libraries/BookWorm/BookWorm.h" target="_blank">github link</a>) contains a definition list of all the pins used on our robot. It looks like:</p>
 <pre class="code">
 #define pinButton           10
 #define pinLedLeft           6
@@ -349,7 +361,7 @@ parameters:	none
 <p>Make your robot chase a TV remote when you press any button.</p>
 <p>This will require you to understand how to use <i>if-statements</i>, how to spin the motors, how to read the side sensors, and how to turn the infrared emitters on and off.</p>
 <p>Hint: you can use the serial port and serial monitor to read what the infrared phototransistor sees as a number on your screen.</p>
-<p>An example answer to this homework exercise is in the sketch called "ChaseTvRemote"</p>
+<p>An example answer to this homework exercise is in the sketch called "ChaseTvRemote" (<a href="https://github.com/frank26080115/SSF-PublicLibrary-Robot2018/blob/master/ArduinoSketchbook/ChaseTvRemote/ChaseTvRemote.ino" target="_blank">github link</a>)</p>
 </div>
 </fieldset>
 
@@ -370,7 +382,7 @@ parameters:	none
 <p>Make your robot wander around until it sees a wall, and then turn away from the wall so that it can continue going.</p>
 <p>This will require you to understand how to use <i>if-statements</i>, how to spin the motors, how to read the side sensors, and how to turn the infrared emitters on and off.</p>
 <p>Hint: you can use the serial port and serial monitor to read what the infrared phototransistor sees as a number on your screen.</p>
-<p>An example answer to this homework exercise is in the sketch called "WallAvoider". This sketch will introduce you to <i>while-loops</i> and <i>do-while-loops</i>.</p>
+<p>An example answer to this homework exercise is in the sketch called "WallAvoider" (<a href="https://github.com/frank26080115/SSF-PublicLibrary-Robot2018/blob/master/ArduinoSketchbook/WallAvoider/WallAvoider.ino" target="_blank">github link</a>). This sketch will introduce you to <i>while-loops</i> and <i>do-while-loops</i>.</p>
 <div><video controls="controls" loop="loop" preload="none">
   <source src="vid/wallavoider.mp4" type="video/mp4">
   Your browser does not support the video tag.
