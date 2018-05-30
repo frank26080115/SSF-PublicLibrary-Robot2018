@@ -1,0 +1,138 @@
+<html>
+<head>
+<title>Controlling Your TV</title>
+<link rel="stylesheet" type="text/css" href="css/stylesheet.css" title="style" />
+<link rel="stylesheet" type="text/css" href="css/divtable.css" title="style" />
+<link rel="stylesheet" href="css/highlight/tomorrow-night.css">
+<script src="js/highlight.pack.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+
+<style>
+.qty_col
+{
+	font-size: 25pt;
+}
+</style>
+
+<script type="text/javascript" src="js/javascript.js"></script>
+
+<script type="text/javascript">
+
+function body_onload() {
+	makeAllVideos("img/film_animation.gif");
+
+	makeTableOfContents("tableofcontents", "h2");
+
+	makeAllHidables();
+}
+
+</script>
+
+</head>
+<body onload="body_onload()">
+<div class="body_div">
+
+<div id="banner_black"><img src="img/banner_black.png" /></div>
+<div id="banner_white"><img src="img/banner_white.png" /></div>
+
+<h1>Controlling Your TV</h1>
+
+<div id="tableofcontents"></div>
+
+<h2>Foreword</h2>
+
+<p>We have IR emitting LEDs on our robot, and you've learned how TV remote controls work. Do you think we can control your TV with our robot? The answer is YES!</p>
+
+<p>This lesson is split between a programming exercise and a thought exercise. I will be walking you through the thought process behind accomplishing a project like this.</p>
+
+<h2>Get Started</h2>
+
+<p>Our goal is to make the TV change channel, to the next channel, every 10 seconds automatically. This is our <i>high level goal</i>.</p>
+
+<p>If you think about it, what you need to do is blink the IR emitter LED in a very specific sequence. You already know how to blink LEDs slowly, you just got to use the same idea, but faster, right?.</p>
+
+<p>You are right, but the problem is finding out what you need to send out. You might be thinking, "we have a debug sketch that tells me what the TV remote is sending, I could just copy that and send it back", and you know what, you are kind of right, keep in mind, that data has already been decoded. You don't actually know how long each mark and space is, even if you know the decoded data.</p>
+
+<p>"How did you get those waveform pictures in the previous lesson? Those shows me how long each mark and space should be."<br />That was captured with a tool called a logic analyzer. If you own one, you are probably skilled enough to not even need any of my lessons. For this class, I will pretend you don't own one.</p>
+
+<h2>The Library</h2>
+
+<p>"If there is a library for reading received IR codes, there must be a library for sending IR codes, right?" Bingo, actually it's the same library, it does both in one library. When I found the <a href="https://github.com/z3t0/Arduino-IRremote" target="_blank">library on github</a>, the front page said "This library enables you to send and receive using infra-red signals on an Arduino".</p>
+
+<p>The library's Github page doesn't really tell you how to use it. It actually says "TODO (Check examples for now)" where it was supposed to explain "Usage". That's what we are about to do.</p>
+
+<h2>Studying the Example</h2>
+
+<p>Take a look at this example: <a href="https://github.com/z3t0/Arduino-IRremote/blob/master/examples/IRsendDemo/IRsendDemo.ino" target="_blank">IRsendDemo.ino (github link)</a></p>
+
+<pre class="code"><code class="C++">
+/*
+ * IRremote: IRsendDemo - demonstrates sending IR codes with IRsend
+ * An IR LED must be connected to Arduino PWM pin 3.
+ * Version 0.1 July, 2009
+ * Copyright 2009 Ken Shirriff
+ * http://arcfn.com
+ */
+
+
+#include &lt;IRremote.h&gt;
+
+IRsend irsend;
+
+void setup()
+{
+}
+
+void loop() {
+	for (int i = 0; i < 3; i++) {
+		irsend.sendSony(0xa90, 12);
+		delay(40);
+	}
+	delay(5000); //5 second delay between each signal burst
+}
+</code></pre>
+
+<p>Notice a few things...</p>
+
+<p><span class="inlinecode">An IR LED must be connected to Arduino PWM pin 3.</span> This I have done when I designed the robot's circuit and PCB. I fully understood how to use this library before designing the circuit. Go check the <a href="circuitbasics.htm">circuit basic class page</a> for the schematic diagram.</p>
+
+<p><span class="inlinecode">IRsend irsend;</span> seems to be how to globally declare an instance of IRsend that we can use, and thus, using functions should look like <span class="inlinecode">irsend.doSomething();</span></p>
+
+<p><span class="inlinecode">irsend.sendSony(0xa90, 12);</span> seems to be how to actually send the code. It says "Sony", and your TV might be Sharp or Samsung. We also need to find out what 0xA90 and 12 actually means.</p>
+
+<fieldset><legend>Warning: Library Name Confusion</legend>
+<div>
+<p>The code that I wrote say <span class="inlinecode">#include &lt;IRremote_Include.h&gt;</span> but other people write <span class="inlinecode">#include &lt;IRremote.h&gt;</span></p>
+
+<p>Why?</p>
+
+<p>This IRremote library has some installation steps that require you to delete stuff from inside Arduino IDE. Now since the public library computers are locked-down, it is impossible to do this. But by simply renaming IRremote.h to IRremote_Include.h, we avoid this problem.</p>
+
+<p>This only works if you are using the sketchbook I prepared for you.</p>
+</div>
+</fieldset>
+
+<h2>Studying the Library</h2>
+
+<p>We need to look through the library code and find out how to write similar code, but for whatever brand of TV you have (I will pretend you have Samsung for the rest of this lesson). Remember the stuff I told you about reading what is available in a library from the Arduino lesson.</p>
+
+<p>If you look at the files inside the library, they've made it very easy to find the brand you need.</p>
+
+<div class="center_outer"><div class="center_inner"><img src="img/connyourtv/brand_specific_files.png" /></div></div>
+
+<p>Open ir_Sony.cpp (<a href="https://github.com/z3t0/Arduino-IRremote/blob/master/ir_Sony.cpp" target="_blank">github link</a>)</p>
+
+<p>One of the first functions you'll see is <span class="inlinecode">void  IRsend::sendSony(unsigned long data,  int nbits)</span>. This means the 0xA90 should mean "data" and 12 should mean "nbits" (number of bits). Cool, so let's see the version of the function meant for Samsung.</p>
+
+<p>Open ir_Samsung.cpp (<a href="https://github.com/z3t0/Arduino-IRremote/blob/master/ir_Samsung.cpp" target="_blank">github link</a>)</p>
+
+<p>In roughly the same spot as before, you see <span class="inlinecode">void  IRsend::sendSAMSUNG (unsigned long data,  int nbits)</span>. This means the function call would look like <span class="inlinecode">irsend.sendSAMSUNG(0xSomeNumber, AnotherNumber);</span> and we just need to find out what "data" should be and "nbits" should be.</p>
+
+
+
+
+<div class="noprint"><br /><br /><hr /><h3><a href="index.htm">Click Here, to return to the list of classes</a></h3></div>
+
+</div>
+</body>
+</html>
