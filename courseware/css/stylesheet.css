@@ -67,6 +67,7 @@ body
 	background-color: #000;
 	color: #FFF;
 	padding: 30px;
+	-webkit-text-size-adjust: 100%;
 }
 
 a, a:visited, a:active
