@@ -143,13 +143,13 @@ I want to help you understand the circuit of this robot as fast as possible, and
 
 <p>When you connect a LED in a circuit, you need something to control the amount of current flowing through it, or else it could get too hot and burn. To do this easily, we add a resistor into the path of the flow. A resistor is like a very narrow water pipe, the higher the resistance, the tighter the pipe, the lower the flow.</p>
 
-<p>(<a href="https://en.wikipedia.org/wiki/Resistor" target="_blank">resistors</a> have a resistance value, the unit is called "ohm", and the symbol is Ω, more Ω means less current)</p>
+<p>(<a href="https://en.wikipedia.org/wiki/Resistor" target="_blank">resistors</a> have a resistance value, the unit is called "ohm", and the symbol is &#8486;, more &#8486; means less current)</p>
 
 <p>The following demo shows how higher resistance leads to less current, and thus a dimmer LED. A lower resistance leads to more current and thus a brighter LED.</p>
 
 <div class="center_outer"><div class="center_inner"><iframe width="100%" height="400" src="http://everycircuit.com/embed/6477951125422080" frameborder="0"></iframe></div></div>
 
-<p>For lighting up a LED, it doesn’t matter if the resistor is before or after the LED. The following demo shows how the resistor's location doesn't affect how the LED behaves. Also, there's a button in this demo, if you press it, it shows what happens if you don't put use a resistor with the LED (it burns up in an explosion).</p>
+<p>For lighting up a LED, it doesn't matter if the resistor is before or after the LED. The following demo shows how the resistor's location doesn't affect how the LED behaves. Also, there's a button in this demo, if you press it, it shows what happens if you don't put use a resistor with the LED (it burns up in an explosion).</p>
 
 <div class="center_outer"><div class="center_inner"><iframe width="100%" height="400" src="http://everycircuit.com/embed/5581467232239616" frameborder="0"></iframe></div></div>
 
@@ -164,9 +164,9 @@ I want to help you understand the circuit of this robot as fast as possible, and
 
 <p><img src="img/tctr5000.jpg" width="100%" /></p>
 
-<p>A phototransistor changes the amount of current flowing through it, like a resistor that can change resistance. When it senses more infrared light, there’s more current flowing. This means we can see how <b>close</b> an object is or how <b>reflective</b> an object is depending on how much current is flowing through the phototransistor, when we shine infrared light on that object.</p>
+<p>A phototransistor changes the amount of current flowing through it, like a resistor that can change resistance. When it senses more infrared light, there's more current flowing. This means we can see how <b>close</b> an object is or how <b>reflective</b> an object is depending on how much current is flowing through the phototransistor, when we shine infrared light on that object.</p>
 
-<p>It’s not easy to measure current. It is easy to measure voltage. This is why a lot of sensors output a voltage that can change according to what it is sensing, because it is easy to measure voltage.</p>
+<p>It's not easy to measure current. It is easy to measure voltage. This is why a lot of sensors output a voltage that can change according to what it is sensing, because it is easy to measure voltage.</p>
 
 <p>But a phototransistor changes current, not voltage, how can we measure the infrared light?</p>
 
@@ -191,7 +191,7 @@ class="slider" width="100%" style="width: 100% !important;"
 id="voltagedivider_slider_r1" onchange="voltagedivider_onchange()" oninput="voltagedivider_onchange()"
 />
 </div>
-<div class="divTableCell" style="font-family: monospace; font-size: 16pt"><span id="voltagedivider_txt_r1">&nbsp;5000</span>Ω</div>
+<div class="divTableCell" style="font-family: monospace; font-size: 16pt"><span id="voltagedivider_txt_r1">&nbsp;5000</span>&#8486;</div>
 </div>
 <div class="divTableRow">
 <div class="divTableCell">R2</div>
@@ -202,7 +202,7 @@ class="slider" width="100%" style="width: 100% !important;"
 id="voltagedivider_slider_r2" onchange="voltagedivider_onchange()" oninput="voltagedivider_onchange()"
 />
 </div>
-<div class="divTableCell" style="font-family: monospace; font-size: 16pt"><span id="voltagedivider_txt_r2">&nbsp;5000</span>Ω</div>
+<div class="divTableCell" style="font-family: monospace; font-size: 16pt"><span id="voltagedivider_txt_r2">&nbsp;5000</span>&#8486;</div>
 </div>
 <div class="divTableRow">
 <div class="divTableCell" style="vertical-align:middle;">Measured<br />Output<br />Voltage:</div>
@@ -238,7 +238,7 @@ id="voltagedivider_slider_r2" onchange="voltagedivider_onchange()" oninput="volt
 
 <p><img src="img/ckt_explainingbuttons.jpg" width="100%" /></p>
 
-<p>(The resistor inside the Arduino is called the "internal pull-up resistor". The resistance is high, somewhere between 10kΩ and 100kΩ. They are not made very exact because that's difficult to do when they are internal.)</p>
+<p>(The resistor inside the Arduino is called the "internal pull-up resistor". The resistance is high, somewhere between 10k&#8486; and 100k&#8486;. They are not made very exact because that's difficult to do when they are internal.)</p>
 
 <p>It is a good idea to use the button as a start button for the robot. We do not want the robot to unexpectedly run away when you put the batteries in.</p>
 
