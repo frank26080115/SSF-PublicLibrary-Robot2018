@@ -1,5 +1,11 @@
 #include <Servo.h>
 
+/*
+ * this sketch is used to quickly verify that the servos are connected correctly, and are responding correctly
+ * the potentiometer on the robot will determine the spin speed
+ * use this sketch to help tune the center adjustment potentiometer of each servo
+ */
+
 #define pinLedLeft 6
 #define pinLedRight 5
 #define pinServoLeft 9 

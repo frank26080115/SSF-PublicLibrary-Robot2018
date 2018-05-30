@@ -24,7 +24,7 @@ void loop() {
   if (irrecv.decode(&results)) // we have new remote command, saved into "results" data structure
   {
     // print the contents of the data structure to serial terminal
-    BookWorm.printf(F("IR Data Received! Brand: 0x%02X , Code: 0x%04X\r\n"), results.decode_type, results.value);
+    BookWorm.printf(F("IR Data Received! Brand: 0x%02X , Code: 0x%04X , Bits: %d\r\n"), results.decode_type, results.value, results.bits);
 
     irrecv.resume(); // required if you need to read another command
   }

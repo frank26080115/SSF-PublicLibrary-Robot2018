@@ -1,5 +1,9 @@
 #include <BookWorm.h>
 
+/*
+ * This sketch is made for a device Frank built to make sure that a sensor is not broken
+ */
+
 void setup() {
   // put your setup code here, to run once:
   BookWorm.begin();

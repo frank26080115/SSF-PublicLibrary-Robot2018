@@ -7,6 +7,7 @@
 #include <avr/pgmspace.h>
 #include "WString.h"
 
+// pin definitions that can be utilized by other libraries
 #define pinButton           10
 #define pinLedLeft           6
 #define pinLedRight          5
@@ -49,6 +50,8 @@ public:
 	void moveLeftServo(signed int left);
 	void moveRightServo(signed int right);
 	void moveMixed(signed int throttle, signed int steer);
+
+	// these functions below require more understanding of how servo signals work
 	void calcMix(signed int throttle, signed int steer, signed int * left, signed int * right);
 	void setAccelLimit(unsigned int accel);
 	void enableAccelLimit(void);
@@ -58,13 +61,15 @@ public:
 	void setServoBiasLeft(signed int x);
 	void setServoBiasRight(signed int x);
 
+	// these functions require the user to modify the library
 	int readTvRemote(void);
 	void sendTvRemote(uint8_t brand, unsigned long data, unsigned int nbits);
 
+	// these are for making it easier to debug
 	int printf(const char *format, ...);
 	int printf(const __FlashStringHelper *format, ...);
 };
 
-extern cBookWorm BookWorm;
+extern cBookWorm BookWorm; // declare user accessible instance
 
 #endif

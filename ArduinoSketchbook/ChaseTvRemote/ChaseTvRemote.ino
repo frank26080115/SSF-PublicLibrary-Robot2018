@@ -2,7 +2,7 @@
 
 void setup() {
   // put your setup code here, to run once:
-  BookWorm.begin();
+  BookWorm.begin(); // sets up the pin directions on the robot circuit
 
   // since we are chasing a TV remote
   // which is an IR light source
