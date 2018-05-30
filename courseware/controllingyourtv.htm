@@ -43,7 +43,7 @@ function body_onload() {
 
 <p>We have IR emitting LEDs on our robot, and you've learned how TV remote controls work. Do you think we can control your TV with our robot? The answer is YES!</p>
 
-<p>This lesson is split between a programming exercise and a thought exercise. I will be walking you through the thought process behind accomplishing a project like this.</p>
+<p>This lesson is meant to help you get practice exploring code in order to accomplish your own projects. It involves reading into an Arduino library, and finding out how to use it for your own purposes.</p>
 
 <h2>Get Started</h2>
 
@@ -63,7 +63,7 @@ function body_onload() {
 
 <h2>Studying the Example</h2>
 
-<p>Take a look at this example: <a href="https://github.com/z3t0/Arduino-IRremote/blob/master/examples/IRsendDemo/IRsendDemo.ino" target="_blank">IRsendDemo.ino (github link)</a></p>
+<p>Take a look at this example: IRsendDemo.ino (<a href="https://github.com/frank26080115/SSF-PublicLibrary-Robot2018/tree/master/ArduinoSketchbook/Libraries/Arduino-IRremote/examples/IRsendDemo/IRsendDemo.ino" target="_blank">github link</a>)</p>
 
 <pre class="code"><code class="C++">
 /*
@@ -118,18 +118,56 @@ void loop() {
 
 <p>If you look at the files inside the library, they've made it very easy to find the brand you need.</p>
 
-<div class="center_outer"><div class="center_inner"><img src="img/connyourtv/brand_specific_files.png" /></div></div>
+<div class="center_outer"><div class="center_inner"><img src="img/extraclass/brand_specific_files.png" /></div></div>
 
-<p>Open ir_Sony.cpp (<a href="https://github.com/z3t0/Arduino-IRremote/blob/master/ir_Sony.cpp" target="_blank">github link</a>)</p>
+<p>Open ir_Sony.cpp (<a href="https://github.com/frank26080115/SSF-PublicLibrary-Robot2018/tree/master/ArduinoSketchbook/Libraries/Arduino-IRremote/ir_Sony.cpp" target="_blank">github link</a>)</p>
 
 <p>One of the first functions you'll see is <span class="inlinecode">void  IRsend::sendSony(unsigned long data,  int nbits)</span>. This means the 0xA90 should mean "data" and 12 should mean "nbits" (number of bits). Cool, so let's see the version of the function meant for Samsung.</p>
 
-<p>Open ir_Samsung.cpp (<a href="https://github.com/z3t0/Arduino-IRremote/blob/master/ir_Samsung.cpp" target="_blank">github link</a>)</p>
+<p>Open ir_Samsung.cpp (<a href="https://github.com/frank26080115/SSF-PublicLibrary-Robot2018/tree/master/ArduinoSketchbook/Libraries/Arduino-IRremote/ir_Samsung.cpp" target="_blank">github link</a>)</p>
 
 <p>In roughly the same spot as before, you see <span class="inlinecode">void  IRsend::sendSAMSUNG (unsigned long data,  int nbits)</span>. This means the function call would look like <span class="inlinecode">irsend.sendSAMSUNG(0xSomeNumber, AnotherNumber);</span> and we just need to find out what "data" should be and "nbits" should be.</p>
 
+<p>Remember the sketch "IrRemoteDebug" (<a href="https://github.com/frank26080115/SSF-PublicLibrary-Robot2018/tree/master/ArduinoSketchbook/IrRemoteDebug/IrRemoteDebug.ino" target="_blank">github link</a>) and how it dumped the brand and code? Open the sketch "IrRemoteDebugWithBits" (<a href="https://github.com/frank26080115/SSF-PublicLibrary-Robot2018/tree/master/ArduinoSketchbook/IrRemoteDebugWithBits/IrRemoteDebugWithBits.ino" target="_blank">github link</a>). As the name implies, it will tell you how many bits each command should be.</p>
 
+<h2>What's in this data structure?</h2>
 
+<p>If you compared the two skeches IrRemoteDebug and IrRemoteDebugWithBits, you'll notice that the information about "number of bits" is stored in <span class="inlinecode">results.bits</span> , which means it's a part of the <span class="inlinecode">results</span> data structure. You should be wondering, "how do I know what a data structure contains?"</p>
+
+<p>Since the declaration of <span class="inlinecode">results</span> is <span class="inlinecode">decode_results  results;</span>, we know <span class="inlinecode">decode_results</span> is the actual type of the data structure, <span class="inlinecode">results</span> is just a variable name that represents one instance of the data structure. Open up "IRremote.h" (<a href="https://github.com/frank26080115/SSF-PublicLibrary-Robot2018/tree/master/ArduinoSketchbook/Libraries/Arduino-IRremote/IRremote.h" target="_blank">github link</a>), and you'll find this piece of code:</p>
+
+<pre class="code"><code class="C++">
+//------------------------------------------------------------------------------
+// Results returned from the decoder
+//
+class decode_results
+{
+	public:
+		decode_type_t          decode_type;  // UNKNOWN, NEC, SONY, RC5, ...
+		unsigned int           address;      // Used by Panasonic & Sharp [16-bits]
+		unsigned long          value;        // Decoded value [max 32-bits]
+		int                    bits;         // Number of bits in decoded value
+		volatile unsigned int  *rawbuf;      // Raw intervals in 50uS ticks
+		int                    rawlen;       // Number of records in rawbuf
+		int                    overflow;     // true iff IR raw code too long
+};
+</code></pre>
+
+<p>If you have trouble finding out exactly which file to look in, remember that most good code editors have a function to search across files. Also, GitHub has a search function that can search within specific projects.</p>
+
+<p>So now, if you are ever confused about how to find out what a data structure contains, you know how to find out.</p>
+
+<h2>Almost Done</h2>
+
+<p>With the new debug data, you should be able to use the same steps to obtain the "nbits" you need.</p>
+
+<h2>Homework</h2>
+
+<p>I think you've learned enough to be able to finish this project. Go for it. There is no "example answer" for this homework.</p>
+
+<p>What could you do with this project? You can make your own <a href="https://www.logitech.com/en-us/product/harmony-hub" target="_blank">Logitech Harmony Hub</a> if you just add some bluetooth module to your robot. There are plenty of possibilities.</p>
+
+<p>If you have a friend who also has one of our robots, you could make them talk to each other.</p>
 
 <div class="noprint"><br /><br /><hr /><h3><a href="index.htm">Click Here, to return to the list of classes</a></h3></div>
 

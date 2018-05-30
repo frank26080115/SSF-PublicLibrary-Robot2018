@@ -64,10 +64,10 @@ function body_onload() {
 
 <fieldset class="hidable"><legend>Signal Direction and Sharing Connections</legend>
 <div>
-<p>Think of pins as able to become inputs or outputs. If you try to use a pin as an input (try to read it) while it is already outputting something, obviously, you are only going to read what you are already outputting.</p>
+<p>Think of pins as able to become inputs or outputs. If you try to use a pin as an input (try to read it) while it is already outputting something, you are only going to read what you are already outputting. (because it's the same piece of metal, it counts as a connection to itself)</p>
 <p>When a pin is an input, and you have a device with an output pin, then you can connect them together. And vice versa, if a device has an input pin, then you should make your pin an output.</p>
 <p>If you connect an input Arduino pin to an input device pin, then your Arduino won't read anything useful, and your device won't read anything useful. Both of them will get really confused.</p>
-<p>If you connect an output Arduino pin to an output device pin, then you will cause a bad situation called a <i>conflict</i>. This could potentially damage your device or your Arduino. The resulting voltage and current depends on the <i>drive strength</i> and <i>output resistance</i> of the pins (simply, more resistance means less strength).</p>
+<p>If you connect an output Arduino pin to an output device pin, then you could cause a bad situation where a positive voltage meets a lower/negative voltage without any resistance in between to slow down the current. This could potentially damage your device or your Arduino due to the high amount of current. The resulting voltage and current depends on the <i>drive strength</i> and <i>output resistance</i> of the pins (simply, more resistance means less strength).</p>
 <p>Don't worry, clever engineers have already invented ways to make pins both an input and output, and ways of allowing hundreds of devices talk using only one wire. Remember that pins and wires cost money so these are important features! The possibilities are endless. Devices that can do this are very intelligent devices, not dumb devices like LEDs. Some devices only "talk" when "spoken to", sometimes a device in a group knows how to take turns "talking", sometimes you simply use another signal to select which device should be communicating.</p>
 </div>
 </fieldset>
@@ -112,7 +112,7 @@ function body_onload() {
 <h2>How do TV remotes work?</h2>
 <p>TV remotes work by sending pulses of IR light. IR light is chosen because people cannot see it. But your light bulbs in your home, the sun, and many other things also output IR light, so how does your TV know which IR light is coming from the remote control?</p>
 
-<p>The IR light from a remote control blinks very fast (pulsing), about 38000 times per second, we call this 38000 Hz, or 38 kHz. The sun doesn't blink at all. The IR remote receiver is a sensor that can detect when IR light is increasing and decreasing repeatedly at about 38 kHz. This is known as modulation (transmitting pulses) and demodulation (receiving the pulses).</p>
+<p>The IR light from a remote control blinks very fast (pulsing), about 38000 times per second, we call this 38000 <a href="" target="_blank">Hz</a>, or 38 kHz. The sun doesn't blink at all. The IR remote receiver is a sensor that can detect when IR light is increasing and decreasing repeatedly at about 38 kHz. This is known as modulation (transmitting pulses) and demodulation (receiving the pulses).</p>
 
 <p>The receiver's data pin will output a low voltage signal when the pulses are being detected, and vice versa, it will output a high voltage signal when pulses are not detected (or when the pulses are too slow or too fast, it has to be close to 38 kHz). In the topic of communication, we call the output "<i>mark</i>" (pulses detected) and "<i>space</i>" (no pulses).</p>
 
@@ -199,7 +199,7 @@ function body_onload() {
 
 <p>Then, find some cool parts you want to attach to your robot. Perhaps you want to put a LCD screen on your robot and be able to display text? Maybe use a servo to give it a head that can look around? How about a tiny speaker so you can make some noise?</p>
 
-<p>Your robot has IR emitting LEDs, now that you can debug what your own TV remote is sending, do you think you can make your robot automatically control your TV? Try making your TV change channels every 5 seconds. (there will be another lesson on this in the future)</p>
+<p>Your robot has IR emitting LEDs, now that you can debug what your own TV remote is sending, do you think you can make your robot automatically control your TV? Try making your TV change channels every 5 seconds. (there is a <a href="controllingyourtv.htm">lesson on this, click here</a>)</p>
 
 <div class="noprint"><br /><br /><hr /><h3><a href="index.htm">Click Here, to return to the list of classes</a></h3></div>
 
