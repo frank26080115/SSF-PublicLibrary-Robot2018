@@ -157,6 +157,11 @@ function body_onload() {
 
 <p>Try uploading the sketch named "SerialPortDemo". It will count a number through the serial terminal.</p>
 
+<div><video controls="controls" loop="loop" preload="none">
+  <source src="vid/serialportdemo.mp4" type="video/mp4">
+  Your browser does not support the video tag.
+</video></div>
+
 <h2>Troubleshooting Errors</h2>
 
 <p>If the Arduino IDE says there is an error, what should you do?</p>
@@ -331,7 +336,6 @@ parameters:	none
 <h2>Homework</h2>
 
 <p>I have a few exercises for you to try programming into your robot for practice. Then, the library will hold a robotics competition, and so the final homework will be for you to be ready for the competition.</p>
-<p>Feel free to email
 
 <fieldset class="hidable"><legend>Exercise 1</legend>
 <div>
@@ -358,6 +362,20 @@ parameters:	none
 </video></div>
 <p>Sometimes it helps to draw a logic flow diagram before you code.</p>
 <div class="center_outer"><div class="center_inner"><a href="img/arduino/exercise2flow.png"><img src="img/arduino/exercise2flow.png" width="100%" /></a></div></div>
+</div>
+</fieldset>
+
+<fieldset class="hidable"><legend>Exercise 3</legend>
+<div>
+<p>Make your robot wander around until it sees a wall, and then turn away from the wall so that it can continue going.</p>
+<p>This will require you to understand how to use <i>if-statements</i>, how to spin the motors, how to read the side sensors, and how to turn the infrared emitters on and off.</p>
+<p>Hint: you can use the serial port and serial monitor to read what the infrared phototransistor sees as a number on your screen.</p>
+<p>An example answer to this homework exercise is in the sketch called "WallAvoider". This sketch will introduce you to <i>while-loops</i> and <i>do-while-loops</i>.</p>
+<div><video controls="controls" loop="loop" preload="none">
+  <source src="vid/wallavoider.mp4" type="video/mp4">
+  Your browser does not support the video tag.
+</video></div>
+<p>Wanna see more videos? Try <a href="https://www.google.com/search?q=micromouse&source=lnms&tbm=vid" target="_blank">watching a Micromouse robot competition</a>.</p>
 </div>
 </fieldset>
 
