@@ -1,5 +1,10 @@
 #include <BookWorm.h>
 
+/*
+ * This is the big demo for the robot
+ * It demonstrates a lot of various functions but it requires either my Sony or SSFPL's Samsung TV remote
+ */
+
 uint32_t timeStamp = 0;
 int curCmd = TVREMOTE_KEY_NONE;
 
@@ -83,11 +88,11 @@ void loop() {
 
     if (leftSensMax > rightSensMax)
     {
-      BookWorm.move(100 - (diff / 4), 100);
+      BookWorm.move(150 - (diff / 3), 150);
     }
     else
     {
-      BookWorm.move(100, 100 - (diff / 4));
+      BookWorm.move(150, 150 - (diff / 3));
     }
   }
   else if (curCmd == TVREMOTE_KEY_UP)
