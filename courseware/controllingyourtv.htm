@@ -94,7 +94,9 @@ void loop() {
 
 <p>Notice a few things...</p>
 
-<p><span class="inlinecode">An IR LED must be connected to Arduino PWM pin 3.</span> This I have done when I designed the robot's circuit and PCB. I fully understood how to use this library before designing the circuit. Go check the <a href="circuitbasics.htm">circuit basic class page</a> for the schematic diagram.</p>
+<p><span class="inlinecode">An IR LED must be connected to Arduino PWM pin 3.</span> This I have done when I designed the robot's circuit and PCB. I fully understood how to use this library before designing the circuit. Here's the parts of the diagram I'm talking about:</p>
+
+<div class="center_outer"><div class="center_inner"><a href="img/extraclass/ir_out_pin_sch.png"><img src="img/extraclass/ir_out_pin_sch.png" width="100%" /></a></div></div>
 
 <p><span class="inlinecode">IRsend irsend;</span> seems to be how to globally declare an instance of IRsend that we can use, and thus, using functions should look like <span class="inlinecode">irsend.doSomething();</span></p>
 
@@ -161,9 +163,23 @@ class decode_results
 
 <p>With the new debug data, you should be able to use the same steps to obtain the "nbits" you need.</p>
 
-<h2>Homework</h2>
+<p>Have a look at the code from before again...</p>
 
-<p>I think you've learned enough to be able to finish this project. Go for it. There is no "example answer" for this homework.</p>
+<pre class="code"><code class="C++">
+	for (int i = 0; i < 3; i++) {
+		irsend.sendSony(0xa90, 12);
+		delay(40);
+	}
+	delay(5000); //5 second delay between each signal burst
+</code></pre>
+
+<p>I don't think my lessons covered for-loops before, it's a loop that has a start condition <span class="inlinecode">int i = 0</span> (i starts at 0), a condition <span class="inlinecode">i < 3</span> (i must be less than 3 to continue), and an "afterthought" <span class="inlinecode">i++</span> (increase i by 1 each loop). Anyways, the for-loop is there to send the command 3 times, really quickly (we know it's quick because the delay is only 40 milliseconds). The longer 5000 millisecond delay obviously delays 5 seconds.</p>
+
+<p>The <a href="https://www.arduino.cc/reference/en/#structure" target="_blank">Arduino reference on language structures</a> will cover more topics such as for-loops, and other loop types. Also remember <a href="arduinoclass.htm#Websitestolearnfrom">all the websites you can learn from</a>.</p>
+
+<p>I think you've learned enough to be able to finish this project. You know what function to change, and what numbers to change. Go for it.</p>
+
+<h2>Afterwords</h2>
 
 <p>What could you do with this project? You can make your own <a href="https://www.logitech.com/en-us/product/harmony-hub" target="_blank">Logitech Harmony Hub</a> if you just add some bluetooth module to your robot. There are plenty of possibilities.</p>
 
