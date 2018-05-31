@@ -112,11 +112,11 @@ function body_onload() {
 <h2>How do TV remotes work?</h2>
 <p>TV remotes work by sending pulses of IR light. IR light is chosen because people cannot see it. But your light bulbs in your home, the sun, and many other things also output IR light, so how does your TV know which IR light is coming from the remote control?</p>
 
-<p>The IR light from a remote control blinks very fast (pulsing), about 38000 times per second, we call this 38000 <a href="" target="_blank">Hz</a>, or 38 kHz. The sun doesn't blink at all. The IR remote receiver is a sensor that can detect when IR light is increasing and decreasing repeatedly at about 38 kHz. This is known as modulation (transmitting pulses) and demodulation (receiving the pulses).</p>
+<p>The IR light from a remote control blinks very fast (pulsing), about 38000 times per second, we call this 38000 <a href="https://en.wikipedia.org/wiki/Hertz" target="_blank">Hz</a>, or 38 kHz. The sun doesn't blink at all. The IR remote receiver is a sensor that can detect when IR light is increasing and decreasing repeatedly at about 38 kHz. This is known as modulation (transmitting pulses) and demodulation (receiving the pulses).</p>
 
 <p>The receiver's data pin will output a low voltage signal when the pulses are being detected, and vice versa, it will output a high voltage signal when pulses are not detected (or when the pulses are too slow or too fast, it has to be close to 38 kHz). In the topic of communication, we call the output "<i>mark</i>" (pulses detected) and "<i>space</i>" (no pulses).</p>
 
-<div><video controls="controls" loop="loop" autoplay="autoplay" muted="muted">
+<div><video loop="loop" autoplay="autoplay" muted="muted">
   <source src="vid/irrx_moddemod_500.mp4" type="video/mp4">
   Your browser does not support the video tag.
 </video></div>
