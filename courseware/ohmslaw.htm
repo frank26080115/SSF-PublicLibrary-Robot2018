@@ -1,0 +1,149 @@
+<html>
+<head>
+<title>Voltage, Current, and Resistance</title>
+<link rel="stylesheet" type="text/css" href="css/stylesheet.css" title="style" />
+<link rel="stylesheet" type="text/css" href="css/divtable.css" title="style" />
+
+<script type="text/javascript" src="js/javascript.js"></script>
+
+<script type="text/javascript">
+
+function body_onload() {
+	makeAllVideos("img/film_animation.gif");
+
+	makeTableOfContents("tableofcontents", "h2");
+
+	makeAllHidables();
+}
+
+</script>
+
+</head>
+<body onload="body_onload()">
+<div class="body_div">
+
+<div id="banner_black"><img src="img/banner_black.png" /></div>
+<div id="banner_white"><img src="img/banner_white.png" /></div>
+
+<h1>Voltage, Current, and Resistance</h1>
+
+<p>The previous <a href="circuitbasics.htm">circuit basics class</a> did mention concepts like voltage, current, and resistors, but I didn't fully explain everything yet. I have explained that a greater resistance causes lower current, and I did explain how changing resistances in a voltage divider changes the output voltage of the voltage divider. I will now explain how these two concepts are related, and the math behind them.</p>
+
+<p>First, you need to understand the difference between series and parallel circuits. From the <a href="https://en.wikipedia.org/wiki/Series_and_parallel_circuits" target="_blank">Wikipedia page</a> on this topic: "Components connected in series are connected along a single path, so the same current flows through all of the components. Components connected in parallel are connected along multiple paths, so the same voltage is applied to each component."</p>
+
+<p>In the circuit shown below: The left circuit has two resistors connected in series. The right circuit has two resistors connected in parallel.</p>
+
+<!-- <div class="center_outer"><div class="center_inner"><iframe width="100%" height="400" src="http://everycircuit.com/embed/6685924313530368" frameborder="0"></iframe></div></div> -->
+
+<div class="center_outer"><div class="center_inner"><img src="vid/seriesvsparallelcircuit.gif" /></div></div>
+
+<p>In a series circuit, current remains the same through all the components. Think about it, there's no branching path for the electricity to escape, so what goes in one end must come out the other end at the same flow rate. When you have parallel circuits, then there's another path for the electricity to flow, so each branch could have a different current. The following simulation will demonstrate this:</p>
+
+<!-- <div class="center_outer"><div class="center_inner"><iframe width="100%" height="400" src="http://everycircuit.com/embed/6132161832026112" frameborder="0"></iframe></div></div> -->
+
+<div class="center_outer"><div class="center_inner"><img src="vid/seriesorparallelresistors.gif" /></div></div>
+
+<p>When resistors are placed in series, the total resistance is equal to the sum of all the resistors. In the above animation, you can see that two 100&#8486; resistors has the same current flowing through it as one 200&#8486; resistor.</p>
+
+<p>When resistors are placed in parallel, the total current (not total resistance) is equal to to sum of all the current down both branches of the circuit. In the above animation, you can see that two resistors with 2.5mA flowing through them results in the total current being 5mA.</p>
+
+<p>Knowing this, you should be wondering how to calculate current from resistance and voltage. This relationship is called <a href="https://en.wikipedia.org/wiki/Ohm%27s_law" target="_blank">Ohm's Law</a>. From here on, you need to know some math: multiplication, division, and basic algebra.</p>
+
+<ul>
+<li>Voltage, measured in Volts, abbreviated as V, and symbolized by V in math equations</li>
+<li>Current, measured in Amperes, abbreviated as A, and symbolized by I in math equations</li>
+<li>Resistance, measured in Ohms, abbreviated as &#8486;, and symbolized by R in math equations</li>
+</ul>
+
+<p>Ohm's Law says that the relationship between voltage, current, and resistance, follows this math equation:</p>
+
+<div class="center_outer"><div class="center_inner inlinemath">V = I &times; R</div></div>
+
+<p>If you use your algebra skills, this also means:</p>
+
+<div class="center_outer"><div class="center_inner"><span class="inlinemath">I = V &#247; R</span> &nbsp;&nbsp;&nbsp;&nbsp; ... and ... &nbsp;&nbsp;&nbsp;&nbsp; <span class="inlinemath">R = V &#247; I</span></div></div>
+
+<p>Take a look at the above simulation again. The circuit in the middle, with one resistor of 200&#8486;, you see that the simulation shows that the current is 5mA (which means 0.005A). The voltage from the power source is set at 1V.</p>
+
+<div class="center_outer"><div class="center_inner inlinemath">1 &#247; 200 = 0.005</div></div>
+<div class="center_outer"><div class="center_inner inlinemath">1V &#247; 200&#8486; = 0.005A</div></div>
+
+<p>It's that simple.</p>
+
+<p>Now look at the circuit on the top right, the one with two 400&#8486; resistors. The voltage is 1V. The resulting current is 2.5mA (or 0.0025A).</p>
+
+<div class="center_outer"><div class="center_inner inlinemath">1V &#247; 400&#8486; = 0.0025A</div></div>
+
+<p>But the two resistors are in parallel, the total current flowing is 5mA (0.005A). The total current flowing is the sum of all the current through each parallel branch.</p>
+
+<div class="center_outer"><div class="center_inner inlinemath">0.0025A + 0.0025A = 0.005A</div></div>
+
+<p>How about the circuit on the bottom right? Resistors are 600&#8486; and 300&#8486;. The currents are 1.67mA and 3.33mA.</p>
+
+<div class="center_outer"><div class="center_inner"><span class="inlinemath">1V &#247; 600&#8486; &asymp; 0.00167A</span> &nbsp; ... and ... &nbsp; <span class="inlinemath">1V &#247; 300&#8486; &asymp; 0.00333A</span></div></div>
+<div class="center_outer"><div class="center_inner inlinemath">0.00167A + 0.00333A 	&asymp; 0.005A</div></div>
+
+<p>Ah so you should notice that putting two 400&#8486; resistors in parallel does the same thing as putting just one 200&#8486; resistor. Putting a 600&#8486; resistor and a 300&#8486; resistor in parallel also does the same thing as putting just one 200&#8486; resistor.</p>
+
+<p>Take a look again, it's the same diagram.</p>
+
+<div class="center_outer"><div class="center_inner"><img src="vid/seriesorparallelresistors.gif" /></div></div>
+
+<p>Look at the circuit on the left. It has two 100&#8486; resistors in series. The total resistance of a series circuit is the sum of all the resistances.</p>
+
+<div class="center_outer"><div class="center_inner inlinemath">100&#8486; + 100&#8486; = 200&#8486;</div></div>
+
+<p>Now we know what is the total resistance, we can calculate the current through the power supply, which is the same as the current through each resistor.</p>
+
+<div class="center_outer"><div class="center_inner inlinemath">1V &#247; 200&#8486; = 0.005A</div></div>
+
+<p>Now think back to what a voltage divider looks like.</p>
+
+<div class="center_outer"><div class="center_inner"><img src="vid/ohmslawsinglevoltagedivider.gif" /></div></div>
+
+<p>... that looks like the previous circuit, just drawn differently, I did add a line between the two resistors to show where the output voltage is being measured. It is measured at 500mV (meaning 0.5V), how can we calculate this?</p>
+
+<p>We know that the total current is 5mA, and one resistor has a resistance of 100&#8486;. Using Ohm's Law</p>
+<div class="center_outer"><div class="center_inner inlinemath">I &times; R = V</div></div>
+<div class="center_outer"><div class="center_inner inlinemath">0.005A &times; 100&#8486; = 0.5V</div></div>
+
+<p>Awesome, congratulations, you understand how to calculate the output voltage of a voltage divider.</p>
+
+<p>Take a look at the two voltage dividers below, the two resistors have changed but the total resistance have not changed. We can calculate the output voltages for these two.</p>
+
+<div class="center_outer"><div class="center_inner"><img src="vid/ohmslawtwovoltagedividers.gif" /></div></div>
+
+<div class="center_outer"><div class="center_inner inlinemath">0.005A &times; 50&#8486; = 0.25V</div></div>
+
+<div class="center_outer"><div class="center_inner inlinemath">0.005A &times; 150&#8486; = 0.75V</div></div>
+
+<h2>Shortcut Equations</h2>
+
+<h3>Voltage Divider Quick Equation</h3>
+
+<p>There's a faster way of calculating the output voltage of a voltage divider, which is using the simplified equation after combining all of the above steps. Have a look a the diagram, this time I've put in some labels.</p>
+
+<div class="center_outer"><div class="center_inner"><img src="vid/ohmslawvoltagedividerlabelled.gif" /></div></div>
+
+<div class="center_outer"><div class="center_inner inlinemath">V<sub>out</sub> = V<sub>in</sub> &times; R<sub>2</sub> &#247; (R<sub>1</sub> + R<sub>2</sub>)</div></div>
+
+<div class="center_outer"><div class="center_inner inlinemath">1V &times; 150&#8486; &#247; (50&#8486; + 150&#8486;) = ?</div></div>
+<div class="center_outer"><div class="center_inner inlinemath">1V &times; 150&#8486; &#247; (200&#8486;) = 0.750V</div></div>
+
+<h3>Ohm's Law Triangle</h3>
+
+<p>This "triangle" diagram is an easy way to remember how to use Ohm's Law</p>
+
+<div class="center_outer"><div class="center_inner"><img src="img/ohmslawtriangle.png" /></div></div>
+
+<h3>Using WolframAlpha</h3>
+
+<p><a href="http://wolframalpha.com/" target="_blank">WolframAlpha</a> can do these calculations for you even if you don't remember the equations</p>
+
+<div class="center_outer"><div class="center_inner"><a href="img/wolframalpha_full.png"><img src="img/wolframalpha_small.png" /></a></div></div>
+
+<div class="noprint"><br /><br /><hr /><h3><a href="index.htm">Click Here, to return to the list of classes</a></h3></div>
+
+</div>
+</body>
+</html>

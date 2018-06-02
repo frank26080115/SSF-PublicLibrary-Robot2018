@@ -51,6 +51,17 @@ pre.code
 	white-space:nowrap;
 }
 
+.math
+{
+	font-family:"Cambria Math", "Cambria", "Times New Roman", Times, serif;
+}
+
+.inlinemath
+{
+	font-family:"Cambria Math", "Cambria", "Times New Roman", Times, serif;
+	white-space:nowrap;
+}
+
 span.inlinecode
 {
 	font-family:monospace;
