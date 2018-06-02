@@ -50,6 +50,11 @@ function makeAllVideos(poster) {
 			entry.id = "vid_" + rndId.toString();
 			rndId += 1;
 		}
+		var source = entry.getElementsByTagName('source')[0].src;
+		var tagContents = entry.innerHTML;
+		var needle = "Your browser does not support the video tag.";
+		tagContents = tagContents.replace(needle, "<a href='" + source + "'><img src='vid/downloadvideo.gif' width='100%' /></a>");
+		entry.innerHTML = tagContents;
 		if (entry.autoplay == "autoplay") {
 			continue;
 		}
