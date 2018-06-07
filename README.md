@@ -13,10 +13,14 @@ The lessons are also hosted on my own website, http://eleccelerator.com/ssfpl_ro
 - Arduino 1.8.1 (this is what SSF Public Library has currently installed)
 - Onshape account (free web browser based CAD software that mimics SolidWorks)
 
-## Thanks to:
-
-### Microchip Technology
+## Thanks to: Microchip Technology
 
 A big thanks to Microchip Technology. My professional contacts at their local office generously donated an insane amount of screwdrivers (with flashlights!) and swag. These classes would not have been possible without their help. Their kindness will not be forgotten.
 
 Personally I thank Microchip for jumpstarting my own path in this hobby and career. Microchip Technology is a huge supporter of STEM programs, I definitely have many of their dev kits simply because they handed them out to me in university. Even when I was a poor highschooler, I got started with their PIC microcontrollers because they were essentially free. I truly believe they are the reason why I am insanely good at writing low-level bare-metal embedded firmware. By the time Arduino Diecimila (the first Arduino with USB) was available, I immediately outgrew the Arduino IDE because of just how far using a PIC has pushed me.
+
+## Thanks to: Adafruit Industries
+
+Adafruit Industries is a founding pillar of the maker movement from the very beginning, and a champion for women engineers and entrepreneurs. They've donated all the soldering irons we need that makes these classes possible. These irons are the good stuff, coated tips, adjustable ceramic heaters, fire-proof wiring!
+
+As a huge supporter of STEAM education, Adafruit Industries have writtenliterally thousands of guides and tutorials, along side their amazing collection of products that makes it easy for everyday people to accomplish what used to be impossible. How do I know they are so good? I used to work for Adafruit myself, I wrote some of those tutorials and designed some of those products. Even my real job's engineering department use their stuff regularly, their breakout boards are just so convenient for quick prototypes. Everything is manufactured proudly on home turf in their New York City office. I recommend all hobbyists to follow their blog, it's a good mix of electronics, 3D printing, art, and other fun news.
