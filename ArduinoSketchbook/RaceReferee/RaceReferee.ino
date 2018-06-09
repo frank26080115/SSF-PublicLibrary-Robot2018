@@ -89,7 +89,7 @@ void loop()
         startTime = curMillis;
       }
       dispMillis = curMillis - startTime;
-      if (dispMillis > 5000)
+      if (dispMillis > 2000)
       {
         state = STATEMACH_RUNNING;
       }

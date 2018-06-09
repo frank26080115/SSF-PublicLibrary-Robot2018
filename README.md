@@ -15,7 +15,7 @@ The lessons are also hosted on my own website, http://eleccelerator.com/ssfpl_ro
 
 ## Thanks to: Microchip Technology
 
-A big thanks to Microchip Technology.  These guys own the chip in the middle of your Arduinos. My professional contacts at their local office generously donated an insane amount of screwdrivers (with flashlights!) and swag. These classes would not have been possible without their help. Their kindness will not be forgotten.
+A big thanks to Microchip Technology.  These guys manufactures the chip in the middle of your Arduinos. My professional contacts at their local office generously donated an insane amount of screwdrivers (with flashlights!) and swag. These classes would not have been possible without their help. Their kindness will not be forgotten.
 
 Personally I thank Microchip for jumpstarting my own path in this hobby and career. Microchip Technology is a huge supporter of STEM programs, I definitely have many of their dev kits simply because they handed them out to me in university. Even when I was a poor highschooler, I got started with their PIC microcontrollers because they were essentially free. I truly believe they are the reason why I am insanely good at writing low-level bare-metal embedded firmware. By the time Arduino Diecimila (the first Arduino with USB) was available, I immediately outgrew the Arduino IDE because of just how far using a PIC has pushed me.
 

@@ -17,7 +17,7 @@ extern ContinuousServo servoRight;
 
 #define SERVO_CENTER_TICKS    (usToTicks(1500 - TRIM_DURATION))
 
-#define SERVO_ACCELERATION_LIMIT 4
+#define SERVO_ACCELERATION_LIMIT 2
 
 static unsigned int servoDeadzoneLeft = 0;
 static unsigned int servoDeadzoneRight = 0;

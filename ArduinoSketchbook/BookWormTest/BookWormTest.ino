@@ -147,7 +147,7 @@ void loop() {
       }
       else if (leftSens >= pot && rightSens >= pot)
       {
-        BookWorm.move(500, 500);
+        BookWorm.move(400, 400);
       }
       else if (leftSens < pot && rightSens < pot)
       {
