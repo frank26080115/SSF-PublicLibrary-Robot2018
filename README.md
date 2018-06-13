@@ -27,7 +27,7 @@ As a huge supporter of STEAM education, Adafruit Industries have written literal
 
 ## Thanks to: PCBWay
 
-PCBWay is a speedy and cheap PCB manufacturer and electronics assembly company. They generously provided us with multi-colour PCBs for free, so your robots can be more unique than just the usual green.
+PCBWay is a speedy and cheap PCB manufacturer and electronics assembly company. They generously provided us with multi-colour PCBs for free, so your robots can stand out and be more unique.
 
 Their service is speedy and at a price that was unheard of before the maker movement took off, making it more accessible to hobbyists and students, allowing the little guys to keep up with the big tech companies. PCBWay also do a lot of community outreach to hobbyists and student teams, hosting contests and offering sponsorships.
 
