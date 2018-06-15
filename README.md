@@ -32,3 +32,7 @@ PCBWay is a speedy and cheap PCB manufacturer and electronics assembly company. 
 Their service is speedy and at a price that was unheard of before the maker movement took off, making it more accessible to hobbyists and students, allowing the little guys to keep up with the big tech companies. PCBWay also do a lot of community outreach to hobbyists and student teams, hosting contests and offering sponsorships.
 
 Their PCBs are pretty high quality, there's nothing to complain about. Great looking silkscreen. Soldermask and drills are on point. Edges are milled clean. No splatter with the plating. No hassle using their website to order. Each one of our robot PCBs would cost roughly $3.50 each including shipping, and take one week from time-of-order to your doorstep. Great job PCBWay.
+
+## Thanks to: Silicon Labs
+
+I reached out to people I know at the local Silicon Labs office. Silicon Labs gave us a big box of goodies to encourage people to participate in STEM programs at our library. They are a company who manufacture a lot of different microchips, such as the USB interface chips that hobbyists often use to debug the Raspberry Pi and other embedded Linux platforms. If you are into the drone racing hobby, most likely your drone already has four microcontrollers made by Silicon Labs. They've been growing rapidly in the past decade and is currently well known for having unique, high performance, and low power products, as well as legacy products that are solid and dirt cheap.
