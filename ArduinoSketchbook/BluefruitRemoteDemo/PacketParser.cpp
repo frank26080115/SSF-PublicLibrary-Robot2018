@@ -21,6 +21,7 @@
 //    READ_BUFSIZE            Size of the read buffer for incoming packets
 #define READ_BUFSIZE                    (64)
 
+extern uint32_t command_buttonflags;
 
 /* Buffer to hold incoming characters */
 uint8_t packetbuffer[READ_BUFSIZE+1];
@@ -115,7 +116,7 @@ uint8_t readPacket(Adafruit_BLE *ble, uint16_t timeout, bool skip)
     }
     
     if (timeout == 0) break;
-    delay(1);
+    delay(2);
   }
 
   packetbuffer[replyidx] = 0;  // null term
@@ -139,6 +140,7 @@ uint8_t readPacket(Adafruit_BLE *ble, uint16_t timeout, bool skip)
   {
     Serial.print(F("Checksum mismatch in packet : "));
     printHex(packetbuffer, replyidx+1);
+    command_buttonflags = 0; // safety clear
     return 0;
   }
   

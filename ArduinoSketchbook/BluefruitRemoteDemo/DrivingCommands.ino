@@ -10,19 +10,20 @@ void commandController()
   uint8_t len = readPacket(&ble, BLE_READPACKET_TIMEOUT, true);
 
   if (len == 0) return; // do nothing if we got nothing
+  // 0 also means error in packet
 
   // byte index [1] indicates what kind of control command is issued
   // here we only try to handle "colour" and "buttons"
 
   // colour
-  if (packetbuffer[1] == 'C') {
+  if (packetbuffer[1] == 'C' && len == 6) {
     uint8_t red = packetbuffer[2];
     uint8_t green = packetbuffer[3];
     uint8_t blue = packetbuffer[4];
-    uint8_t sz = 24, i;
-    neopixel.updateLength(sz);
+    uint8_t i;
+    neopixel.updateLength(NUM_OF_NEOPIXELS);
     neopixel.setPin(NEOPIXEL_PIN);
-    for (i = 0; i < sz; i++) {
+    for (i = 0; i < NUM_OF_NEOPIXELS; i++) {
       neopixel.setPixelColor(i, red, green, blue);
     }
     neopixel.show();
@@ -30,7 +31,7 @@ void commandController()
   }
 
   // buttons
-  if (packetbuffer[1] == 'B') {
+  if (packetbuffer[1] == 'B' && len == 5) {
     // the buttons are sent as numbers 1-8 in ASCII
     // the event type (pressed or released) is sent as 1 or 0 in ASCII
     // we can subtract '0' to do ASCII -> byte conversion
@@ -40,6 +41,9 @@ void commandController()
     {
       command_pressedTime = millis(); // take a timestamp for timeout purposes
       command_buttonflags |= (1 << buttnum); // setting a bit flag indicates pressed
+      if (buttnum <= 4) {
+        neopixel.setBrightness(64);
+      }
     }
     else
     {
@@ -57,18 +61,28 @@ void commandController()
  */
 void driveTask()
 {
+  static bool isTimeout = false; // this static variable is meant to stop too many messages going out the serial port
+
   signed int throttle = 0, steering = 0;
 
   // implement a timeout just in case of a dropped bluetooth connection, so the robot doesn't run away
   if ((millis() - command_pressedTime) > 5000)
   {
-    command_buttonflags = 0;
+    if (isTimeout == false) {
+      BookWorm.printf(F("Press Timeout\r\n"));
+    }
+    command_buttonflags &= 0x1F;
+    isTimeout = true;
   }
 
   // if the last event was a button release, we use a shorter timeout
   if ((millis() - command_releasedTime) > 500 && command_releasedTime > command_pressedTime)
   {
-    command_buttonflags = 0;
+    if (isTimeout == false) {
+      BookWorm.printf(F("Release Timeout\r\n"));
+    }
+    command_buttonflags &= 0x1F;
+    isTimeout = true;
   }
 
   // determine which direction to go in depending on the button being pressed

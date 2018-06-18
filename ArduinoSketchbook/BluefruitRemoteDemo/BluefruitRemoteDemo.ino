@@ -12,6 +12,8 @@
 #define MODE_LED_BEHAVIOUR          "MODE"
 
 #define NEOPIXEL_PIN            13
+#define NUM_OF_NEOPIXELS        24
+#define ENABLE_ADVANCED_NEOPIXEL_CONTROL
 
 /*
  * Command mode allows for more advanced functions such as
@@ -37,7 +39,7 @@ Adafruit_BluefruitLE_UART ble(bluefruitSS,
   BLUEFRUIT_UART_CTS_PIN, BLUEFRUIT_UART_RTS_PIN);
 
 // Create the neopixel object
-Adafruit_NeoPixel neopixel = Adafruit_NeoPixel();
+Adafruit_NeoPixel neopixel = Adafruit_NeoPixel(NUM_OF_NEOPIXELS, NEOPIXEL_PIN, NEO_GRB + NEO_KHZ800);
 
 void setup()
 {
@@ -87,6 +89,7 @@ void loop()
   static bool conn = false;
 
   driveTask();
+  neopixelPatternTask();
 
 #ifdef USE_COMMAND_MODE
   if (conn == false)
@@ -124,7 +127,6 @@ void loop()
   if (ble.available() == 0) {
     return;
   }
-  int command = ble.read();
   #else
   if (BLUEFRUIT_UART_CTS_PIN >= 0) {
     digitalWrite(BLUEFRUIT_UART_CTS_PIN, HIGH);
@@ -133,14 +135,14 @@ void loop()
   if (bluefruitSS.available() == 0) {
     return;
   }
-  int command = bluefruitSS.read();
 #endif
 
-  Serial.println(command, HEX);
+  int command = ble.read();
 
   switch (command)
   {
     #ifndef USE_COMMAND_MODE
+    #ifdef ENABLE_ADVANCED_NEOPIXEL_CONTROL
     case 'V': {   // Get Version
         commandVersion();
         break;
@@ -171,12 +173,12 @@ void loop()
         break;
     }
     #endif
+    #endif
 
     case '!': {   // Receive control
         commandController();
         break;
      }
-
   }
 }
 
