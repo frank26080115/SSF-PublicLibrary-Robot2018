@@ -97,8 +97,8 @@ void cBookWorm::calcMix(signed int throttle, signed int steer, signed int * left
 	throttled = throttle;
 	steerd = steer;
 
-	leftd = -steerd;
-	rightd = steerd;
+	leftd = steerd;
+	rightd = -steerd;
 	leftd += throttled;
 	rightd += throttled;
 	leftd *= BOOKWORM_MOVEMIXED_OUTPUT_SCALE;

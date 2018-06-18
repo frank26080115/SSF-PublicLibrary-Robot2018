@@ -61,6 +61,8 @@ public:
 	void setServoBiasLeft(signed int x);
 	void setServoBiasRight(signed int x);
 
+	void initTvRemote(void);
+
 	// these functions require the user to modify the library
 	int readTvRemote(void);
 	void sendTvRemote(uint8_t brand, unsigned long data, unsigned int nbits);

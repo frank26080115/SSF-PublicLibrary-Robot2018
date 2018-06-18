@@ -8,12 +8,19 @@ static IRsend irsend;
 
 static int decodeTvCommand(decode_results *results);
 
+void cBookWorm::initTvRemote(void)
+{
+	pinMode(pinTvRemoteInput, INPUT);
+	digitalWrite(pinTvRemoteInput, HIGH);
+}
+
 int cBookWorm::readTvRemote(void)
 {
 	decode_results  results;
 
 	if (irRxInited == false) {
 		irRxInited = true;
+		initTvRemote();
 		irrecv.enableIRIn();
 		return TVREMOTE_KEY_NONE;
 	}
