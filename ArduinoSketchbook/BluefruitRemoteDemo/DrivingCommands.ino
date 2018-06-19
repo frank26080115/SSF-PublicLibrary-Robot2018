@@ -96,11 +96,11 @@ void driveTask()
   }
   if ((command_buttonflags & (1 << 8)) != 0)
   {
-    steering += 512;
+    steering += 800;
   }
   if ((command_buttonflags & (1 << 7)) != 0)
   {
-    steering -= 512;
+    steering -= 800;
   }
   BookWorm.moveMixed(throttle, steering);
 }
