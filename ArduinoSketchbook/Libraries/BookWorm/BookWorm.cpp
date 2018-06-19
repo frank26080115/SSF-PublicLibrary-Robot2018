@@ -27,8 +27,8 @@ void cBookWorm::begin(void)
 	pinMode(pinButton, INPUT);
 	digitalWrite(pinButton, HIGH);
 
-	//pinMode(pinTvRemoteInput, INPUT);
-	//digitalWrite(pinTvRemoteInput, HIGH);
+	pinMode(pinTvRemoteInput, INPUT);
+	digitalWrite(pinTvRemoteInput, HIGH);
 
 	// default emitters ON so students don't wonder why there's no reading
 	digitalWrite(pinIrEmitterLeft, HIGH);
