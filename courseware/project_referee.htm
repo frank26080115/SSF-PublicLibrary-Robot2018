@@ -5,10 +5,6 @@
 <link rel="stylesheet" type="text/css" href="css/divtable.css" title="style" />
 
 <style>
-.qty_col
-{
-	font-size: 25pt;
-}
 </style>
 
 <script type="text/javascript" src="js/javascript.js"></script>
@@ -65,7 +61,7 @@ function body_onload() {
 
 <p>This is an ordinary red laser pointer we are using. It contains a laser diode and a focusing lens. A laser diode is very similar to a LED, but built in a way that emits light coherently (the light waves are "neat"). The focusing lens allows us to adjust how spread out the laser beam is. We could have a very narrow straight beam but that'd be hard to aim at our sensor, so we use the lens to spread the beam a bit to make it easy to aim.</p>
 
-<p>I got this laser pointer off Amazon, they are dirt cheap, and has a power level of 5mW, which is considered safe for people to use. But do not look directly into the beam because it can still hurt your eyes.</p>
+<p>I got this laser pointer off Amazon, they are dirt cheap, and has a power level of 5mW, which is considered safe for people to use as a laser pointer. But do not look directly into the beam because it can still hurt your eyes.</p>
 
 <p>Since we do not need to turn off the laser, we simply connect the black wire to ground and the red wire to our 5V power pins.</p>
 
@@ -81,7 +77,7 @@ function body_onload() {
 
 <p>This sensor is used as one of the two resistors required in a voltage divider circuit. We've learned about this before. The Arduino will use one of its analog input pins to read the voltage divider output.</p>
 
-<p>The resistance of the photoresistor is 10K&#8486; when it is totally dark. We do not know what the resistance will be when a laser beam hits it, we also do not know how the width and angle of the beam will affect the resistance. This requires testing, but I'm lazy and simply choose a 5K&#8486; resistor as the other resistor in the voltage divider. I know this will work because the Arduino can use if-statements to compare the reading against any number I want, so I don't have to waste money on the perfect resistor value.</p>
+<p>The resistance of the photoresistor is 10K&#8486; when it is totally dark. We do not know what the resistance will be when a laser beam hits it, we also do not know how the width and angle of the beam will affect the resistance. This requires testing, but I'm lazy so I simply searched the internet to see what other people use. One of SparkFun's page said that a 5K&#8486; resistor as the other resistor in the voltage divider should give me a good range of readings.</p>
 
 <h2>LCD Screen</h2>
 
@@ -111,6 +107,19 @@ function body_onload() {
 <li><a href="https://en.wikipedia.org/wiki/I%C2%B2C" target="_blank">Wikipedia page about I<sup>2</sup>C bus</a></li>
 </ul>
 </fieldset>
+
+<h2>Homework</h2>
+
+<p>These are not really "homework questions", it's more of a bunch of things you do when you plan out a project. Feel free to ask me to check over your answers.</p>
+
+<ul>
+<li>Find where you can buy a 16x2 LCD text display with a I<sup>2</sup>C backpack.</li>
+<li>What is the Arduino library you need to use the LCD? Does it come with Arduino or do you have to download it seperately? If it is on GitHub, what is the GitHub URL?</li>
+<li>Find where you can buy a 10K&#8486; photoresistor.</li>
+<li>If you can't find a 10K&#8486; photoresistor, find a 100K&#8486; photoresistor, and what do you think you should use for the other resistor in the voltage divider?</li>
+<li>The LCD's I<sup>2</sup>C backpack has 4 pins on its connector. Draw out how you should connect each pin to your robot.</li>
+<li>There is an Arduino function that will "returns the number of milliseconds since the Arduino board began running the current program". What is the name of the function and how do you think you could use it?</li>
+</ul>
 
 </div>
 </body>

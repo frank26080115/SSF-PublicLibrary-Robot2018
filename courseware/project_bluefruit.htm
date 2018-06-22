@@ -1,0 +1,82 @@
+<html>
+<head>
+<title>Project: Bluefruit Demo</title>
+<link rel="stylesheet" type="text/css" href="css/stylesheet.css" title="style" />
+<link rel="stylesheet" type="text/css" href="css/divtable.css" title="style" />
+
+<style>
+</style>
+
+<script type="text/javascript" src="js/javascript.js"></script>
+
+<script type="text/javascript">
+
+function body_onload() {
+	makeAllVideos("img/film_animation.gif");
+
+	//makeTableOfContents("tableofcontents", "h2");
+
+	makeAllHidables();
+}
+
+</script>
+
+</head>
+<body onload="body_onload()">
+<div class="body_div">
+
+<div id="banner_black"><img src="img/banner_black.png" /></div>
+<div id="banner_white"><img src="img/banner_white.png" /></div>
+
+<h1>Project: Bluefruit Demo</h1>
+
+<p>Just for fun, let's control our robot with Bluetooth.</p>
+
+<video controls="controls" preload="none" style="width:100%">
+  <source src="vid/bluefruit.mp4" type="video/mp4">
+  Your browser does not support the video tag.
+</video>
+
+<p>The Bluefruit from Adafruit Industries is a great little device, it's a Bluetooth Low Energy module with functions written by Adafruit. Its most basic function is to become a simple serial port between your phone and your robot. If you have the skills for it, it could do much more.</p>
+
+<p>Plus I added a NeoPixel ring. NeoPixels are a brand of LEDs that can show any colour you want, and no matter how many NeoPixels you have, you only need one pin to control all of them. This means you can arrange a strip of hundreds of LEDs and still only use one pin to control the entire strip. This is because each NeoPixel talks to the next NeoPixel beside it.</p>
+
+<h2>Bluetooth Low Energy</h2>
+
+<p>If you have a phone, you've probably heard of Bluetooth. It's the radio protocol that wireless devices use to communicate with your phone (most popular use is audio devices like wireless headphones and wireless speakers). Bluetooth a few years ago, people came up with a new version of Bluetooth called Bluetooth Low Energy (also called Bluetooth Smart). Because it uses low energy, it's great for wearable devices and battery powered devices. The older Bluetooth is called Bluetooth Classic.</p>
+
+<p>There are two major smartphone operating systems today: Android and iOS. The problem is that iOS does not work with serial ports that uses Bluetooth Classic, but it does work with Bluetooth Low Energy serial ports. So that's why I decided to use Bluetooth Low Energy instead of Bluetooth Classic.</p>
+
+<p>Bluetooth Classic serial ports are much cheaper to buy and a bit easier to use. But I don't want to ignore any students that only have iOS phones.</p>
+
+<fieldset><legend>Learn More</legend>
+<p><a href="https://learn.adafruit.com/introduction-to-bluetooth-low-energy/introduction" target="_blank">Adafruit's page on Bluetooth Low Energy</a></p>
+<p><a href="https://en.wikipedia.org/wiki/Bluetooth_Low_Energy" target="_blank">Wikipedia's page on Bluetooth Low Energy</a></p>
+<p><a href="https://learn.sparkfun.com/tutorials/bluetooth-basics" target="_blank">SparkFun's page on Bluetooth Classic</a></p>
+</fieldset>
+
+<h2>Serial Port</h2>
+
+<p>Serial port communication is how your Arduino talks to your computer, and how the Bluefruit talks with your Arduino. Serial ports are slower than other data busses but it's still very common today because it's so easy to use. For one way communication, you only need one wire, for two way (full duplex) communication, you need two wires. (or you can be clever and use one wire, and each device knows how to "take turns").</p>
+
+<p>Your Arduino Nano has one dedicated serial port but it's permanently connected to your computer. This dedicated port is sometimes known as the hardware serial port. To add more serial ports to your Arduino Nano, you can use what's called a software serial port, which uses a technique called <i>bit-banging</i>. There's a library that's included with Arduino IDE called <i>SoftwareSerial</i> that you use when you want to add a software serial port to your project.</p>
+
+<p>If you are wondering what happens when you try to use the hardware serial port for the Bluetooth module, the answer is: it will work. But... since your computer uses the hardware serial port to upload code, it means: if you use hardware serial port for the Bluetooth module, then you need to unplug the Bluetooth module every time you upload code. This will become very annoying so we want to use a software serial port instead.</p>
+
+<p>Why do we call it hardware serial port or software serial port? When a serial port is implemented in hardware, then a series of transistors is dedicated to reading and sending data, and there's a notification when a complete byte is . When a serial port is implemented with software using bit-banging, it means there's code written to turn a pin output high or low to send data, and there's code written to read the state of a pin
+
+<h2>Homework</h2>
+
+<p>These are not really "homework questions", it's just some prompts for you do learn more on your own.</p>
+
+<ul>
+<li>Find where you can buy a 16x2 LCD text display with a I<sup>2</sup>C backpack.</li>
+<li>What is the Arduino library you need to use the LCD? Does it come with Arduino or do you have to download it seperately? If it is on GitHub, what is the GitHub URL?</li>
+<li>Find where you can buy a 10K&#8486; photoresistor.</li>
+<li>If you can't find a 10K&#8486; photoresistor, find a 100K&#8486; photoresistor, and what do you think you should use for the other resistor in the voltage divider?</li>
+<li>The LCD's I<sup>2</sup>C backpack has 4 pins on its connector. Draw out how you should connect each pin to your robot.</li>
+<li>There is an Arduino function that will "returns the number of milliseconds since the Arduino board began running the current program". What is the name of the function and how do you think you could use it?</li>
+</ul>
+
+</div>
+</body>
