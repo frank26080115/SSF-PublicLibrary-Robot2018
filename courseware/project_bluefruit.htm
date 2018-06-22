@@ -37,45 +37,100 @@ function body_onload() {
   Your browser does not support the video tag.
 </video>
 
-<p>The Bluefruit from Adafruit Industries is a great little device, it's a Bluetooth Low Energy module with functions written by Adafruit. Its most basic function is to become a simple serial port between your phone and your robot. If you have the skills for it, it could do much more.</p>
+<p>The <a href="https://www.adafruit.com/product/2479" target="_blank"><i>Bluefruit LE UART Friend</i></a> from Adafruit Industries is a great little device, it's a Bluetooth Low Energy module with functions written by Adafruit. Its most basic function is to become a simple serial port between your phone and your robot. If you have the skills for it, it could do much more.</p>
 
-<p>Plus I added a NeoPixel ring. NeoPixels are a brand of LEDs that can show any colour you want, and no matter how many NeoPixels you have, you only need one pin to control all of them. This means you can arrange a strip of hundreds of LEDs and still only use one pin to control the entire strip. This is because each NeoPixel talks to the next NeoPixel beside it.</p>
+<div class="center_outer"><div class="center_inner"><img src="img/proj/bluefruitlefriend.jpg" width="100%" /></div></div>
 
 <h2>Bluetooth Low Energy</h2>
 
-<p>If you have a phone, you've probably heard of Bluetooth. It's the radio protocol that wireless devices use to communicate with your phone (most popular use is audio devices like wireless headphones and wireless speakers). Bluetooth a few years ago, people came up with a new version of Bluetooth called Bluetooth Low Energy (also called Bluetooth Smart). Because it uses low energy, it's great for wearable devices and battery powered devices. The older Bluetooth is called Bluetooth Classic.</p>
+<p>If you have a phone, you've probably heard of <i>Bluetooth</i>. It's the radio protocol that wireless devices use to communicate with your phone (most popular use is audio devices like wireless headphones and wireless speakers). Bluetooth a few years ago, people came up with a new version of Bluetooth called Bluetooth <i>Low Energy</i> (also called Bluetooth <i>Smart</i>). Because it uses low energy, it's great for wearable devices and battery powered devices. The older Bluetooth is called Bluetooth Classic.</p>
 
 <p>There are two major smartphone operating systems today: Android and iOS. The problem is that iOS does not work with serial ports that uses Bluetooth Classic, but it does work with Bluetooth Low Energy serial ports. So that's why I decided to use Bluetooth Low Energy instead of Bluetooth Classic.</p>
+
+<p>A big bonus reason for using a Bluefruit from Adafruit is that Adafruit has programmed an <a href="https://play.google.com/store/apps/details?id=com.adafruit.bluefruit.le.connect&hl=en_US" target="_blank">Android app</a> and an <a href="https://itunes.apple.com/us/app/adafruit-bluefruit-le-connect/id830125974?mt=8" target="_blank">iOS app</a> ...</p>
+
+<div class="center_outer"><div class="center_inner"><img src="img/proj/bluefruitapp.jpg" width="100%" /></div></div>
+
+<p>... for you to use already. Programming an Android app will involve learning the <i>Java</i> programming language. Programming an iOS app involves learning the <i>Objective-C</i> programming language, and you <b>must own a Mac computer</b> to do it. So using the Adafruit app will save us a lot of time. If you do want to learn how to write smartphone apps, that's a lesson for another day (but try out <a href="http://appinventor.mit.edu" target="_blank">MIT's App Inventor</a>, it's Android app programming for kids, you don't need to know Java).</p>
 
 <p>Bluetooth Classic serial ports are much cheaper to buy and a bit easier to use. But I don't want to ignore any students that only have iOS phones.</p>
 
 <fieldset><legend>Learn More</legend>
-<p><a href="https://learn.adafruit.com/introduction-to-bluetooth-low-energy/introduction" target="_blank">Adafruit's page on Bluetooth Low Energy</a></p>
-<p><a href="https://en.wikipedia.org/wiki/Bluetooth_Low_Energy" target="_blank">Wikipedia's page on Bluetooth Low Energy</a></p>
-<p><a href="https://learn.sparkfun.com/tutorials/bluetooth-basics" target="_blank">SparkFun's page on Bluetooth Classic</a></p>
+<ul>
+<li><a href="https://www.youtube.com/watch?v=ItV08vGqACM" target="_blank">Collin's Lab video on Bluetooth Low Energy</a></li>
+<li><a href="https://learn.adafruit.com/introduction-to-bluetooth-low-energy/introduction" target="_blank">Adafruit's page on Bluetooth Low Energy</a></li>
+<li><a href="https://learn.adafruit.com/introducing-the-adafruit-bluefruit-le-uart-friend/" target="_blank">Adafruit's massive tutorial on the Bluefruit LE UART Friend</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Bluetooth_Low_Energy" target="_blank">Wikipedia's page on Bluetooth Low Energy</a></li>
+<li><a href="https://learn.sparkfun.com/tutorials/bluetooth-basics" target="_blank">SparkFun's page on Bluetooth Classic</a></li>
+</ul>
 </fieldset>
 
 <h2>Serial Port</h2>
 
 <p>Serial port communication is how your Arduino talks to your computer, and how the Bluefruit talks with your Arduino. Serial ports are slower than other data busses but it's still very common today because it's so easy to use. For one way communication, you only need one wire, for two way (full duplex) communication, you need two wires. (or you can be clever and use one wire, and each device knows how to "take turns").</p>
 
-<p>Your Arduino Nano has one dedicated serial port but it's permanently connected to your computer. This dedicated port is sometimes known as the hardware serial port. To add more serial ports to your Arduino Nano, you can use what's called a software serial port, which uses a technique called <i>bit-banging</i>. There's a library that's included with Arduino IDE called <i>SoftwareSerial</i> that you use when you want to add a software serial port to your project.</p>
+<p>Your Arduino Nano has one dedicated serial port (the RX and TX pins) but it's permanently connected to your computer. This dedicated port is sometimes known as the hardware serial port. To add more serial ports to your Arduino Nano, you can use what's called a software serial port, which uses a technique called <i>bit-banging</i>. There's a library that's included with Arduino IDE called <i>SoftwareSerial</i> that you use when you want to add a software serial port to your project.</p>
 
 <p>If you are wondering what happens when you try to use the hardware serial port for the Bluetooth module, the answer is: it will work. But... since your computer uses the hardware serial port to upload code, it means: if you use hardware serial port for the Bluetooth module, then you need to unplug the Bluetooth module every time you upload code. This will become very annoying so we want to use a software serial port instead.</p>
 
-<p>Why do we call it hardware serial port or software serial port? When a serial port is implemented in hardware, then a series of transistors is dedicated to reading and sending data, and there's a notification when a complete byte is . When a serial port is implemented with software using bit-banging, it means there's code written to turn a pin output high or low to send data, and there's code written to read the state of a pin
+<fieldset><legend>Learn More</legend>
+<ul>
+<li><a href="https://learn.sparkfun.com/tutorials/serial-communication/all" target="_blank">SparkFun's page on serial communication</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Universal_asynchronous_receiver-transmitter" target="_blank">Wikipedia's page on <i>UART</i></a></li>
+<li><a href="https://itp.nyu.edu/physcomp/lessons/serial-communication/serial-communication-the-basics/" target="_blank">NYU's page on serial communication</a></li>
+</ul>
+<hr />
+<ul>
+<li><a href="https://en.wikipedia.org/wiki/Bit_banging" target="_blank">Wikipedia's page on big-banging</a></li>
+<li><a href="https://www.arduino.cc/en/Reference/softwareSerial" target="_blank">Arduino's reference for the SoftwareSerial library</a></li>
+<li><a href="https://www.arduino.cc/en/Tutorial/SoftwareSerial" target="_blank">Arduino's page on how the SoftwareSerial library works</a> (warning, this page is extremely old and may be out-of-date)</li>
+</ul>
+<hr />
+<p>The best way to learn is to do more projects that use serial ports.</p>
+<p>Another common device that frequently uses serial port communication: GPS receivers. You can buy cheap GPS modules that <a href="https://www.youtube.com/watch?v=2yFmPRTRPIk" target="_blank">you</a> can <a href="http://www.instructables.com/id/Make-a-High-Altitude-Balloon-Tracker-Arduino/" target="_blank">connect</a> to an <a href="https://www.youtube.com/watch?v=ulpnT5_oQww" target="_blank">Arduino</a> so your robot can know where it is exactly on Earth. GPS modules use serial ports because the computers on small airplanes and boats are very old and not very fast.</p>
+</fieldset>
+
+<h2>NeoPixels</h2>
+
+<p>I added a NeoPixel ring. <a href="https://www.youtube.com/watch?v=HO6xQMR8naw" target="_blank"><i>NeoPixels</i></a> are a <a href="https://www.adafruit.com/category/168" target="_blank">brand of LEDs</a> that can show any colour you want, and no matter how many NeoPixels you have, you only need one pin to control all of them. This means you can arrange a strip of hundreds of LEDs and still only use one pin on your Arduino to control the entire strip. This is because each NeoPixel talks to the next NeoPixel beside it (sometimes called <i>daisy chaining</i>).</p>
+
+<div class="center_outer"><div class="center_inner"><img src="img/proj/neopixels_various.jpg" width="100%" /></div></div>
+
+<fieldset class="hidable"><legend>NeoPixels Projects</legend>
+<div>
+<p>Here are some great things other people have built using NeoPixels:</p>
+<p><a href="https://www.youtube.com/watch?v=pQwgZwrXfhc" target="_blank">Music to Light</a></p>
+<p><a href="https://www.youtube.com/watch?v=IXCS7Ls1yrA" target="_blank">Neopixel'd Dress & LED Sequins'd Shoes and Purse</a></p>
+<p><a href="https://www.youtube.com/watch?v=lNQfeIwGhto" target="_blank">NeoPixel Clock</a></p>
+<hr />
+<p>I built these projects below myself:</p>
+<h3><a href="http://eleccelerator.com/aquarium-computer/" target="_blank">Aquarium Computer</a></h3>
+<div class="center_outer"><div class="center_inner"><iframe src="http://gfycat.com/ifr/EducatedWhichAmericangoldfinch" frameborder="0" scrolling="no" width="600" height="338" style="-webkit-backface-visibility: hidden;-webkit-transform: scale(1);"></iframe></div></div>
+<p>I stuffed my computer into a fish tank. The rainbow lighting effect is created with NeoPixels.</p>
+<hr />
+<h3><a href="http://www.thepixelstick.com/" target="_blank">PixelStick</a></h3>
+<div class="center_outer"><div class="center_inner"><a href="http://www.thepixelstick.com/" target="_blank"><img src="https://s3.amazonaws.com/ksr/assets/001/250/439/1dee6b42d7939d10ac4065d737aae8e9_large.gif?1383004110" width="640" height="357"></a></div></div>
+<p>I worked on the team that made PixelStick, it's used for light-painting.</p>
+<hr />
+<h3><a href="http://eleccelerator.com/car-heads-up-display-using-led-strip/" target="_blank">Car Heads Up Display</a></h3>
+<div class="center_outer"><div class="center_inner"><video width="100%" autoplay="autoplay" mute="mute" loop="loop"><source src="http://eleccelerator.com/files/ledstripcarhud_demoanimation_far.mp4" type="video/mp4">Your browser does not support HTML5 video.</video></div></div>
+<p><i>Heads Up Displays</i> (H.U.D.) are usually something found in <a href="https://www.youtube.com/watch?v=Jk8MxgjnkDM" target="_blank">jets</a>, I made a much simpler version for my car.</p>
+</div>
+</fieldset>
+
+<p>Learn more from the <a href="https://learn.adafruit.com/adafruit-neopixel-uberguide/" target="_blank">Adafruit NeoPixel &Uuml;berguide</a></p>
 
 <h2>Homework</h2>
 
-<p>These are not really "homework questions", it's just some prompts for you do learn more on your own.</p>
+<p>These are some prompts for you do learn more on your own. Feel free to ask me to check your answers (there are too many correct answers to write down).</p>
 
 <ul>
-<li>Find where you can buy a 16x2 LCD text display with a I<sup>2</sup>C backpack.</li>
-<li>What is the Arduino library you need to use the LCD? Does it come with Arduino or do you have to download it seperately? If it is on GitHub, what is the GitHub URL?</li>
-<li>Find where you can buy a 10K&#8486; photoresistor.</li>
-<li>If you can't find a 10K&#8486; photoresistor, find a 100K&#8486; photoresistor, and what do you think you should use for the other resistor in the voltage divider?</li>
-<li>The LCD's I<sup>2</sup>C backpack has 4 pins on its connector. Draw out how you should connect each pin to your robot.</li>
-<li>There is an Arduino function that will "returns the number of milliseconds since the Arduino board began running the current program". What is the name of the function and how do you think you could use it?</li>
+<li>Besides Bluetooth modules and GPS modules, find something else fun that can talk to the Arduino using a serial port.</li>
+<li>You already know about Bluetooth and WiFi, what is another wireless communication protocol that you can use with Arduino?</li>
+<li>Find a device you can buy to help you control your robot using WiFi.</li>
+<li>Why are serial ports slow? What is RS-232 and how is it different from the serial port on your Arduino?</li>
+<li>Guess how did I connect the Bluefruit to my robot, there are multiple correct answers</li>
+<li>Guess how did I connect the NeoPixel ring to my robot, there are multiple correct answers</li>
 </ul>
 
 </div>
