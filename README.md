@@ -31,7 +31,7 @@ As a huge supporter of STEAM education, Adafruit Industries have written literal
 
 ## Thanks to: [PCBWay](https://www.pcbway.com/)
 
-[PCBWay](https://www.pcbway.com/) is a speedy and cheap PCB manufacturer and electronics assembly company. They generously provided us with multi-colour PCBs for free, so your robots can stand out and be more unique.
+[PCBWay](https://www.pcbway.com/) is a speedy and cheap PCB manufacturer and electronics assembly company. They generously provided us with multi-colour PCBs for free, so your robots can be pretty and more unique.
 
 ![](/courseware/img/thankspcbway.jpg)
 
