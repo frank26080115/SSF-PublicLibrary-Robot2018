@@ -153,6 +153,11 @@ video
 	display: none;
 }
 
+#printable_url
+{
+	display: none;
+}
+
 .extra
 {
 	display: none;
@@ -176,6 +181,11 @@ a, a:visited, a:active
 #banner_black
 {
 	display: none;
+}
+
+#printable_url
+{
+	font-family: monospace;
 }
 
 .extra

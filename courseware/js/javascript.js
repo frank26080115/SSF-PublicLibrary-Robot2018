@@ -111,3 +111,9 @@ function keepAspectRatio(id, width, height, scale) {
 	aspectRatioDiv.style.width = window.innerWidth * scale;
 	aspectRatioDiv.style.height = ((window.innerWidth / (width / height)) * scale) + "px";
 }
+
+function writePrintableUrl() {
+	var ele = document.getElementById("printable_url");
+	var url = window.location.href;
+	ele.innerHTML = url;
+}
