@@ -15,7 +15,7 @@ The lessons are also hosted on my own website, http://eleccelerator.com/ssfpl_ro
 
 ## Thanks to: [Microchip Technology](https://www.microchip.com/)
 
-A big thanks to [Microchip Technology](https://www.microchip.com/).  These guys manufactures the chip in the middle of your Arduinos. My professional contacts at their local office generously donated an insane amount of screwdrivers and backpacks. These classes would not have been possible without their help. Their kindness will not be forgotten.
+A big thanks to [Microchip Technology](https://www.microchip.com/). These guys manufacture the chip in the middle of your Arduino. My professional contacts at their local office generously donated an insane amount of screwdrivers and backpacks. These classes would not have been possible without their help. Their kindness will not be forgotten.
 
 ![](/courseware/img/thanks_microchip.jpg)
 
