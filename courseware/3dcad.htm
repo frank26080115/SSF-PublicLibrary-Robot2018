@@ -30,8 +30,8 @@ function body_onload() {
 <legend>Before Coming to Class</legend>
 <div>
 <p>This class will use <a href="https://www.onshape.com/" target="_blank">Onshape</a>. It is a CAD tool that runs in a web browser, and an account is required to use it. It is free to use and similar to many more CAD tools that exist in the professional world.</p>
-<p>Please sign up for an account with Onshape before class starts. We do not want to waste time during the class.</p>
-<p><a href="https://cad.onshape.com/signup2" target="_blank">Click Here</a> to sign up. You will need an email address, that's all. Please remember your email and password when you come to class.</p>
+<p><b>Please sign up for an account with Onshape before class starts. We do not want to waste time during the class.</b></p>
+<p><a href="https://cad.onshape.com/signup2" target="_blank">Click Here</a> to sign up. You will need an email address, that's all. If the registration process asks weird questions, fill in made-up answers and a fake phone number. <b>Please remember your email and password when you come to class.</b></p>
 <p>Onshape offers a <a href="https://learn.onshape.com/collections/onshape-fundamentals-cad" target="_blank">few video tutorials</a> that you can watch, but they are targeted towards a professional audience. You can try to watch these videos, but don't worry if you get a bit confused sometimes. Our own class will be much easier to digest.</p>
 </div>
 </fieldset>
@@ -41,7 +41,7 @@ function body_onload() {
 <fieldset class="hidable">
 <legend>Have you used any 3D modelling tools before?</legend>
 <div>
-<p>If you have used TinkerCAD or SketchUp, or something similar, please understand that those kind of tools are not really professional engineering tools. They are more meant for kids and art. When you want to make an object that "does something", use a tool meant for mechanical engineering. When you want to make something that "looks good", use a tool meant for artists. If you use the wrong tool for the wrong purposes, you will have a harder time and learn bad habits.</p>
+<p>If you have used TinkerCAD or SketchUp, or something similar, please understand that those style of tools are not really professional engineering tools. They are more meant for kids. When you want to make an object that "does something", use a tool meant for mechanical engineering. When you want to make something that "looks good", use a tool meant for artists. If you use the wrong tool for the wrong purposes, you will have a harder time and learn bad habits.</p>
 <p>These tools are awesome for engineering: Onshape, SolidWorks, CATIA, Autodesk Inventor, Autodesk Fusion 360, Siemens NX, Solid Edge</p>
 <p>These tools are meant for other people: TinkerCAD, SketchUp, Blender, SCAD, OpenSCAD, 3DS Max, Rhino 3D</p>
 <p>Onshape and Fusion 360 are both free to use. SolidWorks and Autodesk Inventor are expensive tools but are often given to secondary and post-secondary education organizations. CATIA and Siemens NX are tools meant for designing something as complex as an entire airplane, usually dedicated mechanical engineering curriculums in college will cover these tools.</p>
@@ -70,7 +70,18 @@ function body_onload() {
 
 <h2>Get Started</h2>
 
-<p>Please open up <a href="https://cad.onshape.com/" target="_blank">Onshape (click here)</a>, sign in with your email and password, and create a new document. You can give it any name you like.</p>
+<p>Please open up <a href="https://cad.onshape.com/" target="_blank">Onshape (click here)</a>, sign in with your email and password.</p>
+
+<fieldset class="hidable"><legend>IMPORTANT: Set your account to use metric</legend>
+<div>
+<p>Our robot is designed with metric measurements (meaning using SI units). It'll be harder to make a mistake if you switched your Onshape account to use millimeters instead of inches for measurements. Follow the instructions below to change the default measurement units to millimeters:</p>
+
+<div class="center_outer"><div class="center_inner"><img src="img/onshape_account_metric.png" /></div></div>
+
+</div>
+</fieldset>
+
+<p>Create a new document. You can give it any name you like.</p>
 
 <h2>Your First Sketch</h2>
 
@@ -159,7 +170,7 @@ function body_onload() {
 
 <p>When the cursor snaps to a midpoint, it means "automatically make a midpoint constraint". A midpoint constraint is a rule that says "this object must always be in the middle of this line, even if the line moves, extends, or shrinks". The "coincident" constraint is also very frequently automatically generated, it simply means "this object must always touch that object".</p>
 
-<p>When you use the mirror tool, that's a mirror constraint being created. When you manipulate one object in the constraint, the mirrored object will also be affected in the same way, but symetrically about the mirror line.</p>
+<p>When you use the mirror tool, that's a mirror constraint being created. When you manipulate one object in the constraint, the mirrored object will also be affected in the same way, but symmetrically about the mirror line.</p>
 
 <p>When you use constraints, you will make less mistakes. For example, if you have a symetrical design, and the things on the left needs to change, without a mirror constraint, you might forget to make the same changes to the right side.</p>
 
