@@ -13,10 +13,10 @@ void setup() {
 void loop() {
   // put your main code here, to run repeatedly:
   int x, y;
-  BookWorm.setEmittersOff();
+  BookWorm.setIrEmittersOff();
   delay(50);
   x = BookWorm.readSensorRightSide();
-  BookWorm.setEmittersOn();
+  BookWorm.setIrEmittersOn();
   delay(50);
   y = BookWorm.readSensorRightSide();
   if ((y - x) > 50)
