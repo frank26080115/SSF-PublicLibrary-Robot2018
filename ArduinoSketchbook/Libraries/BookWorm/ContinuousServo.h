@@ -130,6 +130,8 @@ public:
   int read();                        // returns current pulse width as an angle between 0 and 180 degrees
   int readMicroseconds();            // returns current pulse width in microseconds for this servo (was read_us() in first release)
   bool attached();                   // return true if this servo is attached, otherwise false
+  void activate();
+  void deactivate();
 private:
 #if defined(__arm__)
    uint16_t min_ticks;

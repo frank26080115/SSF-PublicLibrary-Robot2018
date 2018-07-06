@@ -60,6 +60,7 @@ public:
 	void setServoDeadzoneRight(unsigned int x);
 	void setServoBiasLeft(signed int x);
 	void setServoBiasRight(signed int x);
+	void setServoStoppedNoPulse(bool);
 
 	void initTvRemote(void);
 

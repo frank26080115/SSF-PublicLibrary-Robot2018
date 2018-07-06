@@ -23,6 +23,7 @@ static unsigned int servoDeadzoneLeft = 0;
 static unsigned int servoDeadzoneRight = 0;
 static signed int servoBiasLeft = 0;
 static signed int servoBiasRight = 0;
+static bool servoStoppedNoPulse = true;
 
 void cBookWorm::move(signed int left, signed int right)
 {
@@ -43,6 +44,12 @@ void cBookWorm::moveLeftServo(signed int x)
 		ticks -= servoDeadzoneLeft;
 		ContinuousServo_BothForward &= ~(1 << 1);
 	}
+	if (ticks == SERVO_CENTER_TICKS && servoStoppedNoPulse != false) {
+		servoLeft.deactivate();
+	}
+	else {
+		servoLeft.activate();
+	}
 	ticks += servoBiasLeft;
 	servoLeft.writeTicks(ticks);
 }
@@ -60,6 +67,12 @@ void cBookWorm::moveRightServo(signed int x)
 		ticks += x;
 		ticks -= servoDeadzoneRight;
 		ContinuousServo_BothForward &= ~(1 << 0);
+	}
+	if (ticks == SERVO_CENTER_TICKS && servoStoppedNoPulse != false) {
+		servoRight.deactivate();
+	}
+	else {
+		servoRight.activate();
 	}
 	ticks += servoBiasRight;
 	servoRight.writeTicks(ticks);
@@ -142,4 +155,9 @@ void cBookWorm::setServoBiasLeft(signed int x)
 void cBookWorm::setServoBiasRight(signed int x)
 {
 	servoBiasRight = x;
+}
+
+void cBookWorm::setServoStoppedNoPulse(bool x)
+{
+	servoStoppedNoPulse = x;
 }

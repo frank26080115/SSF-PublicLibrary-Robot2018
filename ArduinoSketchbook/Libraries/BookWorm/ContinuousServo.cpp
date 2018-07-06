@@ -335,6 +335,16 @@ void ContinuousServo::detach()
   }
 }
 
+void ContinuousServo::activate()
+{
+  servos[this->servoIndex].Pin.isActive = true;
+}
+
+void ContinuousServo::deactivate()
+{
+  servos[this->servoIndex].Pin.isActive = true;
+}
+
 void ContinuousServo::write(int value)
 {
   if(value < MIN_PULSE_WIDTH)
