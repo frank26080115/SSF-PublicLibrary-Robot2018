@@ -3,7 +3,7 @@
 void setup() {
   // put your setup code here, to run once:
   BookWorm.begin(); // sets up the pin directions on the robot circuit
-  BookWorm.setServoStoppedNoPulse(true);
+  BookWorm.setServoStoppedNoPulse(false);
   BookWorm.disableAccelLimit();
 }
 
