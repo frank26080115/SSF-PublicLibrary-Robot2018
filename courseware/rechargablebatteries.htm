@@ -1,0 +1,151 @@
+<html>
+<head>
+<title>Using Rechargable Batteries</title>
+<link rel="stylesheet" type="text/css" href="css/stylesheet.css" title="style" />
+<script type="text/javascript" src="js/javascript.js"></script>
+
+<script type="text/javascript">
+
+function body_onload() {
+	makeAllVideos("img/film_animation.gif");
+
+	//makeTableOfContents("tableofcontents", "h2");
+
+	makeAllHidables();
+}
+
+</script>
+
+</head>
+<body onload="body_onload()">
+<div class="body_div">
+
+<div id="banner_black"><img src="img/banner_black.png" /></div>
+<div id="banner_white"><img src="img/banner_white.png" /></div>
+<div id="printable_url">&nbsp;</div>
+
+<h1>Using Rechargable Batteries</h1>
+
+<p>Are you getting sick of buying AA batteries for your robot? It seems like a smart idea to start using rechargable batteries! I'm going to teach you how, and what difference it would make to your robot's performance.</p>
+
+<p>I will show you three of the best types of rechargable to use with your robot. There are other ways but I'd like to keep this lesson simple. Safety is always a major concern when it comes to batteries.</p>
+
+<p>To understand everything discussed in this lesson, make sure you understand the lesson on <a href="circuitbasics.htm">Circuit Basics</a>.
+
+<h2>Rechargable AA Batteries (Ni-MH)</h2>
+
+<div class="center_outer"><div class="center_inner"><img src="img/rechargablebatteries/aa.jpg" width="100%" /></div></div>
+
+<p>If you go to a typical store and tried to buy rechargable AA batteries, most likely it will be a <i>Ni-MH</i> battery. Ni-MH means Nickle Metal Hydride (<a href="https://en.wikipedia.org/wiki/Nickel%E2%80%93metal_hydride_battery" target="_blank">Wikipedia page</a>), which is the specific chemistry of these batteries. If you buy 4 of these and stick them into your robot, it will work!</p>
+
+<p>But there will be two changes to your robot.</p>
+
+<p>Ordinary AA batteries are about 1.5V each. Ni-MH batteries are about 1.2V each. This means using four of them, 1.2V multiplied by 4 is equal to 4.8V . This is less than the 6V that we get when using 1.5V batteries.</p>
+
+<p>Less voltage will mean the maximum speed of your robot will be slower.</p>
+
+<p>Remember that the Arduino Nano uses a regulated 5V power supply, coming from a 5V voltage regulator. When you give this voltage regulator 4.8V, it will output somewhere around 4V or less. This is not a huge problem for us yet. It will mean that the infrared phototransistors will output a lower value when you try to read them. It will also mean that the infrared emitters will be less bright.</p>
+
+<p>Of course, if you are connecting additional gadgets to your robot that need exactly 5V, then this isn't a good idea. However, things that require exactly 5V is actually rare, even if they say that they need 5V, usually they will still work at lower voltages. As the people of the world start to demand products like smartwatches, engineers have been coming up with circuits that require less and less power. Parts in a smartwatch probably use about 1.8V so that the battery can last longer, your computer's CPU probably uses around 1.2V so that it can run faster without melting from overheating.</p>
+
+<p>The continuous rotation servo motors will still work at 4.8V but they will be slightly slower.</p>
+
+<p>The store that sells these batteries should also sell a compatible charger to you...</p>
+<div class="center_outer"><div class="center_inner"><img src="img/rechargablebatteries/energizer_aa_charger.jpg" /></div></div>
+<p>...But I highly recommend not getting an over-priced Energizer or Duracell branded charger, instead, try a Nitecore branded charger (read below) that can handle more battery types.</p>
+
+<p>Do not buy or use Ni-Cd (aka NiCd, NiCad, Nickle Cadmium) batteries. They are obsolete. I'll be impressed if you can still find a place to buy them.</p>
+
+<h2>14500 Batteries (Lithium-Ion)</h2>
+
+<div class="center_outer"><div class="center_inner"><img src="img/rechargablebatteries/14500.jpg" width="100%" /></div></div>
+
+<p>14500 batteries look like AA batteries, but their chemistry is a type of lithium-ion (<a href="https://en.wikipedia.org/wiki/Lithium-ion_battery" target="_blank">Wikipedia page</a>), which means their voltage is about 3.7V each normally, and 4.2V when fully charged. So if you put two of them in series, you can get 7.4V normally and 8.4V when fully charged.</p>
+
+<p>This is great! The continuous rotation servo motors can handle this voltage and they will run faster. The 5V voltage regulator will be able to output a steady 5V supply for your sensors and anything else you connected.</p>
+
+<p>There are a few small issues though...</p>
+
+<p>The robot has a battery holder that holds 4 batteries, but you can only put two 14500 batteries in, which means you cannot complete the circuit and current will not flow. This problem can be solved really easily though, by making a "dummy" AA battery that is actually just a conductor. Use the dummies to fill in the empty two slots.</p>
+
+<p>14500 batteries are usually not available in any stores so you should get them online, they are not popular and will cause people to become confused. You cannot recharge a 14500 battery with a Ni-MH charger, and you cannot recharge a Ni-MH battery with a lithium-ion charger.</p>
+
+<p>Not all 14500 batteries are good for a robot. You want to find one that says "high discharge" and includes a "protection circuit". If the battery cannot sustain high discharge, your robot might run slower. If the battery does not have a protection circuit, then if you run it for too long, the voltage becomes too low (this is called over-discharged), it might become defective and not hold a charge again. I have a small list of Amazon product codes that I know will work:
+<ul>
+<li>B06Y5YRJ21</li>
+<li>B00YRX8F5I</li>
+<li>B06X3WCG1T</li>
+</ul>
+</p>
+
+<p>When buying a charger for 14500 batteries, you don't need to be too careful. As long as it says it will work with 14500 batteries, then it is acceptable. Personally I use a Nitecore UM20 (Amazon product B0161TZNO6), which can also recharge my phone. Otherwise, a Nitecore i2 or i4 or D2 ...</p>
+<div class="center_outer"><div class="center_inner"><img src="img/rechargablebatteries/nitecore_charger.jpg" /></div></div>
+<p>... are good ideas because they can automatically detect between Ni-MH or lithium-ion.</p>
+
+<h2>Lithium Polymer Battery</h2>
+
+<div class="center_outer"><div class="center_inner"><img src="img/rechargablebatteries/lipo.jpg" width="100%" /></div></div>
+
+<p>Lithium Polymer (<a href="https://en.wikipedia.org/wiki/Lithium_polymer_battery" target="_blank">Wikipedia page</a>), or <i>LiPo</i> are the standard in RC planes/cars/boats/drones. They are a type of Lithium-Ion batteries. They offer extremely high performance while being lightweight in comparison to Ni-MH. Actually, a single 14500 battery is usually just a round shaped Li-Po battery inside.</p>
+
+<p>LiPo batteries are named based on how many cells are put together in series and parallel. Each cell is about 3.7V normally and 4.2V when fully charged. Two cells in series, frequently named 2S, will give you about 7.4V normally and 8.4V when fully charged. As we discussed earlier, this is a good voltage to use, and so you are looking for 2S.</p>
+
+<p>1S means 3.7V normally, this is way too low, after the voltage regulator, the Arduino Nano might not function properly. 3S would be too much voltage and the continuous rotation servos would become damaged. The Arduino Nano should still work with 3S though, but the voltage regulator will get very hot. 4S is wayyyy too much (the best drone racers in the world will be using 4S usually), and I don't even think you can buy 5S or 6S that will fit on the robot.</p>
+
+<p>They have capacity ratings, usually in mAH (milliamp-hour) or AH (amp-hour). 1000 mAH is the same thing as 1 AH, and means if you use 1000 mA, the battery will last 1 hour.</p>
+
+<p>They also have a discharge rating, in C units, typically around 20C or more. If you have a battery with 1000 mAH of capacity rated for 20A, it means you can discharge it at 20000 mA (equal to 20A), without it overheating. Our robot will only need about 2A at most so almost any C rating will work.</p>
+
+<p>But if you do something wrong, make a mistake, or even have a bad charger, these type of batteries do catch fire and explode. The typical recommended charging procedure involves putting it inside a special fire-proof metal bag first.</p>
+<div class="center_outer"><div class="center_inner"><img src="img/rechargablebatteries/lipo_bag.jpg" /></div></div>
+<p>Large LiPo batteries cannot be shipped via airplanes because of the risk of fire.</p>
+
+<p>You typically won't find a 2S battery with a protection circuit, as we discussed with 14500 batteries, we need to prevent over-discharge. You can buy one and put it on yourself but nobody actually ever does this. Nobody does this because usually RC planes/cars/boats/drones have an automatic-shutdown anyways. Our robot does not have this feature, so here's a list of what you can do about it:
+<ul>
+<li>Buy a battery protection circuit and put it on by yourself</li>
+<li>Add a circuit to the robot that detects low battery</li>
+<li>Buy a battery indicator, put it on your robot</li>
+<li>Check the battery level very frequently (this is annoying to do)</li>
+<li>You can buy two 1S LiPo batteries, each with a protection circuit, and put them together in series. You might need to charge them one at a time though. You will need a lot of connectors.</li>
+</ul>
+</p>
+
+<p>LiPo batteries need a charger designed for LiPo batteries. Since you are using 2S then you also need a charger that can do cell balancing. Cell balancing means making sure that each of the cell inside the battery has the same voltage. A cheap balancing charger can handle 2S or 3S. The most popular charger will balance up to 6S but will have buttons and LCDs and require you to operate it safely. There are "automatic" chargers for up to 6S but they charge slower than one that you can control.</p>
+
+<div class="center_outer"><div class="center_inner"><img src="img/rechargablebatteries/lipo_chargers.jpg" width="100%" /></div></div>
+
+<p>Does this sound overwhelming? Please do not be discouraged! RC hobbies are the most popular of hobbies. When you see a store that calls it self a "hobby store", this is what they will be selling. Plenty of people handle these batteries every day and they are fine. And if you want to do any sort of robotics competition, you absolutely must use these batteries, because all other types are either too weak or too heavy.</p>
+
+<p>Follow these rules and you'll be safe!
+<ul>
+<li>Handle LiPo batteries with care. Do not drop them, cut them, puncture them, burn them, or otherwise damage them.</li>
+<li>Do not leave them in the sun, they'll get too hot.</li>
+<li>Disconnect the battery from your robot if you are soldering to the circuit.</li>
+<li>Use a charger with a balancing feature.</li>
+<li>Charge at the recommended rate, or use an automatic charger.</li>
+<li>Charge while the battery is in a fire-proof bag, or a metal box, or a cinder block. Have a person watch it while it is charging.</li>
+<li>Prevent over-discharge. Do not run the battery too low, check its level frequently.</li>
+<li>Do not use water to put out a battery fire! Use a real fire extinguisher that is meant for electrical fires.</li>
+<li>These batteries will get puffy, this is normal. Do not pop it like a balloon! It will immediately catch fire and explode. This is why the Samsung phones exploded, the phones were so small that they popped on the inside.</li>
+<li>If you ever need to cut the wires of a LiPo battery, learn how to do it safely first. There's a very specific procedure.</li>
+</ul>
+
+<p>At a robotics competition or a RC competition, staff members do go around and check that everybody is following these rules. Fires still happen, but we all know how to handle them and usually just end up laughing at it and taking pictures.</p>
+
+<p>There are a few different connector styles for LiPo batteries that you can use, so you simply have to buy a mating connector and solder it to the robot. I think for our robot, you want a battery with a JST-RCY style connector (usually red).</p>
+
+<div class="center_outer"><div class="center_inner"><img src="img/rechargablebatteries/lipo_red_jst.jpg" /></div></div>
+
+<p>To attach the battery to the robot, I would use velcro straps. This is what drone racers usually do. You can probably just buy two pieces of double-sided velcro strap and screw each strap to the bottom of your robot. If you want, 3D print a piece of plastic to keep the straps neat.</p>
+
+<fieldset><legend>More Info on LiPo Batteries</legend>
+<p>Read these pages!</p>
+<p><a href="https://rogershobbycenter.com/lipoguide/" target="_blank">A Guide to Understanding LiPo Batteries</a>, by Roger's Hobby Center</p>
+<p><a href="http://learningrc.com/lipo-battery/" target="_blank">RC LiPo Battery Guide: Explanation, Safety, and Care</a>, by Learning RC</p>
+</fieldset>
+
+<div class="noprint"><br /><br /><hr /><h3><a href="index.htm">Click Here, to see the list of classes</a></h3></div>
+
+</div>
+</body>
+</html>
