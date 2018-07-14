@@ -40,7 +40,7 @@ function body_onload() {
 
 <p>But there will be two changes to your robot.</p>
 
-<p>Ordinary AA batteries are about 1.5V each. Ni-MH batteries are about 1.2V each. This means using four of them, 1.2V multiplied by 4 is equal to 4.8V . This is less than the 6V that we get when using 1.5V batteries.</p>
+<p>Ordinary AA batteries are about 1.5V each. Ni-MH batteries are about 1.2V each. This means using four of them, 1.2V multiplied by 4 is equal to 4.8 volts. This is less than the 6V that we get when using 1.5V batteries.</p>
 
 <p>Less voltage will mean the maximum speed of your robot will be slower.</p>
 
@@ -81,6 +81,21 @@ function body_onload() {
 <p>When buying a charger for 14500 batteries, you don't need to be too careful. As long as it says it will work with 14500 batteries, then it is acceptable. Personally I use a Nitecore UM20 (Amazon product B0161TZNO6), which can also recharge my phone. Otherwise, a Nitecore i2 or i4 or D2 ...</p>
 <div class="center_outer"><div class="center_inner"><img src="img/rechargablebatteries/nitecore_charger.jpg" /></div></div>
 <p>... are good ideas because they can automatically detect between Ni-MH or lithium-ion.</p>
+
+<h2>AA Batteries with USB Port</h2>
+
+<div class="center_outer"><div class="center_inner"><img src="img/rechargablebatteries/usbaa.jpg" /></div></div>
+
+<p>There are AA batteries that are using Lithium-Ion chemistry and includes a USB port right on the battery. There is circuitry inside that makes sure that the battery outputs 1.5 volts.</p><!-- This means you just need to buy four and stick them in the robot. You wouldn't have to think about buying a charger at all. You don't need to learn any safety precautions, or study any math. Their internal circuitry already protects them.</p>
+
+<p>There are also 1.2V versions of these, please avoid them, you want the 1.5V versions.</p>
+
+<p>Be sure to buy one that is rated for a maximum discharge current of 2A or more. I know that the Znter and SVPRO (Amazon product B01FVRK1NC) branded ones will definitely meet this rating.</p>
+
+<p>They are kind of expensive and don't last as long as the other methods here. But they are definitely convenient, and you save money by not needing a charger.</p>
+-->
+
+<p>Don't get too excited though, these are almost always limited to 1A of output current, and our robot needs about 1.3A of "burst" current at 6V. You are pushing the limits of these batteries. While nothing will explode, your robot might suddenly decide to reboot when it needs a lot of power.</p>
 
 <h2>Lithium Polymer Battery</h2>
 
