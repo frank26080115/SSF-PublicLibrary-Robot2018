@@ -24,7 +24,8 @@ void loop() {
   if (irrecv.decode(&results)) // we have new remote command, saved into "results" data structure
   {
     // print the contents of the data structure to serial terminal
-    BookWorm.printf(F("IR Data Received! Brand: 0x%02X , Code: 0x%04X , Bits: %d\r\n"), results.decode_type, results.value, results.bits);
+    BookWorm.printf(F("IR Data Received! Brand: 0x%02X , Code: 0x%04X"), results.decode_type, results.value);
+    BookWorm.printf(F(" , Bits: %d\r\n"), results.bits);
 
     // this function will print the raw timings of the pulses
     dumpRaw(&results);
@@ -44,12 +45,12 @@ void dumpRaw(decode_results *results)
   {
     unsigned long  x = results->rawbuf[i] * USECPERTICK; // convert the time units from "ticks" to microseconds
 
-    if (!(i & 1)) {  // even, meaning a mark
+    if (!(i & 1)) {  // even
       Serial.print("-");
       if (x < 1000)  Serial.print(" ") ;
       if (x < 100)   Serial.print(" ") ;
       Serial.print(x, DEC);
-    } else {  // odd, meaning a space
+    } else {  // odd
       Serial.print("     ");
       Serial.print("+");
       if (x < 1000)  Serial.print(" ") ;

@@ -81,10 +81,16 @@ int  IRrecv::decode (decode_results *results)
 #endif
 
 #if DECODE_LEGO_PF
-	DBG_PRINTLN("Attempting Lego Power Functions");
+	DBG_PRINTLN("Attempting Lego PF decode");
 	if (decodeLegoPowerFunctions(results))  return true ;
 #endif
 
+#if DECODE_HEXBUG
+	DBG_PRINTLN("Attempting HEXBUG decode");
+	if (decodeHexbug(results))  return true ;
+#endif
+
+	DBG_PRINTLN("All decoders failed, calculating HASH");
 	// decodeHash returns a hash on any input.
 	// Thus, it needs to be last in the list.
 	// If you add any decodes, add them before this.

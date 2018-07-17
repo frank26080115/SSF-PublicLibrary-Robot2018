@@ -28,7 +28,8 @@ int cBookWorm::readTvRemote(void)
 	if (irrecv.decode(&results))
 	{
 		int res = decodeTvCommand(&results);
-		this->printf(F("TV-RX 0x%02X 0x%04X %d\r\n"), results.decode_type, results.value, results.bits);
+		this->printf(F("TV-RX 0x%02X 0x%04X"), results.decode_type, results.value);
+		this->printf(F(" %d\r\n"), results.bits);
 		//if (results.bits <= 0)
 		//{
 		//	return TVREMOTE_KEY_REPEATLAST;
@@ -91,6 +92,9 @@ void cBookWorm::sendTvRemote(uint8_t brand, unsigned long data, unsigned int nbi
 		#endif
 		#if SEND_DENON
 		case TVREMOTE_BRAND_DENON: irsend.sendDenon(data, nbits); return ;
+		#endif
+		#if SEND_HEXBUG
+		case TVREMOTE_BRAND_HEXBUG: irsend.sendHexbug(data, nbits); return ;
 		#endif
 		default: return;
 	}
@@ -179,6 +183,47 @@ static int decodeTvCommand(decode_results *results)
 			default:
 				return TVREMOTE_KEY_UNKNOWN;
 		}
-	} 
+	}
+	if (d == TVREMOTE_BRAND_HEXBUG)
+	{
+		static uint8_t player = 0;
+		uint8_t p, xx;
+		if (results->bits != 7 && results->bits != 8)
+		{
+			return TVREMOTE_KEY_UNKNOWN;
+		}
+		if (results->bits == 8)
+		{
+			xx = x & 0xF8;
+			p = x & 0x07;
+			if (xx != 0 && player == 0)
+			{
+				player = p;
+			}
+			if (player != p)
+			{
+				return TVREMOTE_KEY_UNKNOWN;
+			}
+			switch (xx)
+			{
+				case 0x80:
+					return TVREMOTE_KEY_UP;
+				case 0x40:
+					return TVREMOTE_KEY_LEFT;
+				case 0x20:
+					return TVREMOTE_KEY_RIGHT;
+				case 0x10:
+					return TVREMOTE_KEY_DOWN;
+				case 0x08:
+					return TVREMOTE_KEY_SELECT;
+				default:
+					return TVREMOTE_KEY_UNKNOWN;
+			}
+		}
+		else if (results->bits == 7)
+		{
+			return TVREMOTE_KEY_UNKNOWN;
+		}
+	}
 	return TVREMOTE_KEY_UNKNOWN;
 }

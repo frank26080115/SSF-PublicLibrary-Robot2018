@@ -64,6 +64,7 @@ enum
 	TVREMOTE_BRAND_DENON,
 	TVREMOTE_BRAND_PRONTO,
 	TVREMOTE_BRAND_LEGO_PF,
+	TVREMOTE_BRAND_HEXBUG,
 }; // this order matches "decode_type_t"
 
 #endif

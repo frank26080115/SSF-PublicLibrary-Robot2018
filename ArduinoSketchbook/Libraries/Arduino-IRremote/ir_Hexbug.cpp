@@ -11,13 +11,13 @@
 
 #define BITS           8  // The number of bits in the command
 
-#define HDR_MARK    1700  // The length of the Header:Mark
-#define HDR_SPACE    320  // The lenght of the Header:Space
-
-#define BIT_SPACE    320  // The length of a Bit:Space
+#define BIT_SPACE    280  // The length of a Bit:Space
 #define ONE_MARK    1000  // The length of a Bit:Mark for 1's
 #define ZERO_MARK    320  // The length of a Bit:Mark for 0's
 #define AVG_MARK    ((ONE_MARK + ZERO_MARK) / 2)
+
+#define HDR_MARK    (ONE_MARK + BIT_SPACE + 100)  // The length of the Header:Mark
+#define HDR_SPACE    320  // The lenght of the Header:Space
 
 
 //+=============================================================================
@@ -56,24 +56,41 @@ bool  IRrecv::decodeHexbug(decode_results *results)
 	int            offset = 1;  // Skip the Gap reading
 	int            i;
 
-	// Check we have the right amount of data
-	if (irparams.rawlen != 1 + 2 + (2 * BITS) + 1)  return false ;
+	// check number of pulses
+	if (results->rawlen > 18 || results->rawlen < 16) {
+		results->value = 0x55;
+		return false;
+	}
 
 	// Check initial Mark+Space match
-	if (!MATCH_MARK (results->rawbuf[offset++], HDR_MARK ))  return false ;
-	if (!MATCH_SPACE(results->rawbuf[offset++], HDR_SPACE))  return false ;
+	if ((results->rawbuf[offset] * USECPERTICK) < HDR_MARK) {
+		results->value = 0xAA;
+		return false ;
+	}
+	offset++;
+	if ((results->rawbuf[offset] * USECPERTICK) < (HDR_SPACE / 2) || (results->rawbuf[offset] * USECPERTICK) > (HDR_SPACE + (HDR_SPACE / 2))) {
+		results->value = 0xBB;
+		return false ;
+	}
+	offset++;
 
 	// Read the bits in
-	for (i = 0;  i < 32;  i++) {
+	for (i = 0;  i < 32 && offset < results->rawlen; ) {
 		// Each bit looks like: MARK_1 + SPACE -> 1
 		//                 or : MARK_0 + SPACE -> 0
 
 		// IR data is big-endian, so we shuffle it in from the right:
-		if      (MATCH_MARK(results->rawbuf[offset], ONE_MARK))   data = (data << 1) | 1 ;
-		else if (MATCH_MARK(results->rawbuf[offset], ZERO_MARK))  data = (data << 1) | 0 ;
-		else break ;
+		if ((results->rawbuf[offset] * USECPERTICK) > AVG_MARK) {
+			data = (data << 1) | 1 ;
+		}
+		else {
+			data = (data << 1) | 0 ;
+		}
+		i++;
 		offset++;
-		if (!MATCH_SPACE(results->rawbuf[offset], BIT_SPACE)) break ;
+		if ((results->rawbuf[offset] * USECPERTICK) > (BIT_SPACE * 3)) {
+			break ;
+		}
 		offset++;
 	}
 
