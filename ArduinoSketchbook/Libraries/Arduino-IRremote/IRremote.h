@@ -79,6 +79,9 @@
 #define DECODE_LEGO_PF       0 // NOT WRITTEN
 #define SEND_LEGO_PF         1
 
+#define DECODE_HEXBUG        1
+#define SEND_HEXBUG          1
+
 //------------------------------------------------------------------------------
 // When sending a Pronto code we request to send either the "once" code
 //                                                   or the "repeat" code
@@ -119,6 +122,7 @@ typedef
 		DENON,
 		PRONTO,
 		LEGO_PF,
+		HEXBUG,
 	}
 decode_type_t;
 
@@ -247,9 +251,13 @@ class IRrecv
 #		if DECODE_DENON
 			bool  decodeDenon (decode_results *results) ;
 #		endif
-//......................................................................
+		//......................................................................
 #		if DECODE_LEGO_PF
 			bool  decodeLegoPowerFunctions (decode_results *results) ;
+#		endif
+		//......................................................................
+#		if DECODE_HEXBUG
+			bool  decodeHexbug (decode_results *results) ;
 #		endif
 } ;
 
@@ -346,9 +354,13 @@ class IRsend
 #		if SEND_PRONTO
 			void  sendPronto     (char* code,  bool repeat,  bool fallback) ;
 #		endif
-//......................................................................
+		//......................................................................
 #		if SEND_LEGO_PF
 			void  sendLegoPowerFunctions (uint16_t data, bool repeat = true) ;
+#		endif
+		//......................................................................
+#		if SEND_HEXBUG
+			void  sendHexbug (unsigned long data, int nbits) ;
 #		endif
 
 #ifdef USE_SOFT_CARRIER
