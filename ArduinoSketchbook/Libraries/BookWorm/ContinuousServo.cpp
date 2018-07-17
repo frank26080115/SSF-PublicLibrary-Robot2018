@@ -342,7 +342,7 @@ void ContinuousServo::activate()
 
 void ContinuousServo::deactivate()
 {
-  servos[this->servoIndex].Pin.isActive = true;
+  servos[this->servoIndex].Pin.isActive = false;
 }
 
 void ContinuousServo::write(int value)

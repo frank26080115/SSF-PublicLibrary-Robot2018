@@ -44,7 +44,7 @@ void cBookWorm::moveLeftServo(signed int x)
 		ticks -= servoDeadzoneLeft;
 		ContinuousServo_BothForward &= ~(1 << 1);
 	}
-	if (ticks == SERVO_CENTER_TICKS && servoStoppedNoPulse != false) {
+	if (x == 0 && servoStoppedNoPulse != false) {
 		servoLeft.deactivate();
 	}
 	else {
@@ -68,7 +68,7 @@ void cBookWorm::moveRightServo(signed int x)
 		ticks -= servoDeadzoneRight;
 		ContinuousServo_BothForward &= ~(1 << 0);
 	}
-	if (ticks == SERVO_CENTER_TICKS && servoStoppedNoPulse != false) {
+	if (x == 0 && servoStoppedNoPulse != false) {
 		servoRight.deactivate();
 	}
 	else {
