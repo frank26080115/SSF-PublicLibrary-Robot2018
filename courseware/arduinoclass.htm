@@ -90,7 +90,21 @@ function body_onload() {
 
 <p>Remember: If you are using the library's computer, then you don't need to do any installation! Skip this step if you are using the library's computer.</p>
 
-<p>Download and install the device drivers from SparkFun's page <a href="https://learn.sparkfun.com/tutorials/serial-basic-hookup-guide#drivers-if-you-need-them" target="_blank">here</a>. Look for "<b>drivers if you need them</b>" and download the one for your operating system. You will need to extract (aka unzip) the downloaded file first, and then run the "<b>setup.exe</b>" to perform the installation. Follow the instructions provided during the installation, use the default options, and give the computer permission if it asks for permission (press "allow" or "trust" when the computer asks).
+<fieldset><legend>Using Windows</legend>
+<p>Download and install the device drivers from SparkFun's page <a href="https://learn.sparkfun.com/tutorials/serial-basic-hookup-guide#drivers-if-you-need-them" target="_blank">here</a>. Look for "<b>drivers if you need them</b>" and download the one for your operating system. You will need to extract (aka unzip) the downloaded file first, and then run the "<b>setup.exe</b>" to perform the installation. Follow the instructions provided during the installation, use the default options, and give the computer permission if it asks for permission (press "allow" or "trust" when the computer asks).</p>
+<p>It is recommended that you reboot your computer after doing all this.</p>
+</fieldset>
+
+<fieldset><legend>Using Mac OS</legend>
+<p>These instructions are taken from <a href="https://github.com/adrianmihalko/ch340g-ch34g-ch34x-mac-os-x-driver" target="_blank">this github repo</a>.</p>
+<p>First, open up a <a href="http://blog.teamtreehouse.com/introduction-to-the-mac-os-x-command-line" target="_blank">terminal</a>. Then we need to execute two commands, the first one is ...</p>
+<pre class="code">sudo rm -rf /System/Library/Extensions/usb.kext</pre>
+<p>... the second one ...</p>
+<pre class="code">sudo rm -rf /Library/Extensions/usbserial.kext</pre>
+<p>(note: these commands are executed with sudo permissions, you may need to have your administrator username and password ready.)</p>
+<p>Then, <a href="https://github.com/adrianmihalko/ch340g-ch34g-ch34x-mac-os-x-driver/raw/master/CH34x_Install_V1.4.pkg" target="_blank">click here to download</a> a PKG file that installs the driver. Run the PKG file to initiate the installation. You may need to provide your computer's administrator username and password during the installation. If the link does not work, visit <a href="https://github.com/adrianmihalko/ch340g-ch34g-ch34x-mac-os-x-driver" target="_blank">the github repo</a> and perform the download manually.</p>
+<p>It is recommended that you reboot your computer after doing all this.</p>
+</fieldset>
 
 <h2>Preparing the Sketchbook</h2>
 
@@ -144,6 +158,7 @@ function body_onload() {
 <div class="center_outer"><div class="center_inner"><a href="img/arduino/arduino_select_board.png"><img src="img/arduino/arduino_select_board.png" /></a></div></div>
 
 <p>(the port number might be different, that's OK, the number could be different on a different computer, or the computer might have more than one port, if you pick wrong, just guess again later)</p>
+<p>(on a Mac or Linux computer, the port names might not be numbers, they may look like "/dev/xxxxxxx")</p>
 
 <p>Inside the Arduino IDE, open the "HardwareTestLEDsBlink" sketch (<a href="https://github.com/frank26080115/SSF-PublicLibrary-Robot2018/tree/master/ArduinoSketchbook/HardwareTestLEDsBlink/HardwareTestLEDsBlink.ino" target="_blank">github link</a>)...</p>
 <div class="center_outer"><div class="center_inner"><a href="img/arduino/open_sketch_blank.png"><img src="img/arduino/open_sketch_blank.png" /></a></div></div>
