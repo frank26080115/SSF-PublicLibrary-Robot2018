@@ -46,3 +46,11 @@ I reached out to people I know at the local [Silicon Labs](https://www.silabs.co
 ![](/courseware/img/thankssilabs.png)
 
 They are a company who manufacture a lot of different microchips, such as the USB interface chips that hobbyists often use to debug the Raspberry Pi and other embedded Linux platforms. If you are into the drone racing hobby, most likely your drone already has four microcontrollers made by Silicon Labs. They've been growing rapidly in the past decade and is currently well known for having unique, high performance, and low power products, as well as legacy products that are solid and dirt cheap.
+
+## Thanks to: [Hackaday](https://hackaday.com/)
+
+Hackaday always have a special place in my life, providing me with constant motivation and keeping me up-to-date on both my hobby and professional life. They are literally the biggest reason why I am working a dream job in sunny California. I think their blog is inspirational to everybody here and so they gave me a pile of stickers to give to my class!
+
+![](/courseware/img/had_stickers.jpg)
+
+They are the host of an excellent online community at [Hackaday.io](https://hackaday.io/), hosts awesome events such as the [Hackaday SuperConference](https://hackaday.com/tag/hackaday-superconference/) and their [Hackaday Prize](https://hackaday.io/prize), and also they run the beloved [Tindie](https://www.tindie.com/) where creative makers and hackers can sell their creations.
